@@ -1,0 +1,31 @@
+ @import url('~@/static/font/iconfont.css');
+ .iconfont {
+     font-family: "iconfont" !important;
+     font-style: normal;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     color: #24bd7a;
+     margin: 0 20rpx;
+     font-size: 42rpx;
+     line-height: 90rpx;
+     width: 60rpx;
+     height: 90rpx;
+ }
+
+ .iconfont.default {
+     color: #bbb
+ }
+
+ .iconfont.white {
+     color: white
+ }
+
+ #trans-tooltip,
+ #tip-arrow-bottom,
+ #tip-arrow-top {
+     display: none;
+ }
+
+ page {
+     background-color: #f8fafb;
+ }
