@@ -1,2 +1,20 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="container-auto">
+  <view class="userBannerBox">
+    <image class="user-bg" src="/static/img/user-bg1.png"></image>
+    <view class="userBannerContainer display-flex">
+          <image class='logo-img' src="/static/img/userAvatar.png"></image>
+          <view class="logo-title">
+              <text class="user-name">小白</text>
+              <text class="iconfont white icon-arrow-right"></text>
+          </view>
+        </view>
+  </view>
+  <view class="center-list" wx:for="{{moduleData}}" wx:for-item="item" wx:for-key="index" wx:key="index">
+        <view class="center-list-item display-flex" wx:for="{{item}}" wx:for-item="ite" wx:for-key="idx" wx:key="idx">
+          <text class="{{'iconfont '+  ite.icon}}"></text>
+          <text class="list-text">{{ite.name}}</text>
+          <text class="iconfont default icon-arrow-right"></text>
+        </view>
+      </view>
+</view>

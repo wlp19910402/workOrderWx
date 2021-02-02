@@ -5,7 +5,62 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    moduleData: [
+      [ {
+        name: "新消息通知",
+        icon: "icon-comment",
+        link: "/",
+        isLogin: false
+      } ],
+      [ {
+        name: "帮助与反馈",
+        icon: "icon-prompt",
+        link: "/",
+        isLogin: false
+      },
+      {
+        name: "服务条款及隐私",
+        icon: "icon-explain",
+        link: "/",
+        isLogin: false
+      } ],
+      [
+        {
+          name: "关于引用",
+          icon: "icon-help",
+          link: "/",
+          isLogin: false
+        }
+      ], [
+        {
+          name: "邀请好友",
+          icon: "icon-share",
+          link: "/",
+          isLogin: true
+        },
+      ],
+      [ {
+        name: "绑定手机",
+        icon: "icon-lock",
+        link: "/",
+        isLogin: true
+      },
+      {
+        name: "修改密码",
+        icon: "icon-lock",
+        link: "/",
+        isLogin: true
+      }
+      ],
+      [
+        {
+          name: "退出登录",
+          icon: "icon-sign-out",
+          link: "/",
+          isLogin: true
+        }
+      ]
+    ]
   },
 
   /**

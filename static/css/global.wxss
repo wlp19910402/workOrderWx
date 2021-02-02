@@ -1,4 +1,4 @@
- @import url('~@/static/font/iconfont.css');
+@import "/static/font/iconfont.wxss";
  .iconfont {
      font-family: "iconfont" !important;
      font-style: normal;
