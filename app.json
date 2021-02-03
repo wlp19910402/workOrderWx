@@ -3,6 +3,8 @@
     "pages/index/index",
     "pages/order/order",
     "pages/my/my",
+    "pages/login/login", 
+    "pages/user/register/register",
     "pages/logs/logs"
   ],
   "window":{
@@ -33,5 +35,9 @@
       "iconPath":"static/img/tabBarIcon/my-default.png",
       "selectedIconPath":"static/img/tabBarIcon/my-active.png"
     }]
+  },
+  "useExtendedLib":{
+    "kbone": true,
+    "weui": true
   }
 }

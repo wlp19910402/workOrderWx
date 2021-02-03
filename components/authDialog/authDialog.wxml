@@ -1,0 +1,7 @@
+<view>
+<mp-dialog ext-class="qm-mp-dialog"  class="qm-mp-dialog-box" title="未登录" show="{{true}}" text= bindbuttontap="tapDialogButton" buttons="{{oneButton}}">
+  <view>您未登录，请先登录后在访问</view>
+  <button class="qm-button" type="default" open-type="getUserInfo" bindgetphonenumber="getUserInfo">登录</button>
+</mp-dialog>
+</view>
+

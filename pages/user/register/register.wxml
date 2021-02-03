@@ -1,0 +1,42 @@
+<!--pages/login/login.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page">
+    <view class="page__bd">
+        <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+            <mp-cells>
+             <mp-cell prop="username" title="用户名">
+                    <input bindinput="formInputChange" data-field="username" class="weui-input" placeholder="请输入用户名"/>
+            </mp-cell>
+            <mp-cell prop="realname" title="真实姓名">
+                    <input bindinput="formInputChange" data-field="realname" class="weui-input" placeholder="请输入真实姓名"/>
+            </mp-cell>
+            <mp-cell prop="password" title="密码">
+                <input bindinput="formInputChange" type="password" data-field="password"  class="weui-input" placeholder="请输入密码"/>
+            </mp-cell>
+            <mp-cell prop="rePassword" title="重新密码">
+                <input bindinput="formInputChange" type="password" data-field="rePassword"  class="weui-input" placeholder="请重新输入密码"/>
+            </mp-cell>
+            <mp-cell prop="mobile" title="手机号">
+                    <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入手机号"/>
+            </mp-cell>
+            <mp-cell prop="email" title="邮箱">
+                    <input bindinput="formInputChange" data-field="email" class="weui-input" placeholder="请输入邮箱"/>
+            </mp-cell>
+            </mp-cells>
+        </mp-form>
+        <checkbox-group bindchange="bindAgreeChange">
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                    </view>
+                    阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
+                </view>
+            </label>
+        </checkbox-group>
+        <view class="weui-btn-area">
+            <button class="weui-btn" open-type="getUserInfo" bindgetphonenumber="getUserInfo" type="primary" size="default" bindtap="submitForm">确定</button>
+        </view>
+    </view>
+</view>

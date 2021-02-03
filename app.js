@@ -5,22 +5,24 @@ App({
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-    wx.showModal({
-      title: '未登录',
-      content: '您未登录，需要登录后才能继续',
-      showCancel: false,
-      confirmColor: "#24bd7a",
-      success (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
-    
     // 登录
+     if(!this.userInfo){
+      wx.showModal({
+        title:"未登录",
+        content:"您未登录，请登录后在访问！",
+        showCancel:false,
+        confirmColor:"#46b989",
+        confirmText:"去登陆",
+        success:(res)=>{
+          console.log(res)
+          if(res.confirm){
+            wx.reLaunch({
+              url: '/pages/login/login',
+            })
+          }
+        }
+      })
+    }
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -36,7 +38,6 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {

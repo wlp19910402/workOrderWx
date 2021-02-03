@@ -11,11 +11,12 @@
      width: 60rpx;
      height: 90rpx;
  }
-
  .iconfont.default {
      color: #bbb
  }
-
+button[size="default"]{
+    width:100% !important;
+}
  .iconfont.white {
      color: white
  }
