@@ -10,10 +10,8 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         showTopTips: false,
         isAgree: false,
-        formData: {
-        },
-        rules: [
-            {
+        formData: {},
+        rules: [{
                 name: 'username',
                 rules: [{
                     required: true,
@@ -21,11 +19,11 @@ Page({
                 }],
             },
             {
-                name:"password",
-                rules:[{
+                name: "password",
+                rules: [{
                     required: true,
                     message: '密码是必填的！'
-                },{
+                }, {
                     minlength: 6,
                     message: '密码长度不能低于6位！'
                 }]
@@ -74,6 +72,12 @@ Page({
                             })
                         }
                     } else {
+                        if (!this.data.isAgree) {
+                            this.setData({
+                                error: "请勾选协议条款"
+                            })
+                            return
+                        }
                         wx.showToast({
                             title: '校验通过'
                         })

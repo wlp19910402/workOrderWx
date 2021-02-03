@@ -23,8 +23,7 @@ Page({
         formData: {
             radio: '1'
         },
-        rules: [
-            {
+        rules: [{
                 name: 'username',
                 rules: [{
                     required: true,
@@ -39,20 +38,20 @@ Page({
                 }],
             },
             {
-                name:"password",
-                rules:[{
+                name: "password",
+                rules: [{
                     required: true,
                     message: '密码是必填的！'
-                },{
+                }, {
                     minlength: 6,
                     message: '密码长度不能低于6位！'
                 }]
-            },{
-                name:"rePassword",
-                rules:[{
+            }, {
+                name: "rePassword",
+                rules: [{
                     required: true,
                     message: '重新密码是必填的！'
-                },{
+                }, {
                     minlength: 6,
                     message: '重新密码长度不能低于6位！'
                 }]
@@ -105,6 +104,23 @@ Page({
                             })
                         }
                     } else {
+
+                        if (!this.data.isAgree) {
+                            this.setData({
+                                error: "请勾选协议条款"
+                            })
+                            return
+                        }
+                        const {
+                            password,
+                            rePassword
+                        } = this.data.formData
+                        if (password !== rePassword) {
+                            this.setData({
+                                error: "两次密码输入不同"
+                            })
+                            return
+                        }
                         wx.showToast({
                             title: '校验通过'
                         })
