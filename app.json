@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/order/order",
+    "pages/order/index/index",
+    "pages/order/create/create",
     "pages/my/my",
     "pages/login/login", 
     "pages/user/register/register",
@@ -25,7 +26,7 @@
       "iconPath":"static/img/tabBarIcon/home-default.png",
       "selectedIconPath":"static/img/tabBarIcon/home-active.png"
     },{
-      "pagePath":"pages/order/order",
+      "pagePath":"pages/order/index/index",
       "text":"工单",
       "iconPath":"static/img/tabBarIcon/order-default.png",
       "selectedIconPath":"static/img/tabBarIcon/order-active.png"

@@ -33,3 +33,6 @@ button[size="default"]{
  page {
      background-color: #f8fafb;
  }
+ button[type='primary']{
+     background-color: #46b989 !important;
+ }

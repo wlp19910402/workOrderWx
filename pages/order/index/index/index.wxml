@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="{{indicatorDots}}"
+      indicator-active-color="#ffffff"
+      indicator-color="rgba(255,255,255,0.4)"
+        autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <image class="qm-swiper-img" src="{{item}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    
+  </view>
+      <mp-row>
+          <mp-col class="qm-col" wx:for="{{homeMenuModule}}" wx:key="*this" offset="{{0}}" span="{{12}}" >
+            <navigator url="{{item.link}}" class="qm-col-content">
+              <text class="{{'qm-home-menu-img iconfont '+item.icon}}"></text>
+              <text class="qm-home-menu-text">{{item.name}}</text>
+            </navigator>
+          </mp-col>
+        </mp-row>
+</view>

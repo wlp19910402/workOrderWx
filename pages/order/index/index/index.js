@@ -11,7 +11,7 @@ Page({
       {
         name:"报修",
         icon:"icon-baoxiu qm-menu-color1",
-        link:"/pages/order/create/create",
+        link:"/pages/login/login",
       },
       {
         name:"日志",

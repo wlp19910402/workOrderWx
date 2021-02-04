@@ -1,0 +1,26 @@
+<!--pages/login/login.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page">
+	<view class="page__bd">
+		<mp-form id="form" rules="{{rules}}" models="{{formData}}">
+			<mp-cells>
+				<mp-cell prop="realname" title="姓名">
+					<input bindinput="formInputChange" data-field="realname" class="weui-input" placeholder="请输入真实姓名" />
+				</mp-cell>
+				<mp-cell prop="mobile" title="手机号">
+					<input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入手机号" />
+				</mp-cell>
+				<mp-cell prop="company" title="单位名称">
+					<input bindinput="formInputChange" data-field="company" class="weui-input" placeholder="请输入单位名称" />
+				</mp-cell>
+				<mp-cell prop="remark" title="描述">
+					<textarea class="weui-textarea" style="height: 3.3em" placeholder="请输入工作(故障)描述" data-field="remark" />
+					<view class="weui-textarea-counter">0/200</view>
+				</mp-cell>
+			</mp-cells>
+		</mp-form>
+		<view class="weui-btn-area">
+			<button class="weui-btn" type="primary" size="default" bindtap="submitForm">报修</button>
+		</view>
+	</view>
+</view>
