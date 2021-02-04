@@ -1,4 +1,7 @@
 @import "/static/font/iconfont.wxss";
+.primary-bg{
+    background-color: #46b989;
+}
  .iconfont {
      font-family: "iconfont" !important;
      font-style: normal;

@@ -1,1 +1,7 @@
-/* pages/order/order.wxss */
+.primary-bg .weui-search-bar{
+  background-color: #46b989;
+  color:#fff;
+}
+.primary-bg  .weui-search-bar__cancel-btn{
+  color:#fff;
+}

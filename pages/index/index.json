@@ -1,8 +1,7 @@
 {
   "usingComponents": {
-    "auth-dialog": "/components/authDialog/authDialog"
+    "mp-col": "@miniprogram-component-plus/col",
+    "mp-row": "@miniprogram-component-plus/row"
   },
-  "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black",
   "navigationBarTitleText": "首页"
 }
