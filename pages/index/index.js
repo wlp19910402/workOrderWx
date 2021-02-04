@@ -9,12 +9,12 @@ Page({
     duration: 500,
     homeMenuModule: [{
         name: "报修",
-        icon: "icon-baoxiu qm-menu-color1",
+        icon: "icon-operation qm-menu-color1",
         link: "/pages/order/create/create",
       },
       {
         name: "日志",
-        icon: "icon-danganguanli",
+        icon: "icon-comment",
         link: "/pages/logs/logs"
       }
     ]

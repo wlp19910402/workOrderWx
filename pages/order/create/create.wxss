@@ -3,3 +3,8 @@
   position: absolute;
   bottom:0
 }
+
+.weui-uploader__input-box{
+  width:180rpx !important; 
+  height:180rpx !important;
+}

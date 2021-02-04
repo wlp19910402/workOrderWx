@@ -19,6 +19,13 @@
 				</mp-cell>
 			</mp-cells>
 		</mp-form>
+		<view class="page__bd">
+        <mp-cells>
+            <mp-cell>
+                <mp-uploader bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" files="{{files}}" max-count="6" title="图片上传" tips="最多只能上传6张"></mp-uploader>
+            </mp-cell>
+        </mp-cells>
+    </view>
 		<view class="weui-btn-area">
 			<button class="weui-btn" type="primary" size="default" bindtap="submitForm">报修</button>
 		</view>
