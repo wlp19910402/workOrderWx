@@ -16,6 +16,24 @@ Page({
     })
   },
   onLoad() {
+    // if(!app.globalData.userInfo){
+    //   wx.showModal({
+    //     title:"未登录",
+    //     content:"您未登录，请登录后在访问！",
+    //     showCancel:false,
+    //     confirmColor:"#46b989",
+    //     confirmText:"去登陆",
+    //     success:(res)=>{
+    //       console.log(res)
+    //       if(res.confirm){
+    //         wx.reLaunch({
+    //           url: '/pages/login/login',
+    //         })
+    //       }
+    //     }
+    //   })
+    //   return
+    // }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -42,12 +60,5 @@ Page({
         }
       })
     }
-  },
-  getUserInfo(e) {
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
   }
 })

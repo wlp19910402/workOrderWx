@@ -1,8 +1,8 @@
 <!--pages/login/login.wxml-->
-<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<!-- <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips> -->
 <view class="page">
 	<view class="page__bd">
-		<mp-form id="form" rules="{{rules}}" models="{{formData}}">
+		<!-- <mp-form id="form" rules="{{rules}}" models="{{formData}}">
 			<mp-cells>
 				<mp-cell prop="username" title="用户名">
 					<input bindinput="formInputChange" data-field="username" class="weui-input" placeholder="请输入用户名" />
@@ -19,10 +19,15 @@
 					阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
 				</view>
 			</label>
-		</checkbox-group>
+		</checkbox-group> -->
 		<view class="weui-btn-area ">
-			<button class="weui-btn" size="default" open-type="getUserInfo" bindgetphonenumber="getUserInfo" type="primary" bindtap="submitForm">确定</button>
-			<navigator url="/pages/user/register/register" class="weui-agree__link qm-link">去注册~</navigator>
+			<button class="weui-btn"
+             size="default"
+              open-type="getUserInfo" 
+              bindgetuserinfo="getUserInfo" 
+              type="primary" 
+              bindtap="submitForm">获取用户信息授权</button>
+			<!-- <navigator url="/pages/user/register/register" class="weui-agree__link qm-link">去注册~</navigator> -->
 		</view>
 	</view>
 </view>

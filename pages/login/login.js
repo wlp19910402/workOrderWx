@@ -30,22 +30,7 @@ Page({
             }
         ]
     },
-    getPhoneNumber(e) {
-        console.log(e.detail.errMsg)
-        console.log(e.detail.iv)
-        console.log(e.detail.encryptedData)
-    },
-    radioChange: function (e) {
-        console.log('radio发生change事件，携带value值为：', e.detail.value);
-        var radioItems = this.data.radioItems;
-        for (var i = 0, len = radioItems.length; i < len; ++i) {
-            radioItems[i].checked = radioItems[i].value == e.detail.value;
-        }
-        this.setData({
-            radioItems: radioItems,
-            [`formData.radio`]: e.detail.value
-        });
-    },
+    
     formInputChange(e) {
         const {
             field
@@ -60,32 +45,32 @@ Page({
         });
     },
     submitForm() {
-        this.selectComponent('#form').validate((valid, errors) => {
+        // this.selectComponent('#form').validate((valid, errors) => {
             wx.getSetting({
                 success: res => {
                     if (!res.authSetting['scope.userInfo']) return
-                    if (!valid) {
-                        const firstError = Object.keys(errors)
-                        if (firstError.length) {
-                            this.setData({
-                                error: errors[firstError[0]].message
-                            })
-                        }
-                    } else {
-                        if (!this.data.isAgree) {
-                            this.setData({
-                                error: "请勾选协议条款"
-                            })
-                            return
-                        }
-                        wx.showToast({
-                            title: '校验通过'
-                        })
-                        console.log(app.globalData.userInfo)
-                    }
+                    // if (!valid) {
+                    //     const firstError = Object.keys(errors)
+                    //     if (firstError.length) {
+                    //         this.setData({
+                    //             error: errors[firstError[0]].message
+                    //         })
+                    //     }
+                    // } else {
+                    //     if (!this.data.isAgree) {
+                    //         this.setData({
+                    //             error: "请勾选协议条款"
+                    //         })
+                    //         return
+                    //     }
+                    //     wx.showToast({
+                    //         title: '校验通过'
+                    //     })
+                    //     console.log(app.globalData.userInfo)
+                    // }
                 }
             })
-        })
+        // })
     },
     /**
      * 生命周期函数--监听页面加载
@@ -109,7 +94,6 @@ Page({
             // 在没有 open-type=getUserInfo 版本的兼容处理
             wx.getUserInfo({
                 success: res => {
-                    console.log(res)
                     app.globalData.userInfo = res.userInfo
                     this.setData({
                         userInfo: res.userInfo,
@@ -119,11 +103,22 @@ Page({
             })
         }
     },
-    getUserInfo(e) {
-        app.globalData.userInfo = e.detail.userInfo
-        this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
-        })
+   async getUserInfo(e) {
+        if(e.detail.userInfo){
+            app.globalData.userInfo = e.detail.userInfo
+            this.setData({
+                userInfo: e.detail.userInfo,
+                hasUserInfo: true
+            })
+            // wx.request({
+
+            // })
+            wx.reLaunch({
+              url: '/pages/index/index',
+            })
+        }
+    },
+    onShow: function () {
+        wx.hideHomeButton()
     }
 })
