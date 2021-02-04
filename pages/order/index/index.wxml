@@ -2,4 +2,30 @@
     <view class="page__bd">
         <mp-searchbar class="primary-bg" placeholder="搜索设备名称或型号" bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
     </view>
+    <mp-tabs 
+    tabs="{{tabs}}" 
+    activeTab="{{activeTab}}" 
+    swiperClass="weui-tabs-swiper qm-tabs-swiper"
+    bindtabclick="onTabClick"
+    bindchange="onChange"
+    activeClass="tab-bar-title__selected"
+    swiper-class="qm-tabs-swiper"
+  >
+  </mp-tabs>
+  <view class="lr-space">
+		<navigator class="qm-list-box" wx:for="{{consumableList}}" url="/pages/order/info/info" wx:key="*this">
+			<image class='qm-list-img' src="{{item.orderImgUrls&&item.orderImgUrls.length>0?item.orderImgUrls[0]:imgNull}}"></image>
+			<view class="qm-list-content">
+				<view class="qm-list-row">
+					<text class="qm-list-title">{{item.company}}</text>
+					<view class="'qm-tag-text" style="color:{{item.statusColor}}">{{item.statusName}}</view>
+				</view>
+				<view class="qm-list-row">
+					<text class="qm-list-des">{{item.engineerName}}</text>
+					<text class="qm-list-date">{{item.createTime}}</text>
+				</view>
+			</view>
+            <text class="iconfont default icon-arrow-right"></text>
+		</navigator>
+	</view>
 </view>

@@ -5,3 +5,82 @@
 .primary-bg  .weui-search-bar__cancel-btn{
   color:#fff;
 }
+.weui-tabs-bar__content{
+  display: flex;
+  width:100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding:0 10rpx;
+  box-sizing: border-box;
+}
+.weui-tabs-bar__item{
+  text-align: center;
+  flex: 1;
+  color:#666666;
+  padding:10rpx 0 0 ;
+}
+.weui-tabs-bar__title{
+  color:#666666;
+  font-size:32rpx;
+  line-height: 64rpx;
+}
+.tab-bar-title__selected{
+  color:#46b989;
+  border-bottom-color:#46b989 !important;
+}
+.qm-tabs-swiper{
+  display: none;
+}
+
+/* 列表 */
+.qm-list-box{
+  width:100%;
+  padding:20rpx 20rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  position:relative;
+  margin:20rpx 0;
+  border-radius: 10rpx;
+  display: flex;
+}
+.qm-list-img{
+  width:120rpx;
+  height:120rpx;
+  border-radius: 10rpx;
+  margin-right:20rpx;
+}
+.qm-list-content{
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.qm-list-title{
+  font-size:32rpx;
+  color:#333333;
+}
+
+.qm-list-row{
+  display: flex;
+  flex-direction: row;
+  font-size:30rpx;
+  color:#999;
+  justify-content: space-between;
+}
+.qm-tag-text{
+  font-size:24rpx;
+  line-height: 36rpx;
+  height:36rpx;
+  padding:0 10rpx;
+  color:#fff;
+}
+.warn-text-bg{
+  color: #999;
+}
+.primary-text-bg{
+  color: #46b989;
+}
+.iconfont{
+  font-size:30rpx;
+  display: flex;flex-direction: column;justify-content: center;margin-right:-10rpx;
+}

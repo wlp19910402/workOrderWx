@@ -26,7 +26,6 @@
 .qm-col{
   /* position: absolute; */
   position: relative;
-  width: 100%;
 }
 .qm-col-content{
   padding: 10rpx 0;

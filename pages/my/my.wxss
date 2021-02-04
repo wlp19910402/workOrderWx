@@ -77,3 +77,10 @@
   text-align: left;
   font-size: 32rpx;
 }
+
+.iconfont{
+  width:60rpx;
+  height:90rpx;
+  line-height: 90rpx;
+  margin:0 20rpx;
+}

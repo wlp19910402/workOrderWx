@@ -3,7 +3,5 @@
     "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
     "mp-tabs": "@miniprogram-component-plus/tabs"
   },
-  "navigationBarBackgroundColor": "#46b989",
-  "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "工单"
+  "navigationBarTitleText": "详情"
 }

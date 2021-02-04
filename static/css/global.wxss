@@ -8,11 +8,7 @@
      -webkit-font-smoothing: antialiased;
      -moz-osx-font-smoothing: grayscale;
      color: #24bd7a;
-     margin: 0 20rpx;
      font-size: 42rpx;
-     line-height: 90rpx;
-     width: 60rpx;
-     height: 90rpx;
  }
  .iconfont.default {
      color: #bbb
@@ -31,8 +27,12 @@ button[size="default"]{
  }
 
  page {
-     background-color: #f8fafb;
+     background-color: #f1f5f7;
  }
  button[type='primary']{
      background-color: #46b989 !important;
  }
+ .lr-space{
+     margin:0 30rpx;
+ }
+ 

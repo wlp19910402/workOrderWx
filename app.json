@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/order/index/index",
     "pages/order/create/create",
+    "pages/order/info/info",
     "pages/my/my",
     "pages/login/login", 
     "pages/user/register/register",
