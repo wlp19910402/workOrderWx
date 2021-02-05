@@ -48,7 +48,7 @@ Component({
       })
     }else{
       this.setData({
-        list: this.data.allList[0].list2
+        list: this.data.allList[0].list1
       })
     }
   },
