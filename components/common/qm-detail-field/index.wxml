@@ -1,0 +1,4 @@
+<!--components/common/qm-detail-field/index.wxml-->
+<view class="qm-detail-field">
+  <slot></slot>
+</view>

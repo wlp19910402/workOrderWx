@@ -1,0 +1,1 @@
+<text style="color:{{currentStatus.color}}">{{currentStatus.label}}</text>

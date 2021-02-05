@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
-    "mp-tabs": "@miniprogram-component-plus/tabs"
+    "mp-tabs": "@miniprogram-component-plus/tabs",
+    "qm-order-info":"/components/order/info/info"
   },
   "navigationBarTitleText": "详情"
 }

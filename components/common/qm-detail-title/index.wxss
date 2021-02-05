@@ -1,0 +1,19 @@
+/* components/common/qm-detail-title/index.wxss */
+
+.qm-detail-title-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size:32rpx;
+  align-items: center;
+  padding:6rpx 0 10rpx;
+  border-bottom: 1rpx solid #f1f5f7;
+  margin-bottom: 16rpx;
+}
+.qm-detail-title{
+  color:#333333;
+}
+.qm-detail-extra{
+  color:#858b9c;
+}

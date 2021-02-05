@@ -1,0 +1,7 @@
+/* components/common/qm-detail-field/index.wxss */
+.qm-detail-field{
+  margin :0 30rpx;
+  background:#ffffff;
+  border-radius: 10rpx;
+  padding:20rpx;
+}

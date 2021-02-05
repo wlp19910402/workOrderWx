@@ -1,0 +1,3 @@
+<view class="list-img-box">
+	<image class="list-img" mode="scaleToFill" wx:for="{{imgUrls}}" src="{{item}}?x-oss-process=image/resize,h_100,w_100,m_lfit" wx:key="*this" />
+</view>

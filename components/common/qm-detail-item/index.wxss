@@ -1,0 +1,22 @@
+/* components/common/qm-detail-item/index.wxss */
+.qm-detail-item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size:28rpx;
+  align-items: center;
+  padding:4rpx 0;
+}
+.qm-detail-label{
+  color:#858b9c;
+  word-break: keep-all;
+  white-space: nowrap;
+  padding-right:20rpx;
+}
+.qm-detail-text{
+  display: block;
+  width: 100%;
+  color:#41485d;
+  text-align: right;
+}

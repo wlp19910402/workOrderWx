@@ -1,0 +1,26 @@
+<!--components/order/info/info.wxml-->
+<view style="padding:30rpx 0">
+	<qm-detail-field>
+		<qm-detail-title title="基本信息">
+			<qm-order-status orderStatus="{{dataList.status}}" />
+		</qm-detail-title>
+		<qm-detail-item label="编号" text="{{dataList.orderNo}}" />
+		<qm-detail-item label="单位名称" text="{{dataList.company}}" />
+		<qm-detail-item label="工程师名称" text="{{dataList.engineerName}}" />
+		<qm-detail-item label="支持人员" text="{{dataList.supporterNames}}" />
+		<qm-detail-item label="接单时间" text="{{dataList.receivingTime}}" />
+		<qm-detail-item label="工单来源" text="{{dataList.sourceType}}" />
+		<qm-detail-item label="工单类型" text="{{dataList.orderType}}" />
+		<qm-detail-item label="是否绑定档案" text="{{dataList.portfolioId !== ''?'已绑定' : '未绑定'}}" />
+		<qm-detail-item label="工单描述" text="{{dataList.workDescription}}" />
+		<qm-detail-images imgUrls="{{dataList.orderImgUrls}}" />
+		<block wx:if="{{dataList.status==='wc'}}">
+			<view class="line"></view>
+			<qm-detail-title title="结单信息" />
+			<qm-detail-item label="结单人员" text="{{dataList.subUsername}}" />
+			<qm-detail-item label="结单时间" text="{{dataList.subTime}}" />
+			<qm-detail-item label="结单备注" text="{{dataList.subRemark}}" />
+			<qm-detail-images imgUrls="{{dataList.subImgUrls}}" />
+		</block>
+	</qm-detail-field>
+</view>

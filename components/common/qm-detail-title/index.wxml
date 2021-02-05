@@ -1,0 +1,8 @@
+<!--components/common/qm-detail-title/index.wxml-->
+<view class="qm-detail-title-box">
+	<view class="qm-detail-title">{{title}}</view>
+	<view class="qm-detail-extra">
+		{{extra}}
+		<slot></slot>
+	</view>
+</view>

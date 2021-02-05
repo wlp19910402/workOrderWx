@@ -1,0 +1,12 @@
+/* components/common/qm-detail-images/index.wxss */
+.list-img-box{
+  padding:10rpx 0;
+}
+.list-img{
+  width:120rpx;
+  height:120rpx;
+  margin-right: 20rpx;
+}
+.list-img:last-child{
+  margin-right: 20rpx;
+}

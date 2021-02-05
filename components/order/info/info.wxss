@@ -1,0 +1,8 @@
+/* components/order/info/info.wxss */
+.line{
+  margin:18rpx 0;
+  height:12rpx;
+  background-color:#e0e9ee;
+  border-radius: 20rpx;
+}
+
