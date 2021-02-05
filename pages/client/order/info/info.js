@@ -1,4 +1,4 @@
-// pages/order/info/info.js
+
 Page({
 
   /**

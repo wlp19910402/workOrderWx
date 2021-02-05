@@ -1,5 +1,0 @@
-/* pages/login/login.wxss */
-.qm-button{
-  position: absolute;
-  bottom:0
-}

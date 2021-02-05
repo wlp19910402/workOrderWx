@@ -73,6 +73,12 @@ Page({
     })
   },
   onShow:function(){
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 1
+      })
+    }
     let orderStatus= [{ label: "未派单", value: "wpd", color: "gray" },
     { label: "派单", value: "pd", color: "#eab71a" },
     { label: "接单", value: "jd", color: "#eab71a" },

@@ -23,6 +23,27 @@ App({
                 success: resLogin => {
                   // 发送 res.code 到后台换取 openId, sessionKey, unionId
                   console.log(resLogin)
+                  if (resLogin.code) {
+                    console.log(1)
+                    //发起网络请求
+                    wx.request({
+                      url: 'https://lingyun.labsmart.cn/api/sys/login',
+                      method:"post",
+                      data: {
+                        code: resLogin.code,
+                        username:"admin",
+                        password:"123456"
+                      },
+                      header: {
+                        'content-type': 'application/json' // 默认值
+                      },
+                      success:res=>{
+                        console.log(res)
+                      }
+                    })
+                  } else {
+                    console.log('登录失败！' + resLogin.errMsg)
+                  }
                 }
               })
             }
@@ -50,6 +71,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
   }
 })
