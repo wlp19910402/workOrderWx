@@ -41,7 +41,7 @@ Component({
     list: []
   },
   attached() {
-    const roleId = wx.getStorageSync('statu')
+    const roleId = wx.getStorageSync('status')
     if (roleId == 20) {
       this.setData({
         list: this.data.allList[0].list2

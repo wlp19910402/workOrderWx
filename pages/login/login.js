@@ -1,4 +1,5 @@
 const app = getApp()
+const wxRequest = require('../../utils/request.js')
 Page({
     /**
      * 页面的初始数据
@@ -110,9 +111,32 @@ Page({
                 userInfo: e.detail.userInfo,
                 hasUserInfo: true
             })
-            // wx.request({
+           
+            wx.login({
+                success: resLogin => {
+                  // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                  if (resLogin.code) {
+                    let dataParams = {
+                      "jsCode": resLogin.code,
+                      "wxUser": {
+                        "avatarUrl": e.detail.userInfo.avatarUrl,
+                        "nickName": e.detail.userInfo.nickName,
+                        "openId": ""
+                      }
+                    }
+                    //发起网络请求
+                    wxRequest('wx-api/wx-login',dataParams,"POST",(res)=>{
+                      let resData = res.data
+                      if(resData.code===0){
+                        wx.setStorageSync('token', resData.data.token)
+                      }
+                    })
+                  } else {
+                    console.log('登录失败！' + resLogin.errMsg)
+                  }
+                }
+              })
 
-            // })
             wx.reLaunch({
               url: '/pages/index/index',
             })

@@ -1,4 +1,5 @@
 // app.js
+const wxRequest = require('./utils/request.js')
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -22,23 +23,20 @@ App({
               wx.login({
                 success: resLogin => {
                   // 发送 res.code 到后台换取 openId, sessionKey, unionId
-                  console.log(resLogin)
                   if (resLogin.code) {
-                    console.log(1)
+                    let dataParams = {
+                      "jsCode": resLogin.code,
+                      "wxUser": {
+                        "avatarUrl": response.userInfo.avatarUrl,
+                        "nickName":response.userInfo.nickName,
+                        "openId": ""
+                      }
+                    }
                     //发起网络请求
-                    wx.request({
-                      url: 'https://lingyun.labsmart.cn/api/sys/login',
-                      method:"post",
-                      data: {
-                        code: resLogin.code,
-                        username:"admin",
-                        password:"123456"
-                      },
-                      header: {
-                        'content-type': 'application/json' // 默认值
-                      },
-                      success:res=>{
-                        console.log(res)
+                    wxRequest('wx-api/wx-login',dataParams,"POST",(res)=>{
+                      let resData = res.data
+                      if(resData.code===0){
+                        wx.setStorageSync('token', resData.data.token)
                       }
                     })
                   } else {
@@ -48,17 +46,16 @@ App({
               })
             }
           })
-        }else{
-          if(!this.userInfo){
+        } else {
+          if (!this.userInfo) {
             wx.showModal({
-              title:"未登录",
-              content:"您未登录，请登录后在访问！",
-              showCancel:false,
-              confirmColor:"#46b989",
-              confirmText:"去登陆",
-              success:(res)=>{
-                console.log(res)
-                if(res.confirm){
+              title: "未登录",
+              content: "您未登录，请登录后在访问！",
+              showCancel: false,
+              confirmColor: "#46b989",
+              confirmText: "去登陆",
+              success: (res) => {
+                if (res.confirm) {
                   wx.reLaunch({
                     url: '/pages/login/login',
                   })
@@ -72,5 +69,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    isAdmin:false,
+    wxNickname:""
   }
 })

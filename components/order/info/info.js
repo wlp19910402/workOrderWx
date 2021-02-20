@@ -1,4 +1,6 @@
 // components/order/info/info.js
+
+const wxRequest = require('../../../utils/request.js')
 Component({
   /**
    * 组件的属性列表
@@ -602,6 +604,9 @@ Component({
 
   },
   ready() {
+    wxRequest('api/work-order/info/'+this.properties.infoId,null,'GET',(res)=>{
+      console.log("哈哈哈哈",res)
+    })
     // wx.request({
     //   url: 'https://lingyun.labsmart.cn/api/work-order/info/'+this.properties.infoId,
     //   method:"GET",
