@@ -10,10 +10,12 @@
 		</view>
 	</view>
 	<view class="center-list" wx:for="{{moduleData}}" wx:for-item="item" wx:for-key="index" wx:key="index">
-		<view class="center-list-item display-flex" wx:for="{{item}}" wx:for-item="ite" wx:for-key="idx" wx:key="idx">
-			<text class="{{'iconfont '+  ite.icon}}"></text>
-			<text class="list-text">{{ite.name}}</text>
-			<text class="iconfont default icon-arrow-right"></text>
+		<view class="center-list-item display-flex" wx:for="{{item}}" wx:for-item="ite" wx:for-key="idx" wx:key="idx" bindtap="{{listAction(idx)}}">
+			<block >
+				<text class="{{'iconfont '+  ite.icon}}"></text>
+				<text class="list-text">{{ite.name}}</text>
+				<text class="iconfont default icon-arrow-right"></text>
+			</block>
 		</view>
 	</view>
 </view>

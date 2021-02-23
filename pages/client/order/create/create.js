@@ -1,4 +1,4 @@
-const app = getApp()
+const wxRequest = require('../../../../utils/request.js')
 Page({
     /**
      * 页面的初始数据
@@ -10,55 +10,19 @@ Page({
         files: [],
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         showTopTips: false,
-        radioItems: [{
-                name: '客户人员',
-                value: '0',
-                checked: true
-            },
-            {
-                name: '维修人员',
-                value: '1'
-            }
-        ],
-        isAgree: false,
-        formData: {
-            radio: '1'
-        },
+        formData: {},
         rules: [{
-                name: 'username',
+                name: 'customerName',
                 rules: [{
                     required: true,
-                    message: '用户名是必填的！'
+                    message: '姓名是必填的！'
                 }],
             },
             {
-                name: 'realname',
-                rules: [{
-                    required: true,
-                    message: '真实姓名是必填的！'
-                }],
+                name: "workDescription"
             },
             {
-                name: "password",
-                rules: [{
-                    required: true,
-                    message: '密码是必填的！'
-                }, {
-                    minlength: 6,
-                    message: '密码长度不能低于6位！'
-                }]
-            }, {
-                name: "rePassword",
-                rules: [{
-                    required: true,
-                    message: '重新密码是必填的！'
-                }, {
-                    minlength: 6,
-                    message: '重新密码长度不能低于6位！'
-                }]
-            },
-            {
-                name: 'mobile',
+                name: 'customerMobile',
                 rules: [{
                     required: true,
                     message: '手机号必填'
@@ -67,16 +31,6 @@ Page({
                     message: '手机号格式不对'
                 }],
             },
-            {
-                name: 'email',
-                rules: [{
-                    required: true,
-                    message: '邮箱必填'
-                }, {
-                    email: true,
-                    message: '邮箱格式不对'
-                }],
-            }
         ]
     },
     formInputChange(e) {
@@ -87,12 +41,8 @@ Page({
             [`formData.${field}`]: e.detail.value
         })
     },
-    bindAgreeChange: function (e) {
-        this.setData({
-            isAgree: !!e.detail.value.length
-        });
-    },
     submitForm() {
+
         this.selectComponent('#form').validate((valid, errors) => {
             wx.getSetting({
                 success: res => {
@@ -105,37 +55,34 @@ Page({
                             })
                         }
                     } else {
-
-                        if (!this.data.isAgree) {
-                            this.setData({
-                                error: "请勾选协议条款"
-                            })
-                            return
-                        }
-                        const {
-                            password,
-                            rePassword
-                        } = this.data.formData
-                        if (password !== rePassword) {
-                            this.setData({
-                                error: "两次密码输入不同"
-                            })
-                            return
-                        }
-                        wx.showToast({
-                            title: '校验通过'
+                        wx.showLoading({
+                            title: '正在提交',
                         })
-                        console.log(app.globalData.userInfo)
+                        wxRequest(
+                            'wx-api/work-order/sys-add', {
+                                ...this.data.formData,
+                                orderType: "wx"
+                            },
+                            'POST',
+                            (response) => {
+                                wx.hideLoading()
+                                console.log(response)
+                                console.log("------------------------")
+                            })
                     }
                 }
             })
         })
+
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(options.company)
         this.setData({
+            [`formData.company`]: options.company,
+            [`formData.portfolioId`]: options.id,
             selectFile: this.selectFile.bind(this),
             uplaodFile: this.uplaodFile.bind(this)
         })
@@ -153,7 +100,7 @@ Page({
             }
         })
     },
-    previewImage: function(e){
+    previewImage: function (e) {
         wx.previewImage({
             current: e.currentTarget.id, // 当前显示图片的http链接
             urls: this.data.files // 需要预览的图片http链接列表

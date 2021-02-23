@@ -604,8 +604,10 @@ Component({
 
   },
   ready() {
-    wxRequest('api/work-order/info/'+this.properties.infoId,null,'GET',(res)=>{
-      console.log("哈哈哈哈",res)
+    wxRequest('api/work-order/info/' + this.properties.infoId, null, 'GET', (res) => {
+      this.setData({
+        dataList: res.data.data
+      })
     })
     // wx.request({
     //   url: 'https://lingyun.labsmart.cn/api/work-order/info/'+this.properties.infoId,

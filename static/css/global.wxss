@@ -2,6 +2,9 @@
 .primary-bg{
     background-color: #46b989;
 }
+.primary-text{
+    color: #46b989;
+}
  .iconfont {
      font-family: "iconfont" !important;
      font-style: normal;
@@ -26,7 +29,7 @@ button[size="default"]{
      display: none;
  }
 
- page {
+ page,.page-bg {
      background-color: #f1f5f7;
  }
  button[type='primary']{
@@ -35,4 +38,18 @@ button[size="default"]{
  .lr-space{
      margin:0 30rpx;
  }
- 
+ .tb-space {
+    margin:30 0rpx;
+ }
+ .t-space{
+     margin-top: 30rpx;
+ }
+ .b-space{
+    margin-bottom: 30rpx;
+}
+.all-padding{
+    padding:30rpx;
+}
+.lrb-padding{
+    padding:30rpx 30rpx 30rpx;
+}

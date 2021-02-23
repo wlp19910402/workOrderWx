@@ -1,0 +1,36 @@
+<view class="page">
+	<view class="page__bd">
+  <view class="qm-search">
+		<mp-searchbar class="page-bg" placeholder="搜索设备名称或型号" bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+    <view bindtap="scanCodeDevice" class="qm-search-scanc"><text class="iconfont icon-saoma"></text></view>
+    </view>
+	</view>
+	<view style="padding:30rpx 0 0" wx:for="{{consumableList}}" wx:key="no" >
+	<qm-detail-field >
+		<qm-detail-title title="{{item.name}}" >
+				<navigator class="primary-text" url="{{'/pages/client/order/create/create?&deviceNo='+item.no}}">报修</navigator>
+		</qm-detail-title>
+		<qm-detail-item label="编号" text="{{item.no}}" />
+		<qm-detail-item label="品牌" text="{{item.brandName}}" />
+		<qm-detail-item label="类型" text="{{item.typeName}}" />
+		<qm-detail-item label="型号" text="{{item.modelName}}" />
+	</qm-detail-field>
+</view>
+	<view class="lr-space">
+		<view class="qm-list-box" wx:for="{{consumableList}}" wx:key="*this">
+			<!-- <image class='qm-list-img' src="{{item.orderImgUrls&&item.orderImgUrls.length>0?item.orderImgUrls[0]:imgNull}}"></image> -->
+			<view class="qm-list-content">
+				<view class="qm-list-row">
+					<text class="qm-list-title">{{item.company}}</text>
+					<view class="'qm-tag-text">
+						<qm-order-status orderStatus="{{item.status}}" />
+					</view>
+				</view>
+				<view class="qm-list-row">
+					<text class="qm-list-des">{{item.engineerName}}</text>
+					<text class="qm-list-date">{{item.createTime}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -28,16 +28,15 @@ App({
                       "jsCode": resLogin.code,
                       "wxUser": {
                         "avatarUrl": response.userInfo.avatarUrl,
-                        "nickName":response.userInfo.nickName,
-                        "openId": ""
+                        "nickName":response.userInfo.nickName
                       }
                     }
                     //发起网络请求
                     wxRequest('wx-api/wx-login',dataParams,"POST",(res)=>{
                       let resData = res.data
-                      if(resData.code===0){
-                        wx.setStorageSync('token', resData.data.token)
-                      }
+                      wx.setStorageSync('token', resData.data.token)
+                      wx.setStorageSync('isAdmin', resData.data.isAdmin)
+                      console.log("resData",resData)
                     })
                   } else {
                     console.log('登录失败！' + resLogin.errMsg)

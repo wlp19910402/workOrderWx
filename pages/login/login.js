@@ -31,7 +31,6 @@ Page({
             }
         ]
     },
-    
     formInputChange(e) {
         const {
             field
@@ -120,8 +119,7 @@ Page({
                       "jsCode": resLogin.code,
                       "wxUser": {
                         "avatarUrl": e.detail.userInfo.avatarUrl,
-                        "nickName": e.detail.userInfo.nickName,
-                        "openId": ""
+                        "nickName": e.detail.userInfo.nickName
                       }
                     }
                     //发起网络请求
@@ -129,6 +127,7 @@ Page({
                       let resData = res.data
                       if(resData.code===0){
                         wx.setStorageSync('token', resData.data.token)
+                        wx.setStorageSync('isAdmin', resData.data.isAdmin)
                       }
                     })
                   } else {

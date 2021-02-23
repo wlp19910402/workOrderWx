@@ -11,11 +11,16 @@
 		</view>
 	</view>
 	<mp-row>
-		<mp-col class="qm-col" wx:for="{{homeMenuModule}}" wx:key="*this" offset="{{0}}" span="{{12}}">
-			<navigator url="{{item.link}}" class="qm-col-content">
+		<mp-col class="qm-col" wx:for="{{homeMenuModule}}" wx:key="*this" offset="{{0}}"  span="{{12}}">
+			<view bindtap="clickHomeMenu" data-id="{{item.id}}" class="qm-col-content">
 				<text class="{{'qm-home-menu-img iconfont '+item.icon}}"></text>
 				<text class="qm-home-menu-text">{{item.name}}</text>
-			</navigator>
+			</view>
 		</mp-col>
 	</mp-row>
+	<view class="t-space all-padding qm-ad-bannder-box">
+	<view wx:for="{{adBannder}}" wx:key="*this"  class="{{index===0?'qm-ad-bannder':'t-space qm-ad-bannder'}}">
+	<image class="qm-ad-bannder-img" mode="scaleToFill" src="{{item}}"/>
+	</view>
+	</view>
 </view>

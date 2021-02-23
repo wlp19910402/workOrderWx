@@ -1,0 +1,27 @@
+<!--pages/client/portfolio/scan/scan.wxml-->
+<view style="padding:30rpx 0">
+	<qm-detail-field>
+		<qm-detail-title title="{{'编号:'+portfolioInfo.no}}">
+				<navigator class="primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">查看耗材</navigator>
+		</qm-detail-title>
+		<qm-detail-item label="单位名称" text="{{portfolioInfo.companyName}}" />
+		<qm-detail-item label="单位编号" text="{{portfolioInfo.companyNo}}" />
+		<qm-detail-item label="单位联系人" text="{{portfolioInfo.contactUser}}" />
+		<qm-detail-item label="单位联系电话" text="{{portfolioInfo.contactMobile}}" />
+		<qm-detail-item label="二维码编号" text="{{portfolioInfo.qrCodde}}" />
+		<qm-detail-item label="设备名称" text="{{portfolioInfo.deviceName}}" />
+		<qm-detail-item label="设备编号" text="{{portfolioInfo.deviceNo}}" />
+    <qm-detail-item label="设备品牌" text="{{portfolioInfo.brandName}}" />
+		<qm-detail-item label="设备类型" text="{{portfolioInfo.typeName}}" />
+		<qm-detail-item label="设备型号" text="{{portfolioInfo.modelName}}" />
+		<qm-detail-item label="安装位置" text="{{portfolioInfo.installLocation}}" />
+		<qm-detail-item label="安装日期" text="{{portfolioInfo.installTime}}" />
+    <qm-detail-item label="保修周期" text="{{portfolioInfo.warrantyPeriod+'月'}}" />
+		<qm-detail-images imgUrls="{{portfolioInfo.imgUrls}}" />
+	</qm-detail-field>
+  <view class="all-padding">
+    <navigator class="primary-text" url="{{'/pages/client/order/create/create?id='+portfolioInfo.id+'&company='+portfolioInfo.companyName}}">
+			<button class="weui-btn" type="primary" size="default" bindtap="">报修</button>
+    </navigator>
+	</view>
+</view>

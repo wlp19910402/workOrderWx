@@ -1,3 +1,5 @@
+
+const wxRequest = require('../../../../utils/request.js')
 Page({
   onShareAppMessage() {
     return {
@@ -17,6 +19,10 @@ Page({
     this.setData({
       search: this.search.bind(this)
     })
+    // wxRequest('wx-api/list',{pageNo:1,pageSize:1},'GET',(res)=>{
+    //   console.log(res)
+    //   console.log("------")
+    // })
     const tabs = [{
         title: '全部',
         value: "all"

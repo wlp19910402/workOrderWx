@@ -4,6 +4,21 @@ Page({
   /**
    * 页面的初始数据
    */
+  logout2:()=>{
+    wx.showModal({
+      title: "提示",
+      content: "退出登录，您确认退出登录！",
+      confirmColor: "#46b989",
+      confirmText: "确认退出",
+      success: (res) => {
+        if (res.confirm) {
+          wx.reLaunch({
+            url: '/pages/login/login',
+          })
+        }
+      }
+    })
+  },
   data: {
     userInfo: {},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -12,59 +27,189 @@ Page({
         name: "新消息通知",
         icon: "icon-comment",
         link: "/",
-        isLogin: false
+        isLogin: false,
+        listAction:function(e){
+          console.log(`点击了${e.target.dataset.idx}`)
+          wx.showModal({
+            title: "提示",
+            content: "退出登录，您确认退出登录！",
+            confirmColor: "#46b989",
+            confirmText: "确认退出",
+            success: (res) => {
+              if (res.confirm) {
+                wx.reLaunch({
+                  url: '/pages/login/login',
+                })
+              }
+            }
+          })
+        }
       }],
       [{
           name: "帮助与反馈",
           icon: "icon-prompt",
           link: "/",
-          isLogin: false
+          isLogin: false,
+          listAction:function(e){
+            console.log(`点击了${e.target.dataset.idx}`)
+            wx.showModal({
+              title: "提示",
+              content: "退出登录，您确认退出登录！",
+              confirmColor: "#46b989",
+              confirmText: "确认退出",
+              success: (res) => {
+                if (res.confirm) {
+                  wx.reLaunch({
+                    url: '/pages/login/login',
+                  })
+                }
+              }
+            })
+          }
         },
         {
           name: "服务条款及隐私",
           icon: "icon-explain",
           link: "/",
-          isLogin: false
+          isLogin: false,
+          listAction:function(e){
+            console.log(`点击了${e.target.dataset.idx}`)
+            wx.showModal({
+              title: "提示",
+              content: "退出登录，您确认退出登录！",
+              confirmColor: "#46b989",
+              confirmText: "确认退出",
+              success: (res) => {
+                if (res.confirm) {
+                  wx.reLaunch({
+                    url: '/pages/login/login',
+                  })
+                }
+              }
+            })
+          }
         }
       ],
       [{
         name: "关于引用",
         icon: "icon-help",
         link: "/",
-        isLogin: false
+        isLogin: false,
+        listAction:function(e){
+          console.log(`点击了${e.target.dataset.idx}`)
+          wx.showModal({
+            title: "提示",
+            content: "退出登录，您确认退出登录！",
+            confirmColor: "#46b989",
+            confirmText: "确认退出",
+            success: (res) => {
+              if (res.confirm) {
+                wx.reLaunch({
+                  url: '/pages/login/login',
+                })
+              }
+            }
+          })
+        }
       }],
       [{
         name: "邀请好友",
         icon: "icon-share",
         link: "/",
-        isLogin: true
+        isLogin: true,
+        listAction:function(e){
+          console.log(`点击了${e.target.dataset.idx}`)
+          wx.showModal({
+            title: "提示",
+            content: "退出登录，您确认退出登录！",
+            confirmColor: "#46b989",
+            confirmText: "确认退出",
+            success: (res) => {
+              if (res.confirm) {
+                wx.reLaunch({
+                  url: '/pages/login/login',
+                })
+              }
+            }
+          })
+        }
       }, ],
       [{
           name: "绑定手机",
           icon: "icon-lock",
           link: "/",
-          isLogin: true
+          isLogin: true,
+          listAction:function(e){
+            console.log(`点击了${e.target.dataset.idx}`)
+            wx.showModal({
+              title: "提示",
+              content: "退出登录，您确认退出登录！",
+              confirmColor: "#46b989",
+              confirmText: "确认退出",
+              success: (res) => {
+                if (res.confirm) {
+                  wx.reLaunch({
+                    url: '/pages/login/login',
+                  })
+                }
+              }
+            })
+          }
         },
         {
           name: "修改密码",
           icon: "icon-lock",
           link: "/",
-          isLogin: true
+          isLogin: true,
+          listAction:function(e){
+            console.log(`点击了${e.target.dataset.idx}`)
+            wx.showModal({
+              title: "提示",
+              content: "退出登录，您确认退出登录！",
+              confirmColor: "#46b989",
+              confirmText: "确认退出",
+              success: (res) => {
+                if (res.confirm) {
+                  wx.reLaunch({
+                    url: '/pages/login/login',
+                  })
+                }
+              }
+            })
+          }
         }
       ],
       [{
-        name: "退出登录",
+        name: "退出登录2",
         icon: "icon-sign-out",
         link: "/",
-        isLogin: true
+        isLogin: true,
+        listAction:function(e){
+          console.log(`点击了${e.target.dataset.idx}`)
+          wx.showModal({
+            title: "提示",
+            content: "退出登录，您确认退出登录！",
+            confirmColor: "#46b989",
+            confirmText: "确认退出",
+            success: (res) => {
+              if (res.confirm) {
+                wx.reLaunch({
+                  url: '/pages/login/login',
+                })
+              }
+            }
+          })
+        }
       }]
     ]
+  },
+  listAction:(e22)=>{
+    console.log(`点击了${JSON.stringify(e22)}`)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
