@@ -1,0 +1,6 @@
+	<view class="qm-result-page">
+		<text class="{{'iconfont qm-result-icon '+icon}}"></text>
+    <view class="qm-result-title">{{title}}</view>
+    <view class="qm-result-text">{{text}}</view>
+    <view class="qm-result-text"><slot/></view>
+	</view>

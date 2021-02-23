@@ -66,8 +66,9 @@ Page({
                             'POST',
                             (response) => {
                                 wx.hideLoading()
-                                console.log(response)
-                                console.log("------------------------")
+                                wx.reLaunch({
+                                  url: '/pages/common/resultPageSuccess/resultPageSuccess',
+                                })
                             })
                     }
                 }

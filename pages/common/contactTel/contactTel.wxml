@@ -1,0 +1,3 @@
+<qm-result-page icon="icon-telephone" >
+  <text bindtap="contactTel">{{tel}}</text>
+</qm-result-page>

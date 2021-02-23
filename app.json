@@ -10,7 +10,9 @@
     "pages/my/my",
     "pages/login/login", 
     "pages/logs/logs",
-    "pages/maintain/order/list/list"
+    "pages/maintain/order/list/list",
+    "pages/common/resultPageSuccess/resultPageSuccess",
+    "pages/common/contactTel/contactTel"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "qm-result-page":"/components/common/qm-result-page/index"
+  },
+  "navigationBarTitleText": "联系客服"
+}
