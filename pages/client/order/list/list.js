@@ -13,7 +13,7 @@ Page({
     imgNull: "/static/img/images-null.png",
     tabs: [{
         title: '全部',
-        value: "all"
+        value: ""
       },
       {
         title: '未派单',
@@ -58,6 +58,7 @@ Page({
     wxRequest('wx-api/work-order/my-list', {
       pageSize: that.data.pageSize,
       pageNo: that.data.currentPage,
+      status: that.data.tabs[that.data.activeTab].value,
       ...params
     }, 'GET', (res) => {
       if (res.data.data.total <= res.data.data.current * that.data.pageSize) {
@@ -87,16 +88,9 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    if (index === 0) {
-      this.fetchList({
-        pageNo: 1
-      }, true)
-    } else {
-      this.fetchList({
-        status: this.data.tabs[index].value,
-        pageNo: 1
-      }, true)
-    }
+    this.fetchList({
+      pageNo: 1
+    }, true)
   },
   onChange(e) {
     const index = e.detail.index
