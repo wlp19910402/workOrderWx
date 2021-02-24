@@ -4,13 +4,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        motto: 'Hello World',
-        userInfo: {},
-        hasUserInfo: false,
         files: [],
-        canIUse: wx.canIUse('button.open-type.getUserInfo'),
-        showTopTips: false,
         formData: {},
+        imgUrls:[],
         rules: [{
                 name: 'customerName',
                 rules: [{
@@ -42,7 +38,6 @@ Page({
         })
     },
     submitForm() {
-
         this.selectComponent('#form').validate((valid, errors) => {
             wx.getSetting({
                 success: res => {
@@ -59,22 +54,23 @@ Page({
                             title: '正在提交',
                         })
                         wxRequest(
-                            'wx-api/work-order/sys-add', {
+                            'wx-api/work-order/weixin-add', {
                                 ...this.data.formData,
-                                orderType: "wx"
+                                orderType: "wx",
+                                imgUrls:this.data.imgUrls
                             },
                             'POST',
                             (response) => {
                                 wx.hideLoading()
                                 wx.reLaunch({
-                                  url: '/pages/common/resultPageSuccess/resultPageSuccess',
+                                    url: '/pages/common/resultPageSuccess/resultPageSuccess',
                                 })
-                            })
+                            }
+                        )
                     }
                 }
             })
         })
-
     },
     /**
      * 生命周期函数--监听页面加载
@@ -88,19 +84,6 @@ Page({
             uplaodFile: this.uplaodFile.bind(this)
         })
     },
-    chooseImage: function (e) {
-        var that = this;
-        wx.chooseImage({
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                that.setData({
-                    files: that.data.files.concat(res.tempFilePaths)
-                });
-            }
-        })
-    },
     previewImage: function (e) {
         wx.previewImage({
             current: e.currentTarget.id, // 当前显示图片的http链接
@@ -108,16 +91,62 @@ Page({
         })
     },
     selectFile(files) {
-        console.log('files', files)
+        // console.log('files', files)
         // 返回false可以阻止某次文件上传
     },
     uplaodFile(files) {
         console.log('upload files', files)
-        // 文件上传的函数，返回一个promise
         return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                reject('some error')
-            }, 1000)
+            let imgUrls = [];
+            let index = 0;
+            const qmUploadImg = (idx) => {
+                let filesName = files.tempFilePaths[idx].split('/')[files.tempFilePaths[idx].split('/').length - 1]
+                wxRequest(
+                    'wx-api/oss/upload-sign', {
+                        "fileMd5": "",
+                        "originalName": filesName,
+                        "share": true,
+                        "target": ""
+                    },
+                    "POST",
+                    (ossRes) => {
+                        let ossData = ossRes.data.data
+                        console.log(ossRes)
+                        wx.uploadFile({
+                            filePath: files.tempFilePaths[index],
+                            name: "file",
+                            url: ossData.signInfo.host,
+                            formData: {
+                                name: ossData.fileName,
+                                key: ossData.resourceKey,
+                                policy: ossData.signInfo.policy,
+                                OSSAccessKeyId: ossData.signInfo.accessid,
+                                signature: ossData.signInfo.signature,
+                                callback: ossData.signInfo.callback
+                            },
+                            complete: (completeRes) => {
+                                if (completeRes.statusCode === 200 && JSON.parse(completeRes.data).code === 0) {
+                                    imgUrls.push(JSON.parse(completeRes.data).data.url)
+                                } else {
+                                    imgUrls.push(flase)
+                                }
+                                if (files.tempFilePaths.length === index + 1) {
+                                    resolve({
+                                        urls: imgUrls
+                                    })
+                                    this.setData({
+                                        imgUrls:imgUrls
+                                    })
+                                } else {
+                                    index++;
+                                    qmUploadImg(index)
+                                }
+                            }
+                        })
+                    }
+                )
+            }
+            qmUploadImg(index)
         })
     },
     uploadError(e) {
