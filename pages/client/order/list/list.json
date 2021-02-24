@@ -1,10 +1,10 @@
 {
   "usingComponents": {
-    "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
     "mp-tabs": "@miniprogram-component-plus/tabs",
     "qm-order-status":"/components/common/qm-order-status/index"
   },
-  "navigationBarBackgroundColor": "#46b989",
-  "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "工单"
+  "navigationBarTitleText": "工单",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "onReachBottomDistance":50
 }

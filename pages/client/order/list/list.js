@@ -1,4 +1,3 @@
-
 const wxRequest = require('../../../../utils/request.js')
 Page({
   onShareAppMessage() {
@@ -9,23 +8,10 @@ Page({
   },
   data: {
     inputShowed: false,
+    whetherLast: false,
     inputVal: "",
     imgNull: "/static/img/images-null.png",
-    tabs: [],
-    activeTab: 0,
-    consumableList: [],
-  },
-  onLoad() {
-    this.setData({
-      search: this.search.bind(this)
-    })
-    wxRequest('wx-api/work-order/my-list',{pageNo:1,pageSize:10},'GET',(res)=>{
-      this.setData({
-        consumableList: res.data.data.records,
-      })
-      console.log("------")
-    })
-    const tabs = [{
+    tabs: [{
         title: '全部',
         value: "all"
       },
@@ -43,35 +29,74 @@ Page({
       },
       {
         title: '已撤单',
-        cancel: "cancel"
+        value: "cancel"
       },
-
-    ]
-    this.setData({
-      tabs
+    ],
+    activeTab: 0,
+    consumableList: [],
+    currentPage: 1,
+    totalData: 0,
+    pageSize: 10
+  },
+  onLoad() {
+    this.fetchList({
+      pageNo: 1
     })
   },
-  search: function (value) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve([{
-          text: '搜索结果',
-          value: 1
-        }, {
-          text: '搜索结果2',
-          value: 2
-        }])
-      }, 200)
+  /**
+   * @param {*} params 查询列表的参数值
+   * @param {*} isRefresh 是否是刷新
+   */
+  fetchList: function (params, isRefresh = false) {
+    let that = this
+    if (isRefresh) {
+      this.setData({
+        consumableList: [],
+        whetherLast: false
+      })
+    }
+    wxRequest('wx-api/work-order/my-list', {
+      pageSize: that.data.pageSize,
+      pageNo: that.data.currentPage,
+      ...params
+    }, 'GET', (res) => {
+      if (res.data.data.total <= res.data.data.current * that.data.pageSize) {
+        this.setData({
+          whetherLast: true
+        })
+      } else {
+        this.setData({
+          whetherLast: false
+        })
+      }
+      this.setData({
+        consumableList: [...that.data.consumableList, ...res.data.data.records],
+        totalData: res.data.data.total,
+        currentPage: res.data.data.current
+      })
+      wx.hideLoading()
+      wx.stopPullDownRefresh();
+      wx.hideNavigationBarLoading();
     })
   },
-  selectResult: function (e) {
-    console.log('select result', e.detail)
-  },
-  onTabClick(e) {
+  onTabClick: function (e) {
     const index = e.detail.index
     this.setData({
       activeTab: index
     })
+    wx.showLoading({
+      title: '加载中...',
+    })
+    if (index === 0) {
+      this.fetchList({
+        pageNo: 1
+      }, true)
+    } else {
+      this.fetchList({
+        status: this.data.tabs[index].value,
+        pageNo: 1
+      }, true)
+    }
   },
   onChange(e) {
     const index = e.detail.index
@@ -89,6 +114,27 @@ Page({
       this.getTabBar()) {
       this.getTabBar().setData({
         selected: 1
+      })
+    }
+  },
+  //刷新
+  onRefresh() {
+    //在当前页面显示导航条加载动画
+    wx.showNavigationBarLoading();
+    //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+    this.fetchList({
+      pageNo: 1
+    }, true)
+    // this.getData();
+  },
+  onPullDownRefresh: function () {
+    //调用刷新时将执行的方法
+    this.onRefresh();
+  },
+  onReachBottom: function () {
+    if (this.data.totalData > this.data.pageSize * this.data.currentPage) {
+      this.fetchList({
+        pageNo: this.data.currentPage + 1
       })
     }
   }

@@ -87,3 +87,23 @@ page{
   font-size:30rpx;
   display: flex;flex-direction: column;justify-content: center;margin-right:-10rpx;
 }
+
+
+.qm-list-last-tip{
+  width:100%;
+  color:#999;
+  font-size:32rpx;
+  text-align: center;
+  padding:16rpx 0;
+}
+page{
+  padding-top: 80rpx;
+}
+.qm-tabs-fixed{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  box-shadow: 0px 1rpx 0 #ededed;
+}

@@ -1,8 +1,5 @@
 <view class="page">
-	<view class="page__bd">
-		<mp-searchbar class="primary-bg" placeholder="搜索设备名称或型号" bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
-	</view>
-	<mp-tabs tabs="{{tabs}}" activeTab="{{activeTab}}" swiperClass="weui-tabs-swiper qm-tabs-swiper" bindtabclick="onTabClick" bindchange="onChange" activeClass="tab-bar-title__selected" swiper-class="qm-tabs-swiper">
+	<mp-tabs class="qm-tabs-fixed" tabs="{{tabs}}" activeTab="{{activeTab}}" swiperClass="weui-tabs-swiper qm-tabs-swiper" bindtabclick="onTabClick" bindchange="onChange" activeClass="tab-bar-title__selected" swiper-class="qm-tabs-swiper">
 	</mp-tabs>
 	<view class="lr-space">
 		<navigator class="qm-list-box" wx:for="{{consumableList}}" url="/pages/client/order/info/info?id={{item.id}}" wx:key="*this">
@@ -22,4 +19,5 @@
 			<text class="iconfont default icon-arrow-right"></text>
 		</navigator>
 	</view>
+	<view wx:if="{{whetherLast}}" class="qm-list-last-tip">{{consumableList.length===0?"没有数据哦~":"到底了~"}}</view>
 </view>
