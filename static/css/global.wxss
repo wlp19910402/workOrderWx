@@ -53,3 +53,9 @@ button[size="default"]{
 .lrb-padding{
     padding:30rpx 30rpx 30rpx;
 }
+.qm-list-extra-btn{
+    text-decoration: underline;
+    border-radius: 8rpx;
+    display: inline;
+    margin-left:10rpx;
+}

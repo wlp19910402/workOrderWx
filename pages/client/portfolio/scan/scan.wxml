@@ -2,7 +2,8 @@
 <view style="padding:30rpx 0">
 	<qm-detail-field>
 		<qm-detail-title title="{{'编号:'+portfolioInfo.no}}">
-				<navigator class="primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">查看耗材</navigator>
+				<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
+				查看耗材</navigator>
 		</qm-detail-title>
 		<qm-detail-item label="单位名称" text="{{portfolioInfo.companyName}}" />
 		<qm-detail-item label="单位编号" text="{{portfolioInfo.companyNo}}" />

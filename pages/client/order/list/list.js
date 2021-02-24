@@ -24,6 +24,10 @@ Page({
         value: "pd"
       },
       {
+        title: '接单',
+        value: "jd"
+      },
+      {
         title: '结单',
         value: "wc"
       },

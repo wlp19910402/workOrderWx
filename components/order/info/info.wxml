@@ -1,26 +1,58 @@
 <!--components/order/info/info.wxml-->
 <view style="padding:30rpx 0">
 	<qm-detail-field>
-		<qm-detail-title title="基本信息">
-			<qm-order-status orderStatus="{{dataList.status}}" />
+		<qm-detail-title title="工单信息">
+			<!-- <navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
+				查看档案</navigator> -->
+			<!-- <qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" /> -->
 		</qm-detail-title>
 		<qm-detail-item label="编号" text="{{dataList.orderNo}}" />
 		<qm-detail-item label="单位名称" text="{{dataList.company}}" />
-		<qm-detail-item label="工程师名称" text="{{dataList.engineerName}}" />
-		<qm-detail-item label="支持人员" text="{{dataList.supporterNames}}" />
-		<qm-detail-item label="接单时间" text="{{dataList.receivingTime}}" />
+		<qm-detail-item wx:if="{{dataList.status!=='wpd'&&dataList.engineerName}}" label="工程师名称" text="{{dataList.engineerName}}" />
+		<qm-detail-item wx:if="{{dataList.status!=='wpd'&&dataList.engineerName}}" label="支持人员" text="{{dataList.supporterNames}}" />
+		<qm-detail-item wx:if="{{dataList.receivingTime}}" label="接单时间" text="{{dataList.receivingTime}}" />
 		<qm-detail-item label="工单来源" text="{{dataList.sourceType}}" />
 		<qm-detail-item label="工单类型" text="{{dataList.orderType}}" />
+		<qm-detail-item label="工单状态">
+			<qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" />
+		</qm-detail-item>
 		<qm-detail-item label="是否绑定档案" text="{{dataList.portfolioId !== ''?'已绑定' : '未绑定'}}" />
 		<qm-detail-item label="工单描述" text="{{dataList.workDescription}}" />
+		<qm-detail-item label="创建人员" text="{{dataList.createUserName}}" />
+		<qm-detail-item label="创建时间" text="{{dataList.createTime}}" />
 		<qm-detail-images imgUrls="{{dataList.orderImgUrls}}" />
 		<block wx:if="{{dataList.status==='wc'}}">
 			<view class="line"></view>
-			<qm-detail-title title="结单信息" />
+			<qm-detail-title title="结单信息">
+				<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
+					查看更换耗材信息</navigator>
+			</qm-detail-title>
 			<qm-detail-item label="结单人员" text="{{dataList.subUsername}}" />
 			<qm-detail-item label="结单时间" text="{{dataList.subTime}}" />
 			<qm-detail-item label="结单备注" text="{{dataList.subRemark}}" />
 			<qm-detail-images imgUrls="{{dataList.subImgUrls}}" />
 		</block>
+	</qm-detail-field>
+	<view class="t-space"></view>
+	<qm-detail-field>
+		<qm-detail-title title="档案信息">
+			<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
+				查看耗材</navigator>
+				<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
+				查看备件</navigator>
+		</qm-detail-title>
+		<qm-detail-item label="编号" text="{{dataList.orderNo}}" />
+		<qm-detail-item label="单位名称" text="{{dataList.company}}" />
+		
+		<qm-detail-item label="工单来源" text="{{dataList.sourceType}}" />
+		<qm-detail-item label="工单类型" text="{{dataList.orderType}}" />
+		<qm-detail-item label="工单状态">
+			<qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" />
+		</qm-detail-item>
+		<qm-detail-item label="是否绑定档案" text="{{dataList.portfolioId !== ''?'已绑定' : '未绑定'}}" />
+		<qm-detail-item label="工单描述" text="{{dataList.workDescription}}" />
+		<qm-detail-item label="创建人员" text="{{dataList.createUserName}}" />
+		<qm-detail-item label="创建时间" text="{{dataList.createTime}}" />
+		<qm-detail-images imgUrls="{{dataList.orderImgUrls}}" />
 	</qm-detail-field>
 </view>

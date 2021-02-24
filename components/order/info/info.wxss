@@ -1,4 +1,5 @@
 /* components/order/info/info.wxss */
+@import "/static/css/global.wxss";
 .line{
   margin:18rpx 0;
   height:12rpx;

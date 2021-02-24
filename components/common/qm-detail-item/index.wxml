@@ -2,7 +2,7 @@
 <view class="qm-detail-item">
   <text class="qm-detail-label">{{label}}</text>
   <view>
-  <text class="qm-detail-text">{{text}}
+  <text wx:if="{{text}}" class="qm-detail-text">{{text}}
   </text>
   <slot></slot>
   </view>

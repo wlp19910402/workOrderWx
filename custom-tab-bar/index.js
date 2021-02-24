@@ -43,7 +43,7 @@ Component({
   attached() {
     const roleId = wx.getStorageSync('status')
     const isAdmin = wx.getStorageSync('isAdmin')
-    if (isAdmin) {
+    if (!isAdmin) {
       this.setData({
         list: this.data.allList[0].list2
       })
