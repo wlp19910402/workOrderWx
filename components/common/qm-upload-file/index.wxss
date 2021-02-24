@@ -1,0 +1,3 @@
+.weui-uploader__file{
+  background-color: #EDEDED;
+}

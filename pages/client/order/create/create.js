@@ -4,9 +4,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        files: [],
         formData: {},
-        imgUrls:[],
+        imgUrls: [],
         rules: [{
                 name: 'customerName',
                 rules: [{
@@ -57,7 +56,7 @@ Page({
                             'wx-api/work-order/weixin-add', {
                                 ...this.data.formData,
                                 orderType: "wx",
-                                imgUrls:this.data.imgUrls
+                                imgUrls: this.data.imgUrls.filter(item=>item!==false)
                             },
                             'POST',
                             (response) => {
@@ -80,79 +79,11 @@ Page({
         this.setData({
             [`formData.company`]: options.company,
             [`formData.portfolioId`]: options.id,
-            selectFile: this.selectFile.bind(this),
-            uplaodFile: this.uplaodFile.bind(this)
         })
     },
-    previewImage: function (e) {
-        wx.previewImage({
-            current: e.currentTarget.id, // 当前显示图片的http链接
-            urls: this.data.files // 需要预览的图片http链接列表
+    setUploadImageUrls: function (urls) {
+        this.setData({
+            imgUrls: urls.detail
         })
-    },
-    selectFile(files) {
-        // console.log('files', files)
-        // 返回false可以阻止某次文件上传
-    },
-    uplaodFile(files) {
-        console.log('upload files', files)
-        return new Promise((resolve, reject) => {
-            let imgUrls = [];
-            let index = 0;
-            const qmUploadImg = (idx) => {
-                let filesName = files.tempFilePaths[idx].split('/')[files.tempFilePaths[idx].split('/').length - 1]
-                wxRequest(
-                    'wx-api/oss/upload-sign', {
-                        "fileMd5": "",
-                        "originalName": filesName,
-                        "share": true,
-                        "target": ""
-                    },
-                    "POST",
-                    (ossRes) => {
-                        let ossData = ossRes.data.data
-                        console.log(ossRes)
-                        wx.uploadFile({
-                            filePath: files.tempFilePaths[index],
-                            name: "file",
-                            url: ossData.signInfo.host,
-                            formData: {
-                                name: ossData.fileName,
-                                key: ossData.resourceKey,
-                                policy: ossData.signInfo.policy,
-                                OSSAccessKeyId: ossData.signInfo.accessid,
-                                signature: ossData.signInfo.signature,
-                                callback: ossData.signInfo.callback
-                            },
-                            complete: (completeRes) => {
-                                if (completeRes.statusCode === 200 && JSON.parse(completeRes.data).code === 0) {
-                                    imgUrls.push(JSON.parse(completeRes.data).data.url)
-                                } else {
-                                    imgUrls.push(flase)
-                                }
-                                if (files.tempFilePaths.length === index + 1) {
-                                    resolve({
-                                        urls: imgUrls
-                                    })
-                                    this.setData({
-                                        imgUrls:imgUrls
-                                    })
-                                } else {
-                                    index++;
-                                    qmUploadImg(index)
-                                }
-                            }
-                        })
-                    }
-                )
-            }
-            qmUploadImg(index)
-        })
-    },
-    uploadError(e) {
-        console.log('upload error', e.detail)
-    },
-    uploadSuccess(e) {
-        console.log('upload success', e.detail)
     }
 })

@@ -36,7 +36,7 @@ App({
                       let resData = res.data
                       wx.setStorageSync('token', resData.data.token)
                       wx.setStorageSync('isAdmin', resData.data.isAdmin)
-                      console.log("resData",resData)
+                    
                     })
                   } else {
                     console.log('登录失败！' + resLogin.errMsg)

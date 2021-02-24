@@ -22,6 +22,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
+   
   },
   ready() {
     wxRequest('wx-api/work-order/info/' + this.properties.infoId, null, 'GET', (res) => {

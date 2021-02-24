@@ -6,18 +6,15 @@ Component({
   properties: {
     imgUrls:{type:Array,value:[]}
   },
-
-  /**
-   * 组件的初始数据
-   */
-  data: {
-
-  },
-
   /**
    * 组件的方法列表
    */
   methods: {
-
+    previewImg(e){
+      wx.previewImage({
+        urls:this.data.imgUrls,
+        current:e.currentTarget.id
+      })
+    },
   }
 })
