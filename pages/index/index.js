@@ -6,11 +6,18 @@ const homeMenuModule = [{
   },
   {
     id: 1,
+    name: "通知",
+    icon: "icon-comment ",
+    link: "/pages/client/portfolio/scan/scan"
+  },
+  {
+    id: 2,
     name: "联系客服",
-    icon: "icon-telephone",
+    icon: "icon-telephone qm-menu-color2",
     link: "/pages/common/contactTel/contactTel",
   }
   // {
+  //   id: 3,
   //   name: "日志",
   //   icon: "icon-comment",
   //   link: "/pages/logs/logs"

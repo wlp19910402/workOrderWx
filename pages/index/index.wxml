@@ -11,7 +11,7 @@
 		</view>
 	</view>
 	<mp-row>
-		<mp-col class="qm-col" wx:for="{{homeMenuModule}}" wx:key="*this" offset="{{0}}"  span="{{12}}">
+		<mp-col class="qm-col" wx:for="{{homeMenuModule}}" wx:key="*this" offset="{{0}}"  span="{{8}}">
 			<view bindtap="clickHomeMenu" data-id="{{item.id}}" class="qm-col-content">
 				<text class="{{'qm-home-menu-img iconfont '+item.icon}}"></text>
 				<text class="qm-home-menu-text">{{item.name}}</text>

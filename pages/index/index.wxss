@@ -45,6 +45,9 @@
 .qm-menu-color1{
   color:#f13e1d;
 }
+.qm-menu-color2{
+  color:#eab71a;
+}
 .qm-ad-bannder{
   height:240rpx;
   width: 100%;

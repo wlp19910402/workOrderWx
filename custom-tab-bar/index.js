@@ -27,8 +27,13 @@ Component({
         "iconPath":"/static/img/tabBarIcon/home-default.png",
         "selectedIconPath":"/static/img/tabBarIcon/home-active.png"
       },{
+        "pagePath":"/pages/client/order/list/list",
+        "text":"我的工单",
+        "iconPath":"/static/img/tabBarIcon/order-default.png",
+        "selectedIconPath":"/static/img/tabBarIcon/order-active.png"
+      },{
         "pagePath":"/pages/maintain/order/list/list",
-        "text":"我的维修",
+        "text":"我的工作",
         "iconPath":"/static/img/tabBarIcon/order-default.png",
         "selectedIconPath":"/static/img/tabBarIcon/order-active.png"
       },{
@@ -43,7 +48,7 @@ Component({
   attached() {
     const roleId = wx.getStorageSync('status')
     const isAdmin = wx.getStorageSync('isAdmin')
-    if (!isAdmin) {
+    if (isAdmin) {
       this.setData({
         list: this.data.allList[0].list2
       })

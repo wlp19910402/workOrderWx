@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "mp-tabs": "@miniprogram-component-plus/tabs",
+    "qm-order-status":"/components/common/qm-order-status/index"
+  },
+  "navigationBarTitleText": "我的工作",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "onReachBottomDistance":50
 }

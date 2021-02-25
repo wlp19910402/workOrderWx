@@ -31,7 +31,7 @@ Component({
       { label: "接单", value: "jd", color: "#eab71a" },
       { label: "转单", value: "zd", color: "#eab71a" },
       { label: "结单", value: "wc", color: "#46b989"},
-      { label: "已撤单", value: "cancel", color: "red"}]
+      { label: "已撤单", value: "cancel", color: "f13e1d"}]
       let match = orderStatus.find(item=>item.value===status)
       if(match){
        return match
