@@ -18,9 +18,9 @@ Component({
 
   methods:{
     fetchIsLate:(date)=>{
-      let old = (new Date(date)).valueOf()
+      let expirationTime = (new Date(date)).valueOf()
       let current = (new Date()).valueOf()
-      return current-old>0
+      return current-expirationTime>0
      },
   },
   ready(){

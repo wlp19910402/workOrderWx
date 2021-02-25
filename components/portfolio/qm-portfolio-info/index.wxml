@@ -1,0 +1,43 @@
+<mp-dialog
+	bindbuttontap="buttontap"
+  show="{{showDialog}}"
+	title="{{dialogTitle}}"
+  maskClosable="{{false}}"
+	ext-class="qm-list-dialog-content"
+	buttons="{{buttons}}"
+>
+<view style="padding:30rpx 0 0" wx:if="{{showConsumable}}" wx:for="{{consumables}}" wx:key="id">
+		<qm-portfolio-consumable-info portfolio="{{item}}"/>
+	</view>
+	<view style="padding:30rpx 0 0" wx:if="{{showPart}}" wx:for="{{parts}}" wx:key="no">
+		<qm-portfolio-part-info part="{{item}}"/>
+	</view>
+</mp-dialog>
+<qm-detail-field>
+	<qm-detail-title title="档案详情">
+		<text class="qm-list-extra-btn primary-text" bindtap="showConsumablesList">
+			查看耗材</text>
+		<text class="qm-list-extra-btn primary-text" bindtap="showPartList">
+			查看备件</text>
+	</qm-detail-title>
+	<qm-detail-item label="档案编号" text="{{portfolio.no}}" />
+	<qm-detail-item label="二维码编号" text="{{portfolio.qrCodde}}" />
+	<qm-detail-item label="单位名称" text="{{portfolio.companyName}}" />
+	<qm-detail-item label="单位编号" text="{{portfolio.companyNo}}" />
+	<qm-detail-item label="单位联系人" text="{{portfolio.contactUser}}" />
+	<qm-detail-item label="单位联系电话" text="{{portfolio.contactMobile}}" />
+	<qm-detail-item label="设备名称" text="{{portfolio.deviceName}}" />
+	<qm-detail-item label="设备编号" text="{{portfolio.deviceNo}}" />
+	<qm-detail-item label="设备类型" text="{{portfolio.typeName}}" />
+	<qm-detail-item label="设备品牌" text="{{portfolio.brandName}}" />
+	<qm-detail-item label="设备型号" text="{{portfolio.modelName}}" />
+	<qm-detail-item label="安装位置" text="{{portfolio.installLocation}}" />
+	<qm-detail-item label="安装日期" text="{{portfolio.installTime}}" />
+	<qm-detail-item label="保修周期" text="{{portfolio.warrantyPeriod}}个月" />
+	<qm-detail-item label="创建人员" text="{{portfolio.createUsername}}" />
+	<qm-detail-item label="创建时间" text="{{portfolio.createTime}}" />
+	<qm-detail-item wx:if="{{portfolio.updateUsername}}" label="修改人员" text="{{portfolio.updateUsername}}" />
+	<qm-detail-item wx:if="{{portfolio.updateUsername}}" label="修改时间" text="{{portfolio.updateTime}}" />
+	<qm-detail-item label="设备图片" text="{{portfolio.imgUrls.length>0?'':'无图片'}}" />
+	<qm-detail-images imgUrls="{{portfolio.imgUrls}}" />
+</qm-detail-field>

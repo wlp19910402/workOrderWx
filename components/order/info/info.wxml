@@ -1,7 +1,19 @@
 <!--components/order/info/info.wxml-->
+<mp-dialog
+	bindbuttontap="buttontap"
+  show="{{showDialog}}"
+	title="{{dialogTitle}}"
+  maskClosable="{{false}}"
+	ext-class="qm-list-dialog-content"
+	buttons="{{buttons}}"
+>
+	<view style="padding:30rpx 0 0" wx:for="{{dataList.workConsumables}}" wx:key="id">
+		<qm-portfolio-update-consumable-info workConsumables="{{item}}"/>
+	</view>
+</mp-dialog>
 <view style="padding:30rpx 0">
 	<qm-detail-field>
-		<qm-detail-title title="工单信息">
+		<qm-detail-title title="工单详情">
 			<!-- <navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
 				查看档案</navigator> -->
 			<!-- <qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" /> -->
@@ -20,39 +32,21 @@
 		<qm-detail-item label="工单描述" text="{{dataList.workDescription}}" />
 		<qm-detail-item label="创建人员" text="{{dataList.createUserName}}" />
 		<qm-detail-item label="创建时间" text="{{dataList.createTime}}" />
+		<qm-detail-item label="工单图片" text="{{dataList.orderImgUrls.length>0?'':'无图片'}}" />
 		<qm-detail-images imgUrls="{{dataList.orderImgUrls}}" />
 		<block wx:if="{{dataList.status==='wc'}}">
 			<view class="line"></view>
 			<qm-detail-title title="结单信息">
-				<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
-					查看更换耗材信息</navigator>
+			<text class="qm-list-extra-btn primary-text" bindtap="showWorkConsumablesList">
+			查看更换耗材</text>
 			</qm-detail-title>
 			<qm-detail-item label="结单人员" text="{{dataList.subUsername}}" />
 			<qm-detail-item label="结单时间" text="{{dataList.subTime}}" />
 			<qm-detail-item label="结单备注" text="{{dataList.subRemark}}" />
+			<qm-detail-item label="结单图片" text="{{dataList.subImgUrls.length>0?'':'无图片'}}" />
 			<qm-detail-images imgUrls="{{dataList.subImgUrls}}" />
 		</block>
 	</qm-detail-field>
 	<view class="t-space"></view>
-	<qm-detail-field>
-		<qm-detail-title title="档案信息">
-			<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
-				查看耗材</navigator>
-				<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
-				查看备件</navigator>
-		</qm-detail-title>
-		<qm-detail-item label="编号" text="{{dataList.orderNo}}" />
-		<qm-detail-item label="单位名称" text="{{dataList.company}}" />
-		
-		<qm-detail-item label="工单来源" text="{{dataList.sourceType}}" />
-		<qm-detail-item label="工单类型" text="{{dataList.orderType}}" />
-		<qm-detail-item label="工单状态">
-			<qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" />
-		</qm-detail-item>
-		<qm-detail-item label="是否绑定档案" text="{{dataList.portfolioId !== ''?'已绑定' : '未绑定'}}" />
-		<qm-detail-item label="工单描述" text="{{dataList.workDescription}}" />
-		<qm-detail-item label="创建人员" text="{{dataList.createUserName}}" />
-		<qm-detail-item label="创建时间" text="{{dataList.createTime}}" />
-		<qm-detail-images imgUrls="{{dataList.orderImgUrls}}" />
-	</qm-detail-field>
+	<qm-portfolio-info portfolio="{{dataList.portfolio}}" consumables="{{dataList.consumables}}" parts="{{dataList.parts}}"/>
 </view>

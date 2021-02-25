@@ -1,16 +1,5 @@
 <view class="page" style="padding-bottom:30rpx">
 	<view style="padding:30rpx 0 0" wx:for="{{consumableList}}" wx:key="no">
-		<qm-detail-field>
-			<qm-detail-title title="{{'档案耗材ID:'+item.id}}">
-				<qm-date-isLate date="{{item.replacementTime}}"/>
-			</qm-detail-title>
-			<qm-detail-item label="耗材名称" text="{{item.baseInfo.name}}" />
-			<qm-detail-item label="耗材编号" text="{{item.baseInfo.no}}" />
-			<qm-detail-item label="耗材类型" text="{{item.baseInfo.typeName}}" />
-			<qm-detail-item label="耗材型号" text="{{item.baseInfo.modelName}}" />
-			<qm-detail-item label="安装日期" text="{{item.replacementTime}}" />
-			<qm-detail-item label="更换周期" text="{{item.replacementCycle+'天'}}" />
-			<qm-detail-item label="到期日期" text="{{item.replacementTime}}" />
-		</qm-detail-field>
+		<qm-portfolio-consumable-info portfolio="{{item}}"/>
 	</view>
 </view>

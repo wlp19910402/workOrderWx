@@ -58,4 +58,12 @@ button[size="default"]{
     border-radius: 8rpx;
     display: inline;
     margin-left:10rpx;
+    float: left;
 }
+.qm-list-dialog-content .weui-dialog__bd{
+    background: #ededed;
+    text-align: left !important;
+    min-width: 680rpx;
+    padding:20rpx 0;
+    margin-bottom: 0;
+  }

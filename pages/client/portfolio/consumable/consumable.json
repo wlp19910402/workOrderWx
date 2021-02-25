@@ -1,13 +1,6 @@
 {
   "usingComponents": {
-    "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
-    "mp-tabs": "@miniprogram-component-plus/tabs",
-    "mp-icon": "weui-miniprogram/icon/icon",
-    "qm-detail-item":"/components/common/qm-detail-item/index",
-    "qm-detail-field":"/components/common/qm-detail-field/index",
-    "qm-detail-title":"/components/common/qm-detail-title/index",
-    "qm-detail-images":"/components/common/qm-detail-images/index",
-    "qm-date-isLate":"/components/common/qm-date-isLate/index"
+    "qm-portfolio-consumable-info":"/components/portfolio/qm-portfolio-consumable-info/index"
   },
   "navigationBarTitleText": "档案耗材列表"
 }

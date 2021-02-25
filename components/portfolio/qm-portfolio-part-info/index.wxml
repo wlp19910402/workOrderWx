@@ -1,0 +1,11 @@
+	<qm-detail-field>
+			<qm-detail-title title="{{'创建时间:'+part.createTime}}"></qm-detail-title>
+			<qm-detail-item label="备件名称" text="{{part.baseInfo.name}}" />
+			<qm-detail-item label="备件编号" text="{{part.baseInfo.no}}" />
+			<qm-detail-item label="备件类型" text="{{part.baseInfo.typeName}}" />
+			<qm-detail-item label="备件型号" text="{{part.baseInfo.modelName}}" />
+			<qm-detail-item label="备件描述" text="{{part.baseInfo.description}}" />
+			<qm-detail-item label="保修周期" text="{{part.warrantyPeriod+'个月'}}" />
+			<qm-detail-item label="备件图片" text="{{part.baseInfo.imgUrls.length>0?'':'无图片'}}" />
+		<qm-detail-images imgUrls="{{part.baseInfo.imgUrls}}" />
+		</qm-detail-field>
