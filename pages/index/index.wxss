@@ -43,7 +43,7 @@
   border-left: none;
 }
 .qm-menu-color1{
-  color:#f13e1d;
+  color:#ff4d4f;
 }
 .qm-menu-color2{
   color:#eab71a;

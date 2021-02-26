@@ -6,6 +6,7 @@
     "qm-detail-title":"/components/common/qm-detail-title/index",
     "qm-detail-images":"/components/common/qm-detail-images/index",
     "qm-order-status":"/components/common/qm-order-status/index",
+    "qm-order-orderType":"/components/common/qm-order-orderType/index",
     "qm-portfolio-info":"/components/portfolio/qm-portfolio-info/index",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
     "qm-portfolio-update-consumable-info":"/components/portfolio/qm-portfolio-update-consumable-info/index"

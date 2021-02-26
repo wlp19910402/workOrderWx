@@ -4,12 +4,12 @@ const homeMenuModule = [{
     icon: "icon-saoma qm-menu-color1",
     link: "/pages/client/portfolio/scan/scan",
   },
-  {
-    id: 1,
-    name: "通知",
-    icon: "icon-comment ",
-    link: "/pages/client/portfolio/scan/scan"
-  },
+  // {
+  //   id: 1,
+  //   name: "通知",
+  //   icon: "icon-comment ",
+  //   link: "/pages/client/portfolio/scan/scan"
+  // },
   {
     id: 2,
     name: "联系客服",
@@ -34,6 +34,14 @@ Page({
     interval: 2000,
     duration: 500,
     homeMenuModule: homeMenuModule
+  },
+  dingyue:function(){
+    wx.requestSubscribeMessage({
+      tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
+      complete: function (rdes) {
+        console.log("订阅信息", rdes)
+      }
+    })
   },
   clickHomeMenu: (e) => {
     var $id = e.currentTarget.dataset.id;

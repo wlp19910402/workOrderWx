@@ -24,7 +24,9 @@
 		<qm-detail-item wx:if="{{dataList.status!=='wpd'&&dataList.engineerName}}" label="支持人员" text="{{dataList.supporterNames}}" />
 		<qm-detail-item wx:if="{{dataList.receivingTime}}" label="接单时间" text="{{dataList.receivingTime}}" />
 		<qm-detail-item label="工单来源" text="{{dataList.sourceType}}" />
-		<qm-detail-item label="工单类型" text="{{dataList.orderType}}" />
+		<qm-detail-item label="工单类型" >
+		<qm-order-orderType wx:if="{{dataList.orderType}}" orderType="{{dataList.orderType}}"/>
+		</qm-detail-item>
 		<qm-detail-item label="工单状态">
 			<qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" />
 		</qm-detail-item>

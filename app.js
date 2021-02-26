@@ -8,7 +8,9 @@ App({
     wx.setStorageSync('logs', logs)
     // 获取用户信息
     wx.getSetting({
+      withSubscriptions: true,
       success: res => {
+        console.log(res)
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -28,15 +30,14 @@ App({
                       "jsCode": resLogin.code,
                       "wxUser": {
                         "avatarUrl": response.userInfo.avatarUrl,
-                        "nickName":response.userInfo.nickName
+                        "nickName": response.userInfo.nickName
                       }
                     }
                     //发起网络请求
-                    wxRequest('wx-api/wx-login',dataParams,"POST",(res)=>{
-                      let resData = res.data
+                    wxRequest('wx-api/wx-login', dataParams, "POST", (loginRes) => {
+                      let resData = loginRes.data
                       wx.setStorageSync('token', resData.data.token)
                       wx.setStorageSync('isAdmin', resData.data.isAdmin)
-                    
                     })
                   } else {
                     console.log('登录失败！' + resLogin.errMsg)
@@ -68,7 +69,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    isAdmin:false,
-    wxNickname:""
+    isAdmin: false,
+    wxNickname: ""
   }
 })

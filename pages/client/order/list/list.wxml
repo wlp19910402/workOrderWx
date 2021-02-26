@@ -8,11 +8,12 @@
 				<view class="qm-list-row">
 					<text class="qm-list-title">{{item.company}}</text>
 					<view class="'qm-tag-text">
-						<qm-order-status orderStatus="{{item.status}}" />
+						<qm-order-status wx:if="item.status" orderStatus="{{item.status}}" />
 					</view>
 				</view>
 				<view class="qm-list-row">
-					<text class="qm-list-des">{{item.engineerName}}</text>
+					<!-- <text class="qm-list-des">{{item.engineerName}}</text> -->
+					<view class="qm-list-des"><qm-order-orderType orderType="{{item.orderType}}"/></view>
 					<text class="qm-list-date">{{item.createTime}}</text>
 				</view>
 			</view>

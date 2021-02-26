@@ -1,0 +1,1 @@
+<text class="qm-order-type">{{currentType.label}}</text>

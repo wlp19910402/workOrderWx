@@ -1,0 +1,5 @@
+.qm-order-type{
+  background:#ededed;
+  padding:4rpx 10rpx;
+  color:#999999;
+}

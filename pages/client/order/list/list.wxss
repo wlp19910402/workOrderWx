@@ -74,7 +74,6 @@ page{
   font-size:24rpx;
   line-height: 36rpx;
   height:36rpx;
-  padding:0 10rpx;
   color:#fff;
 }
 .warn-text-bg{
@@ -106,4 +105,7 @@ page{
   width: 100%;
   z-index: 3;
   box-shadow: 0px 1rpx 0 #ededed;
+}
+.qm-list-des{
+  font-size: 24rpx;
 }

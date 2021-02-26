@@ -16,21 +16,25 @@ Page({
         value: ""
       },
       {
-        title: '未接单',
+        title: '待接单',
         value: "wpd"
       },
       {
-        title: '待完成',
+        title: '进行中',
         value: "jd"
       },
       {
-        title: '结单',
-        value: "wc"
+        title: '我的支持',
+        value: "zc"
       },
       {
-        title: '已取消',
-        value: "cancel"
+        title: '已结单',
+        value: "wc"
       },
+      // {
+      //   title: '已取消',
+      //   value: "cancel"
+      // },
     ],
     activeTab: 0,
     consumableList: [],
@@ -107,7 +111,7 @@ Page({
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 1
+        selected: 2
       })
     }
   },
