@@ -18,7 +18,6 @@ Component({
 
   methods: {
     matchType: (type) => {
-      console.log(type)
       const orderType = [{
           label: "安装",
           value: "az",

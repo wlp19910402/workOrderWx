@@ -8,6 +8,7 @@ const wxRequest=(url, data, method,callback)=>{
     },
     method:method,
     success: function (res) {
+      wx.hideLoading()
       if(res.data.code===0){
         if(callback) callback(res)
       }else if(res.data.code===301){

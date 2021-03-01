@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "qm-order-info":"/components/order/info/info"
+  },
+  "navigationBarTitleText": "详情"
+}

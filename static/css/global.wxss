@@ -39,7 +39,7 @@ button[size="default"]{
      margin:0 30rpx;
  }
  .tb-space {
-    margin:30 0rpx;
+    margin:30rpx 0rpx;
  }
  .t-space{
      margin-top: 30rpx;
@@ -66,4 +66,9 @@ button[size="default"]{
     min-width: 680rpx;
     padding:20rpx 0;
     margin-bottom: 0;
+  }
+
+  .qm-line{
+    height:1rpx;
+    background-color:#e0e9ee;
   }

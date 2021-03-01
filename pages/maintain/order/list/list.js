@@ -13,11 +13,11 @@ Page({
     imgNull: "/static/img/images-null.png",
     tabs: [{
         title: '全部',
-        value: ""
+        value: "all"
       },
       {
         title: '待接单',
-        value: "wpd"
+        value: "pd"
       },
       {
         title: '进行中',
@@ -30,11 +30,7 @@ Page({
       {
         title: '已结单',
         value: "wc"
-      },
-      // {
-      //   title: '已取消',
-      //   value: "cancel"
-      // },
+      }
     ],
     activeTab: 0,
     consumableList: [],
@@ -59,10 +55,9 @@ Page({
         whetherLast: false
       })
     }
-    wxRequest('wx-api/work-order/my-list', {
+    wxRequest('wx-api/work-order/my-maintain-list/'+that.data.tabs[that.data.activeTab].value, {
       pageSize: that.data.pageSize,
       pageNo: that.data.currentPage,
-      status: that.data.tabs[that.data.activeTab].value,
       ...params
     }, 'GET', (res) => {
       if (res.data.data.total <= res.data.data.current * that.data.pageSize) {
@@ -106,6 +101,37 @@ Page({
     wx.navigateTo({
       url: './webview',
     })
+  },
+  jdOrder(e){
+    const id = e.currentTarget.dataset.id;
+    const that =this
+    
+    wx.showLoading({
+      title: '接单中...',
+    })
+    wxRequest('wx-api/work-order/jd/'+e.currentTarget.dataset.id,null,'POST',(res)=>{
+      wx.hideLoading()
+      const newList = that.data.consumableList.map(item=>{
+        if(item.id===id){
+          return {...item,status:'jd'}
+        }
+        return item
+      }).filter(item=>{
+        if(that.data.tabs[that.data.activeTab].value==='all'){
+          return item
+        }
+        if(item.status===that.data.tabs[that.data.activeTab].value){
+          return item
+        }
+      })
+      that.setData({
+        consumableList:[]
+      })
+      that.setData({
+        consumableList:newList
+      })
+    })
+   
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&

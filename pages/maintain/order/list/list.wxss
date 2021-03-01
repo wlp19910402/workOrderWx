@@ -36,15 +36,18 @@ page{
 }
 
 /* 列表 */
+.qm-list-link{
+  display: flex;
+  padding:0 20rpx 20rpx;
+}
 .qm-list-box{
   width:100%;
-  padding:20rpx 20rpx;
+  padding:20rpx 0;
   box-sizing: border-box;
   background-color: #fff;
   position:relative;
   margin:20rpx 0;
   border-radius: 10rpx;
-  display: flex;
 }
 .qm-list-img{
   width:120rpx;
@@ -106,4 +109,20 @@ page{
   width: 100%;
   z-index: 3;
   box-shadow: 0px 1rpx 0 #ededed;
+}
+.qm-list-btns-box{
+  clear: both;
+  overflow: hidden;
+  padding:20rpx 20rpx 0;
+  border-top:1rpx solid #ededed
+}
+.qm-list-btn{
+  float: right;
+  border:1px solid #ededed;
+  font-size:28rpx;
+  border-radius: 60rpx;
+  padding:0rpx 30rpx;
+  line-height: 48rpx;
+  margin-left: 30rpx;
+  color:#333333;
 }
