@@ -36,8 +36,8 @@ Component({
       }, {
         "pagePath": "/pages/maintain/order/list/list",
         "text": "我的工作",
-        "iconPath": "/static/img/tabBarIcon/order-default.png",
-        "selectedIconPath": "/static/img/tabBarIcon/order-active.png"
+        "iconPath": "/static/img/tabBarIcon/maintain-default.png",
+        "selectedIconPath": "/static/img/tabBarIcon/maintain-active.png"
       }, {
         "pagePath": "/pages/my/my",
         "text": "个人中心",
