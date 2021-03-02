@@ -1,4 +1,4 @@
-<view class="page">
+<view class="page" wx:if="{{isPdOrder}}">
 	<mp-dialog bindbuttontap="buttontap" show="{{showDialog}}" title="更换耗材" maskClosable="{{false}}" ext-class="qm-from-dialog-content" buttons="{{buttons}}">
 		<mp-form wx:if="{{editConsumableData}}">
 			<mp-cells>
@@ -94,11 +94,16 @@
 				<qm-detail-item label="耗材图片" text="{{item.baseInfo.imgUrls.length>0?'':'无图片'}}" />
 				<qm-detail-images imgUrls="{{item.baseInfo.imgUrls}}" />
 				<view class="qm-list-btns-box">
+					<view wx:if="{{item.isEdit}}" style="float:left;line-height:50rpx;" class="primary-text">新到期日期:{{item.newExpirationTime}}</view>
 					<view wx:if="{{!item.isEdit}}" bindtap="editConsumable" data-id="{{item.id}}" class="qm-list-btn">更换耗材</view>
 					<view wx:if="{{item.isEdit}}" bindtap="reOldExpirTime" data-id="{{item.id}}" class="qm-list-btn">取消修改</view>
 				</view>
 			</qm-detail-field>
 		</view>
 	</view>
-
+</view>
+<view wx:if="{{!isPdOrder}}">
+<mp-msg type="success" title="结单成功">
+        <view slot="desc">工单详细信息，请点击 <navigator url="/pages/maintain/order/info/info?id={{id}}" class="weui-msg__link">工单详情</navigator></view>
+    </mp-msg>
 </view>

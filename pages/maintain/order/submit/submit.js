@@ -6,6 +6,7 @@ Page({
     open: false,
     subImgUrls: [],
     subRemark: "",
+    isPdOrder:true,
     buttons: [{
         extClass: '',
         text: '关闭'
@@ -35,6 +36,15 @@ Page({
         dataList: res.data.data,
         oldConsumableDatas: res.data.data.consumables
       })
+      if(res.data.data.status&&res.data.data.status==='wc'){
+        this.setData({
+          isPdOrder:false,
+        })
+      }else{
+        this.setData({
+          isPdOrder:true,
+        })
+      }
       wx.hideLoading()
     })
   },
@@ -65,12 +75,15 @@ Page({
   },
   confirmDialog() {
     let tmpDataList = this.data.dataList
-    this.setData({
-      dataList: {
-        ...tmpDataList,
-        consumables: []
-      }
-    })
+    let oldExpTime = tmpDataList.consumables.find(item=>item.id === this.data.editConsumableData.id).expirationTime
+    if(this.formatDate(oldExpTime)===this.data.editExpirDate){
+      wx.showToast({
+        title: '新到期日期和原到期日期一样哦~',
+        icon: 'error',
+        duration: 2000
+      })
+      return
+    }
     this.setData({
       saveConsumableDatas: [...this.data.saveConsumableDatas,
         {
@@ -84,7 +97,7 @@ Page({
           if (item.id === this.data.editConsumableData.id) {
             return {
               ...item,
-              expirationTime: this.data.editExpirDate,
+              newExpirationTime: this.data.editExpirDate,
               isEdit: true
             }
           } else {
@@ -120,12 +133,6 @@ Page({
   //回退到原始的耗材有效期--取消修改
   reOldExpirTime(e) {
     let tmpDataList = this.data.dataList
-    this.setData({
-      dataList: {
-        ...tmpDataList,
-        consumables: []
-      }
-    })
     const id = e.currentTarget.dataset.id;
     const that = this
     this.setData({
@@ -136,7 +143,7 @@ Page({
           if (item.id === id) {
             return {
               ...item,
-              expirationTime: this.data.oldConsumableDatas.find(item.id === id).expirationTime,
+              newExpirationTime:"",
               isEdit: false
             }
           } else {
@@ -182,7 +189,7 @@ Page({
     wxRequest('wx-api/work-order/submit', params, 'POST', (res) => {
       wx.hideLoading()
       this.setData({
-        dataList:{...this.data.dataList,status:'jd'}
+        dataList:{...this.data.dataList,status:'wc'}
       })
       wx.showToast({
         title: '提交成功',
@@ -193,5 +200,16 @@ Page({
         url: '/pages/maintain/order/info/info?id=' + that.data.id
       })
     })
+  },
+  onShow(){
+    if(this.data.dataList.status&&this.data.dataList.status==='wc'){
+      this.setData({
+        isPdOrder:false,
+      })
+    }else{
+      this.setData({
+        isPdOrder:true,
+      })
+    }
   }
 })

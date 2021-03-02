@@ -23,7 +23,7 @@
 			</navigator>
 			<view class="qm-list-btns-box" wx:if="{{item.status==='pd'||item.type==='jd'}}">
 				<navigator url="/pages/maintain/order/submit/submit?id={{item.id}}">
-					<view class="qm-list-btn" wx:if="{{item.type!=='jd'}}">结单</view>
+					<view class="qm-list-btn" wx:if="{{item.status!=='jd'}}">结单</view>
 				</navigator>
 				<view bindtap="jdOrder" data-id="{{item.id}}" class="qm-list-btn" wx:if="{{item.status==='pd'}}">接单</view>
 			</view>

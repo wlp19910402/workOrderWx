@@ -85,7 +85,8 @@ button[size="default"]{
     clear: both;
     overflow: hidden;
     padding:20rpx 20rpx 0;
-    border-top:1rpx solid #ededed
+    border-top:1rpx solid #ededed;
+    font-size:28rpx;
   }
   .qm-list-btn{
     float: right;
