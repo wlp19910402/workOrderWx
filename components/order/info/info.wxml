@@ -7,9 +7,12 @@
 	ext-class="qm-list-dialog-content"
 	buttons="{{buttons}}"
 >
-	<view style="padding:30rpx 0 0" wx:for="{{dataList.workConsumables}}" wx:key="id">
+	<view style="padding:30rpx 0 0"  wx:for="{{dataList.workConsumables}}" wx:key="id">
 		<qm-portfolio-update-consumable-info workConsumables="{{item}}"/>
 	</view>
+	<!--<view style="">
+		流程
+	</view>-->
 </mp-dialog>
 <view style="padding:30rpx 0">
 	<qm-detail-field>
@@ -17,6 +20,8 @@
 			<!-- <navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
 				查看档案</navigator> -->
 			<!-- <qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" /> -->
+			<view class="qm-list-extra-btn primary-text" bindtap="showOrderLogs">
+			查看日志</view>
 		</qm-detail-title>
 		<qm-detail-item label="编号" text="{{dataList.orderNo}}" />
 		<qm-detail-item label="单位名称" text="{{dataList.company}}" />
@@ -39,8 +44,8 @@
 		<block wx:if="{{dataList.status==='wc'}}">
 			<view class="line"></view>
 			<qm-detail-title title="结单信息">
-			<text class="qm-list-extra-btn primary-text" bindtap="showWorkConsumablesList">
-			查看更换耗材</text>
+			<view class="qm-list-extra-btn primary-text" bindtap="showWorkConsumablesList">
+			查看更换耗材</view>
 			</qm-detail-title>
 			<qm-detail-item label="结单人员" text="{{dataList.subUsername}}" />
 			<qm-detail-item label="结单时间" text="{{dataList.subTime}}" />

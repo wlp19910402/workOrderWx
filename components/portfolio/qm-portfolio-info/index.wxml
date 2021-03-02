@@ -15,10 +15,10 @@
 </mp-dialog>
 <qm-detail-field>
 	<qm-detail-title title="档案详情">
-		<text class="qm-list-extra-btn primary-text" bindtap="showConsumablesList">
-			查看耗材</text>
-		<text class="qm-list-extra-btn primary-text" bindtap="showPartList">
-			查看备件</text>
+		<view class="qm-list-extra-btn primary-text" bindtap="showConsumablesList">
+			查看耗材</view>
+		<view class="qm-list-extra-btn primary-text" bindtap="showPartList">
+			查看备件</view>
 	</qm-detail-title>
 	<qm-detail-item label="档案编号" text="{{portfolio.no}}" />
 	<qm-detail-item label="二维码编号" text="{{portfolio.qrCodde}}" />

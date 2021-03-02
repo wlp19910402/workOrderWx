@@ -91,10 +91,10 @@ button[size="default"]{
   .qm-list-btn{
     float: right;
     border:1px solid #ededed;
-    font-size:28rpx;
+    font-size:30rpx;
     border-radius: 60rpx;
     padding:0rpx 30rpx;
-    line-height: 48rpx;
+    line-height: 60rpx;
     margin-left: 30rpx;
     color:#333333;
   }

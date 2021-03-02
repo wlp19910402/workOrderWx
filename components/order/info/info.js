@@ -44,6 +44,9 @@ Component({
         showDialog:false,
         showWorkConsumables:false
        })
+    },
+    showOrderLogs(){
+      
     }
   },
   ready() {

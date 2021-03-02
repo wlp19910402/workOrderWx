@@ -1,4 +1,4 @@
-<view class="page" wx:if="{{isPdOrder}}">
+<view class="t-space" wx:if="{{isPdOrder}}">
 	<mp-dialog bindbuttontap="buttontap" show="{{showDialog}}" title="更换耗材" maskClosable="{{false}}" ext-class="qm-from-dialog-content" buttons="{{buttons}}">
 		<mp-form wx:if="{{editConsumableData}}">
 			<mp-cells>
@@ -58,6 +58,7 @@
 	<view class="tb-space">
 		<mp-cells class="t-space">
 			<mp-cell link bindtap="toggleViwSlidebar" title="更换耗材">
+			<mp-badge wx:if="{{saveConsumableDatas.length>0}}" content="{{saveConsumableDatas.length}}" style="margin-left: 5px;" />
 				<view slot="footer">
 					<view style="display: inline-block;vertical-align:middle; font-size:28rpx">编辑耗材到期日期</view>
 				</view>
@@ -65,7 +66,7 @@
 		</mp-cells>
 		<mp-cells >
 			<mp-cell prop="subRemark" title="结单描述">
-				<textarea class="weui-textarea" style="height: 60rpx" placeholder="请输入描述" bindinput="formInputChange" data-field="subRemark" maxlength="100" />
+				<textarea class="weui-textarea" style="height: 60rpx;padding:0 30rpx;text-align:right; box-sizing: border-box;" placeholder="请输入描述" bindinput="formInputChange" data-field="subRemark" maxlength="100" />
 				<view class="weui-textarea-counter">{{subRemark.length}}/100</view>
 				</mp-cell>
 			</mp-cells>

@@ -112,12 +112,16 @@ Page({
   jdOrder(e){
     const id = e.currentTarget.dataset.id;
     const that =this
-    
     wx.showLoading({
       title: '接单中...',
     })
     wxRequest('wx-api/work-order/jd/'+e.currentTarget.dataset.id,null,'POST',(res)=>{
       wx.hideLoading()
+      wx.showToast({
+        title: '接单成功',
+        icon: 'success',
+        duration: 3000,
+      })
       const newList = that.data.consumableList.map(item=>{
         if(item.id===id){
           return {...item,status:'jd'}

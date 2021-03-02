@@ -196,9 +196,11 @@ Page({
         icon: 'success',
         duration: 6000,
       })
-      wx.navigateTo({
-        url: '/pages/maintain/order/info/info?id=' + that.data.id
-      })
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/maintain/order/info/info?id=' + that.data.id
+        })
+      }, 1000);
     })
   },
   onShow(){
