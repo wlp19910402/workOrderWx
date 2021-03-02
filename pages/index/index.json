@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "mp-col": "@miniprogram-component-plus/col",
-    "mp-row": "@miniprogram-component-plus/row"
+    "mp-row": "@miniprogram-component-plus/row",
+    "qm-set-user-auth":"/components/qm-set-user-auth/index"
   },
   "navigationBarTitleText": "首页"
 }

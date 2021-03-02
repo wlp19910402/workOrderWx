@@ -1,0 +1,45 @@
+/* components/qm-set-user-auth/index.wxss */
+.qm-dialog-user-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10000;
+}
+.userinfo {
+  width: 480rpx;
+  padding: 80rpx 30rpx 40rpx;
+  background: #ffffff;
+  color: #fff;
+  text-align: center;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+.userinfo::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.userinfo-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+}
+.userinfo-nickname {
+  text-align: center;
+  display: block;
+  line-height: 100rpx;
+  margin-bottom: 30rpx;
+  color:#333333;
+}

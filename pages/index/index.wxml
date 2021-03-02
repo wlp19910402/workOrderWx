@@ -24,3 +24,5 @@
 	</view>
 	</view>
 </view>
+
+<qm-set-user-auth/>

@@ -5,72 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        motto: 'Hello World',
         userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo'),
-        showTopTips: false,
-        isAgree: false,
-        formData: {},
-        rules: [{
-                name: 'username',
-                rules: [{
-                    required: true,
-                    message: '用户名是必填的！'
-                }],
-            },
-            {
-                name: "password",
-                rules: [{
-                    required: true,
-                    message: '密码是必填的！'
-                }, {
-                    minlength: 6,
-                    message: '密码长度不能低于6位！'
-                }]
-            }
-        ]
-    },
-    formInputChange(e) {
-        const {
-            field
-        } = e.currentTarget.dataset
-        this.setData({
-            [`formData.${field}`]: e.detail.value
-        })
-    },
-    bindAgreeChange: function (e) {
-        this.setData({
-            isAgree: !!e.detail.value.length
-        });
-    },
-    submitForm() {
-        // this.selectComponent('#form').validate((valid, errors) => {
-            wx.getSetting({
-                success: res => {
-                    if (!res.authSetting['scope.userInfo']) return
-                    // if (!valid) {
-                    //     const firstError = Object.keys(errors)
-                    //     if (firstError.length) {
-                    //         this.setData({
-                    //             error: errors[firstError[0]].message
-                    //         })
-                    //     }
-                    // } else {
-                    //     if (!this.data.isAgree) {
-                    //         this.setData({
-                    //             error: "请勾选协议条款"
-                    //         })
-                    //         return
-                    //     }
-                    //     wx.showToast({
-                    //         title: '校验通过'
-                    //     })
-                    //     console.log(app.globalData.userInfo)
-                    // }
-                }
-            })
-        // })
+        hasUserInfo: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -110,7 +46,6 @@ Page({
                 userInfo: e.detail.userInfo,
                 hasUserInfo: true
             })
-           
             wx.login({
                 success: resLogin => {
                   // 发送 res.code 到后台换取 openId, sessionKey, unionId

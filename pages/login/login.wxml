@@ -1,33 +1,16 @@
-<!--pages/login/login.wxml-->
-<!-- <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips> -->
 <view class="page">
 	<view class="page__bd">
-		<!-- <mp-form id="form" rules="{{rules}}" models="{{formData}}">
-			<mp-cells>
-				<mp-cell prop="username" title="用户名">
-					<input bindinput="formInputChange" data-field="username" class="weui-input" placeholder="请输入用户名" />
-				</mp-cell>
-				<mp-cell prop="password" title="密码">
-					<input bindinput="formInputChange" type="password" data-field="password" class="weui-input" placeholder="请输入密码" />
-				</mp-cell>
-			</mp-cells>
-		</mp-form>
-		<checkbox-group bindchange="bindAgreeChange">
-			<label class="weui-agree" for="weuiAgree">
-				<view class="weui-agree__text">
-					<checkbox id="weuiAgree" value="agree" />
-					阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
-				</view>
-			</label>
-		</checkbox-group> -->
+		
 		<view class="weui-btn-area ">
+		<open-data class="userinfo-avatar" lang="zh_CN" type="userAvatarUrl"></open-data>
+		<open-data class="userinfo-nickname" lang="zh_CN" type="userNickName"></open-data>
 			<button class="weui-btn"
              size="default"
               open-type="getUserInfo" 
               bindgetuserinfo="getUserInfo" 
               type="primary" 
-              bindtap="submitForm">获取用户信息授权</button>
-			<!-- <navigator url="/pages/user/register/register" class="weui-agree__link qm-link">去注册~</navigator> -->
+              >获取用户信息授权</button>
+		
 		</view>
 	</view>
 </view>

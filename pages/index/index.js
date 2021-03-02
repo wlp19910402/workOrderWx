@@ -6,7 +6,7 @@ const homeMenuModule = [{
   },
   // {
   //   id: 1,
-  //   name: "通知",
+  //   name: "待接单",
   //   icon: "icon-comment ",
   //   link: "/pages/client/portfolio/scan/scan"
   // },

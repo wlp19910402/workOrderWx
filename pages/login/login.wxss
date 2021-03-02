@@ -3,3 +3,19 @@
   position: absolute;
   bottom:0
 }
+
+.userinfo-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+}
+.userinfo-nickname {
+  text-align: center;
+  display: block;
+  line-height: 100rpx;
+  margin-bottom: 30rpx;
+  color:#333333;
+}
