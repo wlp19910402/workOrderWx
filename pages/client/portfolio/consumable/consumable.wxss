@@ -67,13 +67,7 @@
   color:#999;
   justify-content: space-between;
 }
-.qm-tag-text{
-  font-size:24rpx;
-  line-height: 36rpx;
-  height:36rpx;
-  padding:0 10rpx;
-  color:#fff;
-}
+
 .warn-text-bg{
   color: #999;
 }

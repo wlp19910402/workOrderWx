@@ -72,8 +72,8 @@ page{
 }
 .qm-tag-text{
   font-size:24rpx;
-  line-height: 36rpx;
-  height:36rpx;
+  line-height: 56rpx;
+  height:56rpx;
   color:#fff;
 }
 .warn-text-bg{
