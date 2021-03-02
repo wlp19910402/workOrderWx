@@ -11,7 +11,7 @@
 					<input bindinput="formInputChange" data-field="customerMobile" class="weui-input" placeholder="请输入手机号" />
 				</mp-cell>
 				<mp-cell prop="workDescription" title="描述">
-					<textarea class="weui-textarea" style="height: 3em" placeholder="请输入描述" bindinput="formInputChange" data-field="workDescription" maxlength="100"/>
+					<textarea class="weui-textarea" style="height: 60rpx" placeholder="请输入描述" bindinput="formInputChange" data-field="workDescription" maxlength="100"/>
 					<view class="weui-textarea-counter">最大长度100</view>
 				</mp-cell>
 			</mp-cells>

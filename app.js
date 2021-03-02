@@ -10,7 +10,6 @@ App({
     wx.getSetting({
       withSubscriptions: true,
       success: res => {
-        console.log(res)
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -26,6 +25,7 @@ App({
                 success: resLogin => {
                   // 发送 res.code 到后台换取 openId, sessionKey, unionId
                   if (resLogin.code) {
+                    wx.setStorageSync('userInfo', response.userInfo)
                     let dataParams = {
                       "jsCode": resLogin.code,
                       "wxUser": {
@@ -46,23 +46,6 @@ App({
               })
             }
           })
-        } else {
-          if (!this.userInfo) {
-            wx.showModal({
-              title: "未登录",
-              content: "您未登录，请登录后在访问！",
-              showCancel: false,
-              confirmColor: "#46b989",
-              confirmText: "去登陆",
-              success: (res) => {
-                if (res.confirm) {
-                  wx.reLaunch({
-                    url: '/pages/login/login',
-                  })
-                }
-              }
-            })
-          }
         }
       }
     })

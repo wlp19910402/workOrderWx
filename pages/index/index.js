@@ -23,6 +23,8 @@ const homeMenuModule = [{
   //   link: "/pages/logs/logs"
   // }
 ]
+const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
+const wxRequest = require('../../utils/request.js')
 Page({
   data: {
     background: ['/static/img/home/banner2.jpg', '/static/img/home/banner1.jpg', '/static/img/home/banner3.jpg'],
@@ -33,28 +35,24 @@ Page({
     autoplay: false,
     interval: 2000,
     duration: 500,
-    homeMenuModule: homeMenuModule
-  },
-  dingyue:function(){
-    wx.requestSubscribeMessage({
-      tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
-      complete: function (rdes) {
-        console.log("订阅信息", rdes)
-      }
-    })
+    homeMenuModule: homeMenuModule,
+    totalData:0,
+    isAdmin:false
   },
   clickHomeMenu: (e) => {
     var $id = e.currentTarget.dataset.id;
     if ($id === 0) {
-      wx.scanCode({
-        complete: (res) => {
-         /** TODO 根据扫码结果判断是否符合要求再进行调整到档案页面 */
-          if (res.result) {
-            wx.navigateTo({
-              url: '/pages/client/portfolio/scan/scan?qrCode=' + res.result,
-            })
+      subscriptionsSetting(()=>{
+        wx.scanCode({
+          complete: (res) => {
+           /** TODO 根据扫码结果判断是否符合要求再进行调整到档案页面 */
+            if (res.result) {
+              wx.navigateTo({
+                url: '/pages/client/portfolio/scan/scan?qrCode=' + res.result,
+              })
+            }
           }
-        }
+        })
       })
     } else {
       wx.navigateTo({
@@ -69,5 +67,42 @@ Page({
         selected: 0
       })
     }
-  }
+  },
+  onLoad(){
+    this.initData()
+  },
+  jumpPdList(){
+    console.log(111111)
+    // wx.navigateTo({
+    //   url: '/pages/maintain/order/list/list?type=pd',
+    // })
+    wx.switchTab({ url:'/pages/maintain/order/list/list?type=pd&id=12111' })
+  },
+  initData(){
+    let isAdmin=wx.getStorageSync('isAdmin')
+    this.setData({
+      isAdmin
+    })
+    if(isAdmin){
+      wx.showLoading({
+        title: '加载中...',
+      })
+      wxRequest('wx-api/work-order/my-maintain-list/pd', {
+        pageSize: 1,
+        pageNo: 1
+      }, 'GET', (res) => {
+        this.setData({
+          totalData: res.data.data.total
+        })
+        wx.hideLoading()
+        wx.stopPullDownRefresh();
+        wx.hideNavigationBarLoading();
+      })
+    }
+  },
+  onPullDownRefresh: function () {
+    //调用刷新时将执行的方法
+    this.initData();
+  },
+  
 })

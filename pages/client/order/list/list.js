@@ -24,7 +24,7 @@ Page({
         value: "pd"
       },
       {
-        title: '接单',
+        title: '进行中',
         value: "jd"
       },
       {

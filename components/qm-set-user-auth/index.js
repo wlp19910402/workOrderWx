@@ -3,44 +3,22 @@ const app = getApp()
 const wxRequest = require('../../utils/request.js')
 Component({
   /**
-   * 组件的属性列表
-   */
-  properties: {
-
-  },
-
-  /**
    * 组件的初始数据
    */
   data: {
     userInfo:{},
-    hideDialog:true
+    toLinkIndex:false
   },
   ready() {
-    if (app.globalData.userInfo) {
+    if (wx.getStorageSync('userInfo')) {
       this.setData({
-        userInfo: app.globalData.userInfo,
+        userInfo: wx.getStorageSync('userInfo'),
         hasUserInfo: true
       })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+    } else{
+      this.setData({
+        userInfo: null,
+        hasUserInfo: false
       })
     }
   },
@@ -49,6 +27,7 @@ Component({
    */
   methods: {
     async getUserInfo(e) {
+      const that=this
       if (e.detail.userInfo) {
         app.globalData.userInfo = e.detail.userInfo
         this.setData({
@@ -59,6 +38,7 @@ Component({
           success: resLogin => {
             // 发送 res.code 到后台换取 openId, sessionKey, unionId
             if (resLogin.code) {
+              wx.setStorageSync('userInfo', e.detail.userInfo)
               let dataParams = {
                 "jsCode": resLogin.code,
                 "wxUser": {
@@ -71,14 +51,12 @@ Component({
                 let resData = res.data
                   wx.setStorageSync('token', resData.data.token)
                   wx.setStorageSync('isAdmin', resData.data.isAdmin)
+                 
               })
             } else {
               console.log('登录失败！' + resLogin.errMsg)
             }
           }
-        })
-        wx.reLaunch({
-          url: '/pages/index/index',
         })
       }
     },
@@ -87,10 +65,10 @@ Component({
       wx.requestSubscribeMessage({
         tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
         complete: function (rdes) {
-          console.log("订阅信息", rdes)
-          that.setData({
-            hideDialog:true
-          })
+          // wx.switchTab({
+          //   url: '/pages/index/index'
+          // })
+         
         }
       })
     },

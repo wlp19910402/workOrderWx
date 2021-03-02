@@ -2,7 +2,12 @@
   "usingComponents": {
     "mp-col": "@miniprogram-component-plus/col",
     "mp-row": "@miniprogram-component-plus/row",
-    "qm-set-user-auth":"/components/qm-set-user-auth/index"
+    "qm-set-user-auth":"/components/qm-set-user-auth/index",
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-badge": "weui-miniprogram/badge/badge"
   },
-  "navigationBarTitleText": "首页"
+  "navigationBarTitleText": "首页",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

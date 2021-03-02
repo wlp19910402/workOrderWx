@@ -65,7 +65,7 @@
 		</mp-cells>
 		<mp-cells >
 			<mp-cell prop="subRemark" title="结单描述">
-				<textarea class="weui-textarea" style="height: 3em" placeholder="请输入描述" bindinput="formInputChange" data-field="subRemark" maxlength="100" />
+				<textarea class="weui-textarea" style="height: 60rpx" placeholder="请输入描述" bindinput="formInputChange" data-field="subRemark" maxlength="100" />
 				<view class="weui-textarea-counter">{{subRemark.length}}/100</view>
 				</mp-cell>
 			</mp-cells>

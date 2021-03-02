@@ -88,9 +88,12 @@ Page({
                 userInfo: {}
               })
               app.globalData.userInfo = {}
-              wx.reLaunch({
-                url: '/pages/login/login',
-              })
+              setTimeout(() => {
+                wx.reLaunch({
+                  url: '/pages/index/index',
+                })
+              }, 200);
+              
             }
           })
         }

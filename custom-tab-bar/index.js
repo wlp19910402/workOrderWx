@@ -1,8 +1,10 @@
+const app = getApp()
+const subscriptionsSetting = require('../utils/subscriptionsSetting.js')
 Component({
   data: {
+    userInfo: null,
     selected: 0,
     color: "#7a7e83",
-    roleId: '',
     selectedColor: "#303135",
     allList: [{
       list1: [{
@@ -46,7 +48,9 @@ Component({
     list: []
   },
   attached() {
-    const roleId = wx.getStorageSync('status')
+    this.setData({
+      userInfo: wx.getStorageSync("userInfo")
+    })
     const isAdmin = wx.getStorageSync('isAdmin')
     if (isAdmin) {
       this.setData({
@@ -62,10 +66,17 @@ Component({
     switchTab(e) {
       const data = e.currentTarget.dataset
       const url = data.path
-      wx.switchTab({ url })
-      this.setData({
-        selected: data.index
+      subscriptionsSetting(()=>{
+        wx.switchTab({ url })
+        this.setData({
+          selected: data.index
+        })
       })
     }
   },
+  ready(){
+    this.setData({
+      userInfo: wx.getStorageSync("userInfo")
+    })
+  }
 })

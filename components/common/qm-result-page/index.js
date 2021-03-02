@@ -32,12 +32,12 @@ Component({
           color: "gray"
         },
         {
-          label: "派单",
+          label: "待接单",
           value: "pd",
           color: "#eab71a"
         },
         {
-          label: "接单",
+          label: "进行中",
           value: "jd",
           color: "#eab71a"
         },

@@ -4,9 +4,7 @@
 		<image class="user-bg" src="/static/img/user-bg1.png"></image>
 		<view class="userBannerContainer display-flex">
 			<image class='logo-img' wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}"></image>
-			<navigator url="/pages/login/login">
 			<image class='logo-img' wx:if="{{!userInfo.avatarUrl}}" src="/static/img/userAvatar.png"></image>
-			</navigator>
 			<view class="logo-title">
 				<text class="user-name">{{userInfo.nickName?userInfo.nickName:"未登录"}}</text>
 			</view>
@@ -14,13 +12,13 @@
 	</view>
 	<view class="center-list" wx:for="{{moduleData}}" wx:for-item="item" wx:for-key="index" wx:key="index">
 		<block wx:for="{{item}}" wx:for-item="ite" wx:for-index="idx" wx:for-key="idx" wx:key="idx">
-		<view class="center-list-item display-flex" bindtap="{{ite.bindTapFunc}}">
-			<block>
-				<text class="{{'iconfont '+  ite.icon}}"></text>
-				<text class="list-text">{{ite.name}}</text>
-				<text class="iconfont default icon-arrow-right"></text>
+			<view class="center-list-item display-flex" bindtap="{{ite.bindTapFunc}}">
+				<block>
+					<text class="{{'iconfont '+  ite.icon}}"></text>
+					<text class="list-text">{{ite.name}}</text>
+					<text class="iconfont default icon-arrow-right"></text>
+				</block>
+			</view>
 		</block>
-		</view>
-			</block>
 	</view>
 </view>

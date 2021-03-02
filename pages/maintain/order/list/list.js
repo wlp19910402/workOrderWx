@@ -38,7 +38,14 @@ Page({
     totalData: 0,
     pageSize: 10
   },
-  onLoad() {
+  onshow(options){
+    console.log(options,"---options")
+  },
+  onLoad(options) {
+    console.log(options,"---options")
+    this.setData({
+      type:options.type
+    })
     this.fetchList({
       pageNo: 1
     })

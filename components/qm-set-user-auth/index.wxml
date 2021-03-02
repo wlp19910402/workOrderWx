@@ -1,11 +1,10 @@
 <!--components/qm-set-user-auth/index.wxml-->
-<view class="qm-dialog-user-box" wx:if="{{hideDialog}}">
+<view class="qm-dialog-user-box"  wx:if="{{!userInfo}}">
 	<view class="qm-container-auto">
 		<view class="userinfo">
 			<open-data class="userinfo-avatar" lang="zh_CN" type="userAvatarUrl"></open-data>
 			<open-data class="userinfo-nickname" lang="zh_CN" type="userNickName"></open-data>
-			<button wx:if="{{!hasUserInfo}}" class="weui-btn" size="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="primary" >获取用户信息授权</button>
-      <button class="weui-btn" style="margin-top:30rpx;" size="default" type="primary" bindtap="setSubscribeMessage">设置订阅信息</button>
+			<button wx:if="{{!hasUserInfo}}" class="weui-btn" size="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="primary" bindtap="setSubscribeMessage" >获取用户信息授权</button>
 		</view>
 	</view>
 </view>

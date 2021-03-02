@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo: {},
+        userInfo: null,
         hasUserInfo: false
     },
     /**
@@ -50,6 +50,7 @@ Page({
                 success: resLogin => {
                   // 发送 res.code 到后台换取 openId, sessionKey, unionId
                   if (resLogin.code) {
+                    wx.setStorageSync('userInfo', e.detail.userInfo)
                     let dataParams = {
                       "jsCode": resLogin.code,
                       "wxUser": {
@@ -63,6 +64,9 @@ Page({
                       if(resData.code===0){
                         wx.setStorageSync('token', resData.data.token)
                         wx.setStorageSync('isAdmin', resData.data.isAdmin)
+                        wx.reLaunch({
+                            url: '/pages/index/index',
+                        })
                       }
                     })
                   } else {
@@ -71,9 +75,6 @@ Page({
                 }
               })
 
-            wx.reLaunch({
-              url: '/pages/index/index',
-            })
         }
     },
     onShow: function () {
