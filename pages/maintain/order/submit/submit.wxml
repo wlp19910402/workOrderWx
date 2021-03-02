@@ -1,0 +1,104 @@
+<view class="page">
+	<mp-dialog bindbuttontap="buttontap" show="{{showDialog}}" title="更换耗材" maskClosable="{{false}}" ext-class="qm-from-dialog-content" buttons="{{buttons}}">
+		<mp-form wx:if="{{editConsumableData}}">
+			<mp-cells>
+				<mp-cell class="qm-weui-cell-disable" title="耗材名称" value="{{editConsumableData.baseInfo.name}}" />
+				<mp-cell class="qm-weui-cell-disable" title="安装周期" value="{{editConsumableData.replacementCycle}}天" />
+				<mp-cell class="qm-weui-cell-disable" title="原到期日期">
+					<qm-mode-date date="{{editConsumableData.expirationTime}}" />
+				</mp-cell>
+				<mp-cell prop="customerName" title="新到期时间">
+					<view class="section">
+						<picker mode="date" value="{{editExpirDate}}" start="{{editConsumableData.replacementTime}}" bindchange="bindDateChange">
+							<view class="picker">
+								{{editExpirDate}}
+							</view>
+						</picker>
+					</view>
+				</mp-cell>
+			</mp-cells>
+		</mp-form>
+	</mp-dialog>
+	<view style="padding:30rpx 0;background:#ffffff;">
+		<qm-detail-field>
+			<qm-detail-title title="工单详情">
+			</qm-detail-title>
+			<qm-detail-item label="编号" text="{{dataList.orderNo}}" />
+			<qm-detail-item label="单位名称" text="{{dataList.company}}" />
+			<qm-detail-item wx:if="{{dataList.status!=='wpd'&&dataList.engineerName}}" label="工程师名称" text="{{dataList.engineerName}}" />
+			<qm-detail-item wx:if="{{dataList.status!=='wpd'&&dataList.engineerName}}" label="支持人员" text="{{dataList.supporterNames}}" />
+			<qm-detail-item wx:if="{{dataList.receivingTime}}" label="接单时间" text="{{dataList.receivingTime}}" />
+			<qm-detail-item label="工单来源" text="{{dataList.sourceType}}" />
+			<qm-detail-item label="工单类型">
+				<qm-order-orderType wx:if="{{dataList.orderType}}" orderType="{{dataList.orderType}}" />
+			</qm-detail-item>
+			<qm-detail-item label="工单状态">
+				<qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" />
+			</qm-detail-item>
+			<qm-detail-item label="是否绑定档案" text="{{dataList.portfolioId !== ''?'已绑定' : '未绑定'}}" />
+			<qm-detail-item label="工单描述" text="{{dataList.workDescription}}" />
+			<qm-detail-item label="创建人员" text="{{dataList.createUserName}}" />
+			<qm-detail-item label="创建时间" text="{{dataList.createTime}}" />
+			<qm-detail-item label="工单图片" text="{{dataList.orderImgUrls.length>0?'':'无图片'}}" />
+			<qm-detail-images imgUrls="{{dataList.orderImgUrls}}" />
+			<block wx:if="{{dataList.status==='wc'}}">
+				<view class="line"></view>
+				<qm-detail-title title="结单信息">
+					<text class="qm-list-extra-btn primary-text" bindtap="showWorkConsumablesList">
+			查看更换耗材</text>
+				</qm-detail-title>
+				<qm-detail-item label="结单人员" text="{{dataList.subUsername}}" />
+				<qm-detail-item label="结单时间" text="{{dataList.subTime}}" />
+				<qm-detail-item label="结单备注" text="{{dataList.subRemark}}" />
+				<qm-detail-item label="结单图片" text="{{dataList.subImgUrls.length>0?'':'无图片'}}" />
+				<qm-detail-images imgUrls="{{dataList.subImgUrls}}" />
+			</block>
+		</qm-detail-field>
+	</view>
+	<view class="tb-space">
+		<mp-cells class="t-space">
+			<mp-cell link bindtap="toggleViwSlidebar" title="更换耗材">
+				<view slot="footer">
+					<view style="display: inline-block;vertical-align:middle; font-size:28rpx">编辑耗材到期日期</view>
+				</view>
+			</mp-cell>
+		</mp-cells>
+		<mp-cells >
+			<mp-cell prop="subRemark" title="结单描述">
+				<textarea class="weui-textarea" style="height: 3em" placeholder="请输入描述" bindinput="formInputChange" data-field="subRemark" maxlength="100" />
+				<view class="weui-textarea-counter">{{subRemark.length}}/100</view>
+				</mp-cell>
+			</mp-cells>
+		<qm-upload-file bind:setUploadImageUrls="setUploadImageUrls" imgUrls="{{[]}}" />
+	</view>
+		<view class="qm-footer-btns">
+			<view class="qm-list-btns-box">
+				<view bindtap="saveSubmit" data-id="{{item.id}}" class="qm-list-btn primary-text">提交结单</view>
+			</view>
+		</view>
+	<!-- 侧边栏内容 -->
+	<view wx:if="{{open}}" bindtap="toggleViwSlidebar" class="qm-page-slidebar-bg"></view>
+	  <view class="qm-page-slidebar" wx:if="{{open}}">
+		<view class="qm-page-title">耗材列表</view>
+		<view wx:for="{{dataList.consumables}}" wx:key="id" wx:for-item="item" class="t-space">
+			<qm-detail-field>
+				<qm-detail-title title="{{'到期日期:'+item.expirationTime}}">
+					<qm-date-isLate date="{{item.expirationTime}}" />
+				</qm-detail-title>
+				<qm-detail-item label="耗材名称" text="{{item.baseInfo.name}}" />
+				<qm-detail-item label="耗材编号" text="{{item.baseInfo.no}}" />
+				<qm-detail-item label="耗材类型" text="{{item.baseInfo.typeName}}" />
+				<qm-detail-item label="耗材型号" text="{{portfolio.baseInfo.modelName}}" />
+				<qm-detail-item label="安装日期" text="{{item.replacementTime}}" />
+				<qm-detail-item label="更换周期" text="{{item.replacementCycle+'天'}}" />
+				<qm-detail-item label="耗材图片" text="{{item.baseInfo.imgUrls.length>0?'':'无图片'}}" />
+				<qm-detail-images imgUrls="{{item.baseInfo.imgUrls}}" />
+				<view class="qm-list-btns-box">
+					<view wx:if="{{!item.isEdit}}" bindtap="editConsumable" data-id="{{item.id}}" class="qm-list-btn">更换耗材</view>
+					<view wx:if="{{item.isEdit}}" bindtap="reOldExpirTime" data-id="{{item.id}}" class="qm-list-btn">取消修改</view>
+				</view>
+			</qm-detail-field>
+		</view>
+	</view>
+
+</view>

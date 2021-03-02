@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/maintain/order/list/list",
+    
     "pages/index/index",
     "pages/client/order/list/list",
     "pages/client/order/info/info",
@@ -11,7 +11,8 @@
     "pages/my/my",
     "pages/login/login", 
     "pages/logs/logs",
-   
+    "pages/maintain/order/list/list",
+    "pages/maintain/order/submit/submit",
     "pages/maintain/order/info/info",
     "pages/common/resultPageSuccess/resultPageSuccess",
     "pages/common/contactTel/contactTel"

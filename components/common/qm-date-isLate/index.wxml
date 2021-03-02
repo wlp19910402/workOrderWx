@@ -1,1 +1,1 @@
-<text wx:if="{{isLate}}" style="color:#ff4d4f">过期</text>
+<text wx:if="{{isLate}}" style="color:#999999">过期</text>

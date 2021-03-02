@@ -19,7 +19,6 @@ const wxRequest=(url, data, method,callback)=>{
             confirmColor: "#46b989",
             confirmText: "去登陆",
             success: (res) => {
-              console.log(res)
               if (res.confirm) {
                 wx.reLaunch({
                   url: '/pages/login/login',

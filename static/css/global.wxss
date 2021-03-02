@@ -1,9 +1,9 @@
 @import "/static/font/iconfont.wxss";
 .primary-bg{
-    background-color: #46b989;
+    background-color: #46b989 !important;
 }
 .primary-text{
-    color: #46b989;
+    color: #46b989 !important;
 }
  .iconfont {
      font-family: "iconfont" !important;
@@ -67,8 +67,42 @@ button[size="default"]{
     padding:20rpx 0;
     margin-bottom: 0;
   }
-
+  .qm-from-dialog-content .weui-dialog__bd{
+    background: #ffffff;
+    text-align: left !important;
+    min-width: 680rpx;
+    padding:20rpx 0;
+    margin-bottom: 0;
+  }
+  .qm-weui-cell-disable .weui-cell{
+    background-color: #f0f0f0;
+  }
   .qm-line{
     height:1rpx;
     background-color:#e0e9ee;
+  }
+  .qm-list-btns-box{
+    clear: both;
+    overflow: hidden;
+    padding:20rpx 20rpx 0;
+    border-top:1rpx solid #ededed
+  }
+  .qm-list-btn{
+    float: right;
+    border:1px solid #ededed;
+    font-size:28rpx;
+    border-radius: 60rpx;
+    padding:0rpx 30rpx;
+    line-height: 48rpx;
+    margin-left: 30rpx;
+    color:#333333;
+  }
+
+  .qm-footer-btns{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding-bottom: 20rpx;
+      background:#ffffff;
   }

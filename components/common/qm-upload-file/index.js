@@ -26,7 +26,6 @@ Component({
       console.log("---------------****上传图片组件提交到父级****------------")
     },
     selectFile(files) {
-      console.log('files', files)
       // 返回false可以阻止某次文件上传
     },
     uploadDelete(file){

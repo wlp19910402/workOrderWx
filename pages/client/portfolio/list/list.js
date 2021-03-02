@@ -19,13 +19,6 @@ Page({
     })
 },
   onLoad() {
-    this.setData({
-      search: this.search.bind(this)
-    })
-    // wxRequest('wx-api/list',{pageNo:1,pageSize:1},'GET',(res)=>{
-    //   console.log(res)
-    //   console.log("------")
-    // })
   },
   search: function (value) {
     return new Promise((resolve, reject) => {

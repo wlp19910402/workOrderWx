@@ -1,6 +1,6 @@
 	<qm-detail-field>
-			<qm-detail-title title="{{'到期日期:'+portfolio.replacementTime}}">
-				<qm-date-isLate date="{{portfolio.replacementTime}}"/>
+			<qm-detail-title title="{{'到期日期:'+portfolio.expirationTime}}">
+				<qm-date-isLate date="{{portfolio.expirationTime}}"/>
 			</qm-detail-title>
 			<qm-detail-item label="耗材名称" text="{{portfolio.baseInfo.name}}" />
 			<qm-detail-item label="耗材编号" text="{{portfolio.baseInfo.no}}" />

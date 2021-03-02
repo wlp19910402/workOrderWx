@@ -47,7 +47,6 @@ Component({
     },
   },
   ready() {
-    console.log("@22222222",this.properties.orderType)
     this.setData({
       currentType: this.matchType(this.properties.orderType)
     })

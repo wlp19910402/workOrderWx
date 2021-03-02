@@ -1,0 +1,21 @@
+{
+  "usingComponents": {
+    "qm-order-info":"/components/order/info/info",
+    "qm-detail-item":"/components/common/qm-detail-item/index",
+    "qm-detail-field":"/components/common/qm-detail-field/index",
+    "qm-detail-title":"/components/common/qm-detail-title/index",
+    "qm-detail-images":"/components/common/qm-detail-images/index",
+    "qm-order-status":"/components/common/qm-order-status/index",
+    "qm-mode-date":"/components/common/qm-mode-date/index",
+    "qm-order-orderType":"/components/common/qm-order-orderType/index",
+    "qm-portfolio-info":"/components/portfolio/qm-portfolio-info/index",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "qm-portfolio-update-consumable-info":"/components/portfolio/qm-portfolio-update-consumable-info/index",
+    "qm-date-isLate":"/components/common/qm-date-isLate/index",
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-form": "weui-miniprogram/form/form",
+    "qm-upload-file":"/components/common/qm-upload-file/index"
+  },
+  "navigationBarTitleText": "结单"
+}

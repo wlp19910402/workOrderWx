@@ -2,27 +2,31 @@
 	<mp-tabs class="qm-tabs-fixed" tabs="{{tabs}}" activeTab="{{activeTab}}" swiperClass="weui-tabs-swiper qm-tabs-swiper" bindtabclick="onTabClick" bindchange="onChange" activeClass="tab-bar-title__selected" swiper-class="qm-tabs-swiper">
 	</mp-tabs>
 	<view class="lr-space">
-	<view class="qm-list-box" wx:for="{{consumableList}}" wx:key="*this">
-		<navigator class="qm-list-link"  url="/pages/maintain/order/info/info?id={{item.id}}" >
-			<image class='qm-list-img' src="{{item.orderImgUrls&&item.orderImgUrls.length>0?item.orderImgUrls[0]:imgNull}}"></image>
-			<view class="qm-list-content">
-				<view class="qm-list-row">
-					<text class="qm-list-title">{{item.company}}</text>
-					<view class="'qm-tag-text">
-						<qm-order-status wx:if="item.status" orderStatus="{{item.status}}" />
+		<view class="qm-list-box" wx:for="{{consumableList}}" wx:key="*this">
+			<navigator class="qm-list-link" url="/pages/maintain/order/info/info?id={{item.id}}">
+				<image class='qm-list-img' src="{{item.orderImgUrls&&item.orderImgUrls.length>0?item.orderImgUrls[0]:imgNull}}"></image>
+				<view class="qm-list-content">
+					<view class="qm-list-row">
+						<text class="qm-list-title">{{item.company}}</text>
+						<view class="'qm-tag-text">
+							<qm-order-status wx:if="item.status" orderStatus="{{item.status}}" />
+						</view>
+					</view>
+					<view class="qm-list-row">
+						<view class="qm-list-des">
+							<qm-order-orderType orderType="{{item.orderType}}" />
+						</view>
+						<text class="qm-list-date">{{item.createTime}}</text>
 					</view>
 				</view>
-				<view class="qm-list-row">
-					<view class="qm-list-des"><qm-order-orderType orderType="{{item.orderType}}"/></view>
-					<text class="qm-list-date">{{item.createTime}}</text>
-				</view>
+				<text class="iconfont default icon-arrow-right"></text>
+			</navigator>
+			<view class="qm-list-btns-box" wx:if="{{item.status==='pd'||item.type==='jd'}}">
+				<navigator url="/pages/maintain/order/submit/submit?id={{item.id}}">
+					<view class="qm-list-btn" wx:if="{{item.type!=='jd'}}">结单</view>
+				</navigator>
+				<view bindtap="jdOrder" data-id="{{item.id}}" class="qm-list-btn" wx:if="{{item.status==='pd'}}">接单</view>
 			</view>
-			<text class="iconfont default icon-arrow-right"></text>
-		</navigator>
-		<view class="qm-list-btns-box" wx:if="{{item.status==='pd'||item.type==='jd'}}">
-			<view bindtap="jdOrder"  data-id="{{item.id}}" class="qm-list-btn" wx:if="{{item.status==='pd'}}">接单</view>
-			<view class="qm-list-btn" wx:if="{{item.type==='jd'}}">结单</view>
-		</view>
 		</view>
 	</view>
 	<view wx:if="{{whetherLast}}" class="qm-list-last-tip">{{consumableList.length===0?"没有数据哦~":"到底了~"}}</view>
