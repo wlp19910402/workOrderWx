@@ -2,7 +2,7 @@
 
 .userBannerBox{
   width:750rpx;
-  height:200rpx;
+  height:240rpx;
   position: relative;
 }
 .user-bg{
@@ -14,7 +14,7 @@
   top:0;
   height:168rpx;
   width:100%;
-  padding: 20rpx 20rpx 0;
+  padding: 80rpx 20rpx 0;
   box-sizing: border-box;
   flex-direction: row;
   align-items: center;

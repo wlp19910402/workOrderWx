@@ -58,7 +58,7 @@
   border-radius:10rpx;
 }
 page{
-  padding-bottom: 120rpx;
+  padding-bottom: 140rpx;
 }
 .qm-ad-bannder-box{
   background-color: #fff;
