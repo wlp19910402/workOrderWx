@@ -13,7 +13,7 @@
 	<qm-null-data wx:if="{{(showWorkConsumables&&dataList.workConsumables.length===0)||(showOrderLog&&logData.length===0)}}"/>
 	<qm-log wx:if="{{showOrderLog&&logData.length>0}}" logData="{{logData}}"/>
 </mp-dialog>
-<view style="padding:30rpx 0">
+<view style="padding-top:30rpx;padding-bottom: {{infoType==='maintain'&&(dataList.status==='pd'||dataList.status==='jd')?'120rpx':'30rpx'}}">
 	<qm-detail-field>
 		<qm-detail-title title="工单详情">
 			<view class="qm-list-extra-btn primary-text" bindtap="showOrderLogs">
@@ -52,4 +52,11 @@
 	</qm-detail-field>
 	<view class="t-space"></view>
 	<qm-portfolio-info portfolio="{{dataList.portfolio}}" consumables="{{dataList.consumables}}" parts="{{dataList.parts}}"/>
+
+	<view class="qm-footer-btns" wx:if="{{infoType==='maintain'&&(dataList.status==='pd'||dataList.status==='jd')}}">
+			<view class="qm-list-btns-box">
+				<view bindtap="saveSubmit" wx:if="{{dataList.status==='jd'}}" data-id="{{dataList.id}}" class="qm-list-btn primary-text">结单</view>
+				<view bindtap="saveSubmit" wx:if="{{dataList.status==='pd'}}" data-id="{{dataList.id}}" class="qm-list-btn primary-text">接单</view>
+			</view>
+		</view>
 </view>

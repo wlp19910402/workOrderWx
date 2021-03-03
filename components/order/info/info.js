@@ -6,6 +6,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    infoType:{
+      type:String,
+      value:"client"
+    },
     // list:Object
     infoId: {
       type: Number,

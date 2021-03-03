@@ -1,3 +1,3 @@
 <!--pages/order/info/info.wxml-->
-<qm-order-info infoId="{{id}}">222</qm-order-info>
+<qm-order-info infoId="{{id}}" infoType="client"></qm-order-info>
 <!-- <view>{{infoId}}号码哦哦哦</view> -->
