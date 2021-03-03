@@ -29,5 +29,6 @@
 			</view>
 		</view>
 	</view>
-	<view wx:if="{{whetherLast}}" class="qm-list-last-tip">{{consumableList.length===0?"没有数据哦~":"到底了~"}}</view>
+	<view wx:if="{{whetherLast&&consumableList.length!==0}}" class="qm-list-last-tip">到底了~</view>
+	<qm-null-data wx:if="{{whetherLast&&consumableList.length===0}}"/>
 </view>

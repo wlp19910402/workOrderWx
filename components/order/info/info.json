@@ -9,6 +9,7 @@
     "qm-order-orderType":"/components/common/qm-order-orderType/index",
     "qm-portfolio-info":"/components/portfolio/qm-portfolio-info/index",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
-    "qm-portfolio-update-consumable-info":"/components/portfolio/qm-portfolio-update-consumable-info/index"
+    "qm-portfolio-update-consumable-info":"/components/portfolio/qm-portfolio-update-consumable-info/index",
+    "qm-null-data":"/components/common/qm-null-data/index"
   }
 }

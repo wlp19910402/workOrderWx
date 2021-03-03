@@ -1,0 +1,15 @@
+/* components/common/qm-null-data/index.wxss */
+@import "/static/css/global.wxss";
+.qm-null-box{
+  width: 100%;
+  text-align: center;
+}
+.qm-null-box .iconfont{
+  font-size:120rpx;
+  opacity: 0.2;
+}
+.qm-null-box .qm-null-text{
+  font-size:30rpx;
+  color:#bbbbbb;
+  padding-bottom: 40rpx;
+}

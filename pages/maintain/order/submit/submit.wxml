@@ -81,6 +81,7 @@
 	<view wx:if="{{open}}" bindtap="toggleViwSlidebar" class="qm-page-slidebar-bg"></view>
 	  <view class="qm-page-slidebar" wx:if="{{open}}">
 		<view class="qm-page-title">耗材列表</view>
+	<qm-null-data wx:if="{{dataList.consumables.length===0}}"/>
 		<view wx:for="{{dataList.consumables}}" wx:key="id" wx:for-item="item" class="t-space">
 			<qm-detail-field>
 				<qm-detail-title title="{{'到期日期:'+item.expirationTime}}">

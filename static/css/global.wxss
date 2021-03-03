@@ -2,6 +2,7 @@
 .primary-bg{
     background-color: #46b989 !important;
 }
+/* text{font-weight: 300;} */
 .primary-text{
     color: #46b989 !important;
 }

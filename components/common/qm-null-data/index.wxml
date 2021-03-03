@@ -1,0 +1,5 @@
+<!--components/common/qm-null-data/index.wxml-->
+<view class="qm-null-box">
+<text class="iconfont icon-kong "></text>
+<view class="qm-null-text">没有数据哦~</view>
+</view>

@@ -2,7 +2,8 @@
   "usingComponents": {
     "mp-tabs": "@miniprogram-component-plus/tabs",
     "qm-order-status":"/components/common/qm-order-status/index",
-    "qm-order-orderType":"/components/common/qm-order-orderType/index"
+    "qm-order-orderType":"/components/common/qm-order-orderType/index",
+    "qm-null-data":"/components/common/qm-null-data/index"
   },
   "navigationBarTitleText": "我的工作",
   "enablePullDownRefresh": true,

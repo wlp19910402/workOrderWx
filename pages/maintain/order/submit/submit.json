@@ -17,7 +17,8 @@
     "mp-form": "weui-miniprogram/form/form",
     "qm-upload-file":"/components/common/qm-upload-file/index",
     "mp-msg": "weui-miniprogram/msg/msg",
-    "mp-badge": "weui-miniprogram/badge/badge"
+    "mp-badge": "weui-miniprogram/badge/badge",
+    "qm-null-data":"/components/common/qm-null-data/index"
   },
   "navigationBarTitleText": "结单"
 }

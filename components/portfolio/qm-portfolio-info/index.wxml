@@ -1,17 +1,12 @@
-<mp-dialog
-	bindbuttontap="buttontap"
-  show="{{showDialog}}"
-	title="{{dialogTitle}}"
-  maskClosable="{{false}}"
-	ext-class="qm-list-dialog-content"
-	buttons="{{buttons}}"
->
-<view style="padding:30rpx 0 0" wx:if="{{showConsumable}}" wx:for="{{consumables}}" wx:key="id">
-		<qm-portfolio-consumable-info portfolio="{{item}}"/>
+<mp-dialog bindbuttontap="buttontap" show="{{showDialog}}" title="{{dialogTitle}}" maskClosable="{{false}}" ext-class="qm-list-dialog-content" buttons="{{buttons}}">
+	<view style="padding:30rpx 0 0" wx:if="{{showConsumable}}" wx:for="{{consumables}}" wx:key="id">
+		<qm-portfolio-consumable-info portfolio="{{item}}" />
 	</view>
+	<qm-null-data wx:if="{{showConsumable&&consumables.length===0}}" />
 	<view style="padding:30rpx 0 0" wx:if="{{showPart}}" wx:for="{{parts}}" wx:key="no">
-		<qm-portfolio-part-info part="{{item}}"/>
+		<qm-portfolio-part-info part="{{item}}" />
 	</view>
+	<qm-null-data wx:if="{{showPart&&parts.length===0}}" />
 </mp-dialog>
 <qm-detail-field>
 	<qm-detail-title title="档案详情">

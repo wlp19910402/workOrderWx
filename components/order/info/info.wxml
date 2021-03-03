@@ -10,9 +10,7 @@
 	<view style="padding:30rpx 0 0"  wx:for="{{dataList.workConsumables}}" wx:key="id">
 		<qm-portfolio-update-consumable-info workConsumables="{{item}}"/>
 	</view>
-	<!--<view style="">
-		流程
-	</view>-->
+	<qm-null-data wx:if="{{dataList.workConsumables.length===0}}"/>
 </mp-dialog>
 <view style="padding:30rpx 0">
 	<qm-detail-field>

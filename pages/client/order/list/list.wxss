@@ -90,7 +90,7 @@ page{
 
 .qm-list-last-tip{
   width:100%;
-  color:#999;
+  color:#bbbbbb;
   font-size:32rpx;
   text-align: center;
   padding:16rpx 0;
