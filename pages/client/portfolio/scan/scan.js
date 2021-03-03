@@ -15,9 +15,9 @@ Page({
    */
   onLoad: function (options) {
     /**TODO  qrcode是测试数据，最终使用 options.qrCode */
-    console.log(options.qrCode)
-    const qrcode="codeEDANG^843QNG"
-    wxRequest(API.PORTFOLIO_INFO_BY_QRCODE,{qrCodde:qrcode},'GET',(res)=>{
+    // console.log(options.qrCode)
+    // const qrcode="codeEDANG^843QNG"
+    wxRequest(API.PORTFOLIO_INFO_BY_QRCODE,{qrCodde:options.qrCode},'GET',(res)=>{
       console.log(res.data.data)
       this.setData({
         portfolioInfo:res.data.data

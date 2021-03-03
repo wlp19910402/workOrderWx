@@ -3,7 +3,7 @@
 	<qm-detail-field>
 		<qm-detail-title title="{{'编号:'+portfolioInfo.no}}">
 				<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
-				查看耗材</navigator>
+				查看耗材 </navigator>
 		</qm-detail-title>
 		<qm-detail-item label="单位名称" text="{{portfolioInfo.companyName}}" />
 		<qm-detail-item label="单位编号" text="{{portfolioInfo.companyNo}}" />
@@ -23,6 +23,11 @@
   <view class="all-padding">
     <navigator class="primary-text" url="{{'/pages/client/order/create/create?id='+portfolioInfo.id+'&company='+portfolioInfo.companyName}}">
 			<button class="weui-btn" type="primary" size="default" bindtap="">报修</button>
+			<navigator class="t-space" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
+				<button class="weui-btn" style="position:relative;border-color:#bbbbbb;" type="default" plain="true" size="default">查看耗材
+					<view style="position:absolute;right:6rpx;top:-12rpx;">
+				<mp-badge /></view>
+				</button></navigator>
     </navigator>
 	</view>
 </view>
