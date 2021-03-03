@@ -27,7 +27,8 @@ Page({
     pdCount:0,
     isAdmin:false
   },
-  clickHomeMenu: (e) => {
+  clickHomeMenu(e) {
+    const that = this
     var $id = e.currentTarget.dataset.id;
     if ($id === 0) {
       subscriptionsSetting(()=>{
@@ -44,7 +45,7 @@ Page({
       })
     } else {
       wx.navigateTo({
-        url: homeMenuModule.find(item => item.id === $id).link,
+        url: that.data.homeMenuModule.find(item => item.id === $id).link,
       })
     }
   },

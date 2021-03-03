@@ -1,5 +1,5 @@
 const wxRequest = require('../../../../utils/request.js');
-const API=require('../../../../utils/API.js')
+const API = require('../../../../utils/API.js')
 Page({
     /**
      * 页面的初始数据
@@ -7,7 +7,7 @@ Page({
     data: {
         formData: {},
         imgUrls: [],
-        isCreateOrder:true,
+        isCreateOrder: true,
         rules: [{
                 name: 'customerName',
                 rules: [{
@@ -59,13 +59,13 @@ Page({
                             API.ORDER_CREATE, {
                                 ...this.data.formData,
                                 orderType: "wx",
-                                imgUrls: this.data.imgUrls.filter(item=>item!==false)
+                                imgUrls: this.data.imgUrls.filter(item => item !== false)
                             },
                             'POST',
                             (response) => {
                                 wx.hideLoading()
                                 that.setData({
-                                    isCreateOrder:false
+                                    isCreateOrder: false
                                 })
                             }
                         )
