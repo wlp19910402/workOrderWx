@@ -2,7 +2,7 @@
 	<mp-tabs class="qm-tabs-fixed" tabs="{{tabs}}" activeTab="{{activeTab}}" swiperClass="weui-tabs-swiper qm-tabs-swiper" bindtabclick="onTabClick" bindchange="onChange" activeClass="tab-bar-title__selected" swiper-class="qm-tabs-swiper">
 	</mp-tabs>
 	<view class="lr-space">
-		<view class="qm-list-box" wx:for="{{consumableList}}" wx:key="*this">
+		<view class="qm-list-box" wx:for="{{consumableList}}" wx:for-index="index" wx:key="index">
 			<navigator class="qm-list-link" url="/pages/maintain/order/info/info?id={{item.id}}">
 				<image class='qm-list-img' src="{{item.orderImgUrls&&item.orderImgUrls.length>0?item.orderImgUrls[0]:imgNull}}"></image>
 				<view class="qm-list-content">

@@ -1,6 +1,6 @@
 <view class="list-img-container">
-	<view class="list-img-box" wx:for="{{imgUrls}}" >
+	<view class="list-img-box" wx:for-index="index" wx:key="index" wx:for="{{imgUrls}}" >
 	<image bindtap="previewImg"  class="list-img" mode="scaleToFill"
-	  src="{{item}}?x-oss-process=image/resize,h_100,w_100,m_lfit" wx:key="*this" />
+	  src="{{item}}?x-oss-process=image/resize,h_100,w_100,m_lfit" wx:for-index="index" wx:key="index" />
 	 </view>
 </view>

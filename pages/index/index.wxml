@@ -2,7 +2,7 @@
 	<view class="page-body">
 		<view class="page-section page-section-spacing swiper">
 			<swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#ffffff" indicator-color="rgba(255,255,255,0.4)" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
-				<block wx:for="{{background}}" wx:key="*this">
+				<block wx:for="{{background}}" wx:for-index="index" wx:key="index">
 					<swiper-item>
 						<image class="qm-swiper-img" src="{{item}}"></image>
 					</swiper-item>
@@ -11,7 +11,7 @@
 		</view>
 	</view>
 	<mp-row>
-		<mp-col class="qm-col" wx:for="{{homeMenuModule}}" wx:key="*this" offset="{{0}}" span="{{12}}">
+		<mp-col class="qm-col" wx:for="{{homeMenuModule}}" wx:for-index="index" wx:key="index" offset="{{0}}" span="{{12}}">
 			<view bindtap="clickHomeMenu" data-id="{{item.id}}" class="qm-col-content">
 				<text class="{{'qm-home-menu-img iconfont '+item.icon}}"></text>
 				<text class="qm-home-menu-text">{{item.name}}</text>
@@ -30,7 +30,7 @@
 		</mp-cells>
 	</view>
 	<view class="t-space all-padding qm-ad-bannder-box">
-		<view wx:for="{{adBannder}}" wx:key="*this" class="{{index===0?'qm-ad-bannder':'t-space qm-ad-bannder'}}">
+		<view wx:for="{{adBannder}}" wx:for-index="index" wx:key="index" class="{{index===0?'qm-ad-bannder':'t-space qm-ad-bannder'}}">
 			<image class="qm-ad-bannder-img" mode="scaleToFill" src="{{item}}" />
 		</view>
 	</view>
