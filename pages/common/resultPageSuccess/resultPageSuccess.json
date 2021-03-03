@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "qm-result-page":"/components/common/qm-result-page/index"
-  },
-  "navigationBarTitleText": "操作结果"
-}

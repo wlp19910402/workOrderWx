@@ -1,5 +1,5 @@
 <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
-<view class="page">
+<view wx:if="{{isCreateOrder}}" class="page">
 	<view class="page__bd">
 		<mp-form id="form"  rules="{{rules}}" models="{{formData}}">
 			<mp-cells >
@@ -21,4 +21,9 @@
 			<button class="weui-btn" type="primary" size="default" bindtap="submitForm">提交</button>
 		</view>
 	</view>
+</view>
+<view wx:if="{{!isCreateOrder}}">
+	<mp-msg type="success" title="结单成功">
+    <!-- <view slot="desc">工单详细信息，请点击 <navigator url="/pages/client/order/info/info?id={{id}}" class="weui-msg__link">工单详情</navigator></view> -->
+  </mp-msg>
 </view>

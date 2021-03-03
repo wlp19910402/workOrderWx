@@ -7,6 +7,7 @@ Page({
     data: {
         formData: {},
         imgUrls: [],
+        isCreateOrder:true,
         rules: [{
                 name: 'customerName',
                 rules: [{
@@ -38,6 +39,7 @@ Page({
         })
     },
     submitForm() {
+        const that = this;
         this.selectComponent('#form').validate((valid, errors) => {
             wx.getSetting({
                 success: res => {
@@ -62,8 +64,8 @@ Page({
                             'POST',
                             (response) => {
                                 wx.hideLoading()
-                                wx.reLaunch({
-                                    url: '/pages/common/resultPageSuccess/resultPageSuccess',
+                                that.setData({
+                                    isCreateOrder:false
                                 })
                             }
                         )

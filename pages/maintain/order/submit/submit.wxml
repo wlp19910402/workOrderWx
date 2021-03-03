@@ -58,13 +58,13 @@
 	<view class="tb-space">
 		<mp-cells class="t-space">
 			<mp-cell link bindtap="toggleViwSlidebar" title="更换耗材">
-			<mp-badge wx:if="{{saveConsumableDatas.length>0}}" content="{{saveConsumableDatas.length}}" style="margin-left: 5px;" />
+				<mp-badge wx:if="{{saveConsumableDatas.length>0}}" content="{{saveConsumableDatas.length}}" style="margin-left: 5px;" />
 				<view slot="footer">
 					<view style="display: inline-block;vertical-align:middle; font-size:28rpx">编辑耗材到期日期</view>
 				</view>
 			</mp-cell>
 		</mp-cells>
-		<mp-cells >
+		<mp-cells>
 			<mp-cell prop="subRemark" title="结单描述">
 				<textarea class="weui-textarea" style="height: 60rpx;padding:0 30rpx;text-align:right; box-sizing: border-box;" placeholder="请输入描述" bindinput="formInputChange" data-field="subRemark" maxlength="100" />
 				<view class="weui-textarea-counter">{{subRemark.length}}/100</view>
@@ -105,7 +105,7 @@
 	</view>
 </view>
 <view wx:if="{{!isPdOrder}}">
-<mp-msg type="success" title="结单成功">
-        <view slot="desc">工单详细信息，请点击 <navigator url="/pages/maintain/order/info/info?id={{id}}" class="weui-msg__link">工单详情</navigator></view>
-    </mp-msg>
+	<mp-msg type="success" title="结单成功">
+    <view slot="desc">工单详细信息，请点击 <navigator url="/pages/maintain/order/info/info?id={{id}}" class="weui-msg__link">工单详情</navigator></view>
+  </mp-msg>
 </view>
