@@ -1,4 +1,3 @@
-<!--components/order/info/info.wxml-->
 <mp-dialog
 	bindbuttontap="buttontap"
   show="{{showDialog}}"

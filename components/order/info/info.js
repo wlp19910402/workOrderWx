@@ -1,5 +1,3 @@
-// components/order/info/info.js
-
 const wxRequest = require('../../../utils/request.js')
 Component({
   /**
