@@ -18,11 +18,11 @@
 			</view>
 		</mp-col>
 	</mp-row>
-	<view class="t-space" wx:if="{{totalData>0&&isAdmin}}" bindtap="jumpPdList">
+	<view class="t-space" wx:if="{{pdCount>0&&isAdmin}}" bindtap="jumpPdList">
 		<mp-cells>
 			<mp-cell link>
 				<text style="display: inline-block; vertical-align: middle;font-size:32rpx;">待接单工单</text>
-				<mp-badge content="{{totalData}}" style="margin-left: 5px;" />
+				<mp-badge content="{{pdCount}}" style="margin-left: 5px;" />
 				<view slot="footer" style="vertical-align:middle; font-size: 28rpx;">
 					查看工单列表
 				</view>

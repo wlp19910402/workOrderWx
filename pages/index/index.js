@@ -25,7 +25,7 @@ Page({
     interval: 2000,
     duration: 500,
     homeMenuModule: homeMenuModule,
-    totalData:0,
+    pdCount:0,
     isAdmin:false
   },
   clickHomeMenu: (e) => {
@@ -72,12 +72,10 @@ Page({
       wx.showLoading({
         title: '加载中...',
       })
-      wxRequest(API.ORDER_MAINTAIN_LIST+'/pd', {
-        pageSize: 1,
-        pageNo: 1
-      }, 'GET', (res) => {
+      wxRequest(API.ORDER_COUNT,null,'GET',(res)=>{
+        console.log(res.data.data)
         this.setData({
-          totalData: res.data.data.total
+          pdCount: res.data.data.pdCount
         })
         wx.hideLoading()
         wx.stopPullDownRefresh();

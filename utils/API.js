@@ -10,5 +10,6 @@ module.exports = {
   PORTFOLIO_INFO_BY_QRCODE: "wx-api/portfolio/info-qrcode", //耗材根据二维码查询档案详情
   ORDER_MAINTAIN_LIST: "wx-api/work-order/my-maintain-list", //我的工作列表
   ORDER_MAINTAIN_JD: "wx-api/work-order/jd",//提交接单
-  ORDER_MAINTAIN_SUBMIT:"wx-api/work-order/submit"//提交结单
+  ORDER_MAINTAIN_SUBMIT:"wx-api/work-order/submit",//提交结单
+  ORDER_COUNT:"wx-api/work-order/order-count"//订单数量
 }
