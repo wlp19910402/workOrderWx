@@ -1,4 +1,5 @@
 const wxRequest = require('../../../../utils/request.js')
+const API = require('../../../../utils/API.js')
 Page({
   data: {
     id: null,
@@ -31,7 +32,7 @@ Page({
     wx.showLoading({
       title: '加载中...'
     })
-    wxRequest('wx-api/work-order/info/' + options.id, null, 'GET', (res) => {
+    wxRequest(API.ORDER_INFO+'/' + options.id, null, 'GET', (res) => {
       this.setData({
         dataList: res.data.data,
         oldConsumableDatas: res.data.data.consumables
@@ -186,7 +187,7 @@ Page({
     wx.showLoading({
       title: '正在提交',
     })
-    wxRequest('wx-api/work-order/submit', params, 'POST', (res) => {
+    wxRequest(API.ORDER_MAINTAIN_SUBMIT, params, 'POST', (res) => {
       wx.hideLoading()
       this.setData({
         dataList:{...this.data.dataList,status:'wc'}

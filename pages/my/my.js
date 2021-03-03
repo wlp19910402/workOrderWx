@@ -1,6 +1,7 @@
 // pages/my/my.js
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
+const API = require("../../utils/API.js")
 Page({
   /**
    * 页面的初始数据
@@ -80,7 +81,7 @@ Page({
       confirmText: "确认退出",
       success: (res) => {
         if(res.confirm){
-          wxRequest('wx-api/logout', null, "POST", (logoutRes) => {
+          wxRequest(API.USER_LOGOUT, null, "POST", (logoutRes) => {
             let resData = logoutRes.data
             if (resData.code === 0) {
               wx.clearStorage()

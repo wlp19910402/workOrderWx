@@ -1,4 +1,5 @@
-const wxRequest = require('../../../../utils/request.js')
+const wxRequest = require('../../../../utils/request.js');
+const API=require('../../../../utils/API.js')
 Page({
     /**
      * 页面的初始数据
@@ -53,7 +54,7 @@ Page({
                             title: '正在提交',
                         })
                         wxRequest(
-                            'wx-api/work-order/weixin-add', {
+                            API.ORDER_CREATE, {
                                 ...this.data.formData,
                                 orderType: "wx",
                                 imgUrls: this.data.imgUrls.filter(item=>item!==false)

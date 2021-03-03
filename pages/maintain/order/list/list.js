@@ -1,4 +1,5 @@
 const wxRequest = require('../../../../utils/request.js')
+const API = require("../../../../utils/API.js")
 Page({
   onShareAppMessage() {
     return {
@@ -58,7 +59,7 @@ Page({
         whetherLast: false
       })
     }
-    wxRequest('wx-api/work-order/my-maintain-list/'+that.data.tabs[that.data.activeTab].value, {
+    wxRequest(API.ORDER_MAINTAIN_LIST+'/'+that.data.tabs[that.data.activeTab].value, {
       pageSize: that.data.pageSize,
       pageNo: that.data.currentPage,
       ...params
@@ -111,7 +112,7 @@ Page({
     wx.showLoading({
       title: '接单中...',
     })
-    wxRequest('wx-api/work-order/jd/'+e.currentTarget.dataset.id,null,'POST',(res)=>{
+    wxRequest(API.ORDER_MAINTAIN_JD+'/'+e.currentTarget.dataset.id,null,'POST',(res)=>{
       wx.hideLoading()
       wx.showToast({
         title: '接单成功',

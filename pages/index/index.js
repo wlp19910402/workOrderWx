@@ -13,6 +13,7 @@ const homeMenuModule = [{
 ]
 const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 const wxRequest = require('../../utils/request.js')
+const API=require('../../utils/API.js')
 Page({
   data: {
     background: ['/static/img/home/banner2.jpg', '/static/img/home/banner1.jpg', '/static/img/home/banner3.jpg'],
@@ -60,10 +61,6 @@ Page({
     this.initData()
   },
   jumpPdList(){
-    console.log(111111)
-    // wx.navigateTo({
-    //   url: '/pages/maintain/order/list/list?type=pd',
-    // })
     wx.switchTab({ url:'/pages/maintain/order/list/list?type=pd&id=12111' })
   },
   initData(){
@@ -75,7 +72,7 @@ Page({
       wx.showLoading({
         title: '加载中...',
       })
-      wxRequest('wx-api/work-order/my-maintain-list/pd', {
+      wxRequest(API.ORDER_MAINTAIN_LIST+'/pd', {
         pageSize: 1,
         pageNo: 1
       }, 'GET', (res) => {

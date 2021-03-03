@@ -1,4 +1,5 @@
 const wxRequest = require('../../../utils/request.js')
+const API = require('../../../utils/API.js')
 Component({
   /**
    * 组件的属性列表
@@ -44,7 +45,7 @@ Component({
         const qmUploadImg = (idx) => {
           let filesName = files.tempFilePaths[idx].split('/')[files.tempFilePaths[idx].split('/').length - 1]
           wxRequest(
-            'wx-api/oss/upload-sign', {
+            API.UPLOAD_OSS_SIGN, {
               "fileMd5": "",
               "originalName": filesName,
               "share": true,

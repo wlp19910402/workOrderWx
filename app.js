@@ -1,5 +1,6 @@
 // app.js
 const wxRequest = require('./utils/request.js')
+const API = require('./utils/API.js')
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -34,7 +35,7 @@ App({
                       }
                     }
                     //发起网络请求
-                    wxRequest('wx-api/wx-login', dataParams, "POST", (loginRes) => {
+                    wxRequest(API.USER_LOGIN, dataParams, "POST", (loginRes) => {
                       let resData = loginRes.data
                       wx.setStorageSync('token', resData.data.token)
                       wx.setStorageSync('isAdmin', resData.data.isAdmin)

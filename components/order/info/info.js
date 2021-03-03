@@ -1,4 +1,5 @@
 const wxRequest = require('../../../utils/request.js')
+const API = require('../../../utils/API.js')
 Component({
   /**
    * 组件的属性列表
@@ -64,11 +65,11 @@ Component({
     wx.showLoading({
       title: '加载中...',
   })
-    wxRequest('wx-api/work-order/info/' + this.properties.infoId, null, 'GET', (res) => {
+    wxRequest(API.ORDER_INFO+'/' + this.properties.infoId, null, 'GET', (res) => {
       this.setData({
         dataList: res.data.data
       })
-      wxRequest('wx-api/work-order/logs/'+ this.properties.infoId,null,'GET',(res)=>{
+      wxRequest(API.ORDER_LOGS+'/'+ this.properties.infoId,null,'GET',(res)=>{
         console.log(res.data.data)
         this.setData({
           logData:res.data.data

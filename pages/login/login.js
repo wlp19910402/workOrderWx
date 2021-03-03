@@ -1,5 +1,6 @@
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
+const API = require('../../utils/API.js')
 Page({
     /**
      * 页面的初始数据
@@ -59,7 +60,7 @@ Page({
                       }
                     }
                     //发起网络请求
-                    wxRequest('wx-api/wx-login',dataParams,"POST",(res)=>{
+                    wxRequest(API.USER_LOGIN,dataParams,"POST",(res)=>{
                       let resData = res.data
                       if(resData.code===0){
                         wx.setStorageSync('token', resData.data.token)

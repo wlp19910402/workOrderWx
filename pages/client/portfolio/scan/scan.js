@@ -1,5 +1,6 @@
 // pages/client/portfolio/scan/scan.js
 const wxRequest = require('../../../../utils/request.js')
+const API = require('../../../../utils/API.js')
 Page({
 
   /**
@@ -16,7 +17,7 @@ Page({
     /**TODO  qrcode是测试数据，最终使用 options.qrCode */
     console.log(options.qrCode)
     const qrcode="codeEDANG^843QNG"
-    wxRequest(`wx-api/portfolio/info-qrcode`,{qrCodde:qrcode},'GET',(res)=>{
+    wxRequest(API.PORTFOLIO_INFO_BY_QRCODE,{qrCodde:qrcode},'GET',(res)=>{
       console.log(res.data.data)
       this.setData({
         portfolioInfo:res.data.data

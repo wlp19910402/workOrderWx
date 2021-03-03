@@ -1,4 +1,5 @@
 const wxRequest = require('../../../../utils/request.js')
+const API = require('../../../../utils/API.js')
 Page({
   onShareAppMessage() {
     return {
@@ -59,7 +60,7 @@ Page({
         whetherLast: false
       })
     }
-    wxRequest('wx-api/work-order/my-list', {
+    wxRequest(API.ORDER_MY_LIST, {
       pageSize: that.data.pageSize,
       pageNo: that.data.currentPage,
       status: that.data.tabs[that.data.activeTab].value,

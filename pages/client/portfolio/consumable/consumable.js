@@ -1,5 +1,6 @@
 
 const wxRequest = require('../../../../utils/request.js')
+const API =require("../../../../utils/API.js")
 Page({
   data: {
     inputShowed: false,
@@ -12,7 +13,7 @@ Page({
     return new Date(data)
   },
   onLoad(options) {
-    wxRequest('wx-api/portfolio/consumable-list/'+options.id,null,"GET",(res)=>{
+    wxRequest(API.PORTFOLIO_CONSUMABLE_LIST+'/'+options.id,null,"GET",(res)=>{
       console.log(res.data.data)
       this.setData({
         consumableList:res.data.data

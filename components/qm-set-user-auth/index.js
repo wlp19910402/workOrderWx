@@ -1,6 +1,7 @@
 // components/qm-set-user-auth/index.js
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
+const API = require('../../utils/API.js')
 Component({
   /**
    * 组件的初始数据
@@ -47,7 +48,7 @@ Component({
                 }
               }
               //发起网络请求
-              wxRequest('wx-api/wx-login', dataParams, "POST", (res) => {
+              wxRequest(API.USER_LOGIN, dataParams, "POST", (res) => {
                 let resData = res.data
                   wx.setStorageSync('token', resData.data.token)
                   wx.setStorageSync('isAdmin', resData.data.isAdmin)
