@@ -43,6 +43,9 @@ Page({
     this.setData({
       type:options.type
     })
+    wx.showLoading({
+      title: '加载中...',
+    })
     this.fetchList({
       pageNo: 1
     })
