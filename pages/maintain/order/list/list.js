@@ -38,11 +38,7 @@ Page({
     totalData: 0,
     pageSize: 10
   },
-  onshow(options){
-    console.log(options,"---options")
-  },
   onLoad(options) {
-    console.log(options,"---options")
     this.setData({
       type:options.type
     })
