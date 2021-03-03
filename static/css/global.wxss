@@ -97,7 +97,7 @@ button[size="default"]{
     padding:0rpx 30rpx;
     line-height: 60rpx;
     margin-left: 30rpx;
-    color:#333333;
+    color:#222222;
   }
 
   .qm-footer-btns{

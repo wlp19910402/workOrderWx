@@ -57,7 +57,7 @@
 }
 .qm-list-title{
   font-size:32rpx;
-  color:#333333;
+  color:#222222;
 }
 
 .qm-list-row{

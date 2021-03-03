@@ -4,24 +4,12 @@ const homeMenuModule = [{
     icon: "icon-saoma qm-menu-color1",
     link: "/pages/client/portfolio/scan/scan",
   },
-  // {
-  //   id: 1,
-  //   name: "待接单",
-  //   icon: "icon-comment ",
-  //   link: "/pages/client/portfolio/scan/scan"
-  // },
   {
     id: 2,
     name: "联系客服",
     icon: "icon-telephone qm-menu-color2",
     link: "/pages/common/contactTel/contactTel",
   }
-  // {
-  //   id: 3,
-  //   name: "日志",
-  //   icon: "icon-comment",
-  //   link: "/pages/logs/logs"
-  // }
 ]
 const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 const wxRequest = require('../../utils/request.js')
@@ -106,3 +94,5 @@ Page({
   },
   
 })
+
+

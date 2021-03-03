@@ -26,7 +26,9 @@ Component({
   ],
   showDialog:false,
   dialogTitle:"",
-  showWorkConsumables:false
+  showWorkConsumables:false,
+  showOrderLog:false,
+  logData:[]
   },
   /**
    * 组件的方法列表
@@ -36,17 +38,24 @@ Component({
       this.setData({
         showDialog:true,
         dialogTitle:"更换耗材列表",
-        showWorkConsumables:true
+        showWorkConsumables:true,
+        showOrderLog:false
     })
     },
     buttontap(e) {
       this.setData({
         showDialog:false,
-        showWorkConsumables:false
+        showWorkConsumables:false,
+        showOrderLog:false
        })
     },
     showOrderLogs(){
-      
+      this.setData({
+        showDialog:true,
+        dialogTitle:"工单日志",
+        showWorkConsumables:false,
+        showOrderLog:true
+       })
     }
   },
   ready() {
@@ -57,7 +66,13 @@ Component({
       this.setData({
         dataList: res.data.data
       })
-      wx.hideLoading()
+      wxRequest('wx-api/work-order/logs/'+ this.properties.infoId,null,'GET',(res)=>{
+        console.log(res.data.data)
+        this.setData({
+          logData:res.data.data
+        })
+        wx.hideLoading()
+      })
     })
   }
 })

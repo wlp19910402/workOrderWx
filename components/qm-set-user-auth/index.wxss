@@ -41,5 +41,5 @@
   display: block;
   line-height: 100rpx;
   margin-bottom: 30rpx;
-  color:#333333;
+  color:#222222;
 }

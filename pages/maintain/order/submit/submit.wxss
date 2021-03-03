@@ -36,6 +36,6 @@ page {
   background: #f1f5f7;
   text-align: center;
   line-height: 64rpx;
-  color:#333333;
+  color:#222222;
   font-size:32rpx
 }

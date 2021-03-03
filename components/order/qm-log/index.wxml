@@ -1,0 +1,13 @@
+	<view class="qm-log-list-box">
+		<view class="qm-log-list" wx:for="{{logData}}" wx:for-index="index" wx:key="index">
+			<view class="qm-log-line">
+				<view class="qm-log-icon" style="border-color:{{item.operationType==='wpd'?'#eab71a':item.operationType==='wc'?'#46b989':item.operationType==='cancel'?'#dddddd':'#1890ff'}}"></view>
+			</view>
+			<view class="qm-log-content">
+				<view>操作：{{item.operationType==="wc"?"结单":item.operationType==="pd"?"派单":item.operationType==="jd"?"接单":item.operationType==="cancel"?"已撤单":item.operationType==="wpd"?"创建工单":""}}</view>
+				<view>日志：{{item.operationLog}}</view>
+				<view>操作人：{{item.createUsername}}</view>
+				<view>时间：{{item.createTime}}</view>
+			</view>
+		</view>
+	</view>

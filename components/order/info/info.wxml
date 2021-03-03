@@ -7,17 +7,15 @@
 	ext-class="qm-list-dialog-content"
 	buttons="{{buttons}}"
 >
-	<view style="padding:30rpx 0 0"  wx:for="{{dataList.workConsumables}}" wx:key="id">
+	<view style="padding:30rpx 0 0" wx:if="{{showWorkConsumables&&dataList.workConsumables.length>0}}"  wx:for="{{dataList.workConsumables}}" wx:key="id">
 		<qm-portfolio-update-consumable-info workConsumables="{{item}}"/>
 	</view>
-	<qm-null-data wx:if="{{dataList.workConsumables.length===0}}"/>
+	<qm-null-data wx:if="{{(showWorkConsumables&&dataList.workConsumables.length===0)||(showOrderLog&&logData.length===0)}}"/>
+	<qm-log wx:if="{{showOrderLog&&logData.length>0}}" logData="{{logData}}"/>
 </mp-dialog>
 <view style="padding:30rpx 0">
 	<qm-detail-field>
 		<qm-detail-title title="工单详情">
-			<!-- <navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
-				查看档案</navigator> -->
-			<!-- <qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" /> -->
 			<view class="qm-list-extra-btn primary-text" bindtap="showOrderLogs">
 			查看日志</view>
 		</qm-detail-title>

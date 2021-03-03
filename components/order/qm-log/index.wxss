@@ -1,0 +1,38 @@
+.qm-log-list-box{
+  padding:30rpx;
+  padding:20rpx 40rpx 20rpx;
+  background: #fff;
+}
+.qm-log-list{
+  color:#222222;
+  font-size:30rpx;
+  display: flex;
+  background: #fff;
+}
+.qm-log-line{
+  width:6rpx;
+  background: #eeeeee;
+  margin:0 30rpx;
+  position: relative;
+  border-top:30rpx solid #ffffff;
+  border-bottom: 20rpx solid #ffffff;
+  box-sizing: border-box;
+}
+.qm-log-icon{
+  width:28rpx;
+  height:28rpx;
+  border-radius: 50%;
+  border:6rpx solid red;
+  background: #fff;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top:-20rpx;
+  transform: translate(-50%,0);
+}
+.qm-log-content {
+  padding-bottom: 40rpx;
+}
+.qm-log-content view{
+  padding-bottom: 20rpx;
+}

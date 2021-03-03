@@ -12,7 +12,7 @@
   margin-bottom: 16rpx;
 }
 .qm-detail-title{
-  color:#333333;
+  color:#222222;
 }
 .qm-detail-extra{
   color:#858b9c;

@@ -10,6 +10,7 @@
     "qm-portfolio-info":"/components/portfolio/qm-portfolio-info/index",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
     "qm-portfolio-update-consumable-info":"/components/portfolio/qm-portfolio-update-consumable-info/index",
-    "qm-null-data":"/components/common/qm-null-data/index"
+    "qm-null-data":"/components/common/qm-null-data/index",
+    "qm-log":"/components/order/qm-log/index"
   }
 }
