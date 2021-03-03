@@ -1,16 +1,3 @@
-const homeMenuModule = [{
-    id: 0,
-    name: "扫码",
-    icon: "icon-saoma qm-menu-color1",
-    link: "/pages/client/portfolio/scan/scan",
-  },
-  {
-    id: 2,
-    name: "联系客服",
-    icon: "icon-telephone qm-menu-color2",
-    link: "/pages/common/contactTel/contactTel",
-  }
-]
 const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 const wxRequest = require('../../utils/request.js')
 const API=require('../../utils/API.js')
@@ -24,7 +11,19 @@ Page({
     autoplay: false,
     interval: 2000,
     duration: 500,
-    homeMenuModule: homeMenuModule,
+    homeMenuModule:[{
+      id: 0,
+      name: "扫码",
+      icon: "icon-saoma qm-menu-color1",
+      link: "/pages/client/portfolio/scan/scan",
+    },
+    {
+      id: 2,
+      name: "联系客服",
+      icon: "icon-telephone qm-menu-color2",
+      link: "/pages/common/contactTel/contactTel",
+    }
+  ],
     pdCount:0,
     isAdmin:false
   },

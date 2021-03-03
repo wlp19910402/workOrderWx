@@ -6,6 +6,9 @@
 .primary-text{
     color: #46b989 !important;
 }
+.white-text{
+    color: #ffffff !important;
+}
  .iconfont {
      font-family: "iconfont" !important;
      font-style: normal;
@@ -93,9 +96,9 @@ button[size="default"]{
     float: right;
     border:1px solid #ededed;
     font-size:30rpx;
-    border-radius: 60rpx;
+    border-radius: 30rpx;
     padding:0rpx 30rpx;
-    line-height: 60rpx;
+    line-height: 56rpx;
     margin-left: 30rpx;
     color:#222222;
   }

@@ -74,7 +74,7 @@
 	</view>
 		<view class="qm-footer-btns">
 			<view class="qm-list-btns-box">
-				<view bindtap="saveSubmit" data-id="{{item.id}}" class="qm-list-btn primary-text">提交结单</view>
+				<view bindtap="saveSubmit" data-id="{{item.id}}" class="qm-list-btn primary-bg white-text">提交结单</view>
 			</view>
 		</view>
 	<!-- 侧边栏内容 -->
