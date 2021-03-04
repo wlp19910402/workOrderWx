@@ -6,9 +6,9 @@
 			<qm-detail-item label="耗材编号" text="{{workConsumables.baseInfo.no}}" />
 			<qm-detail-item label="耗材类型" text="{{workConsumables.baseInfo.typeName}}" />
 			<qm-detail-item label="耗材型号" text="{{workConsumables.baseInfo.modelName}}" />
-			<qm-detail-item label="安装日期" text="{{workConsumables.replacementTime}}" />
-			<qm-detail-item label="原到期日期" text="{{workConsumables.oldExpirationTime}}" />
-			<qm-detail-item label="到期日期" text="{{workConsumables.expirationTime}}" />
+			<qm-detail-item label="安装日期" typeText="date" text="{{workConsumables.createTime}}" />
+			<qm-detail-item label="原到期日期" typeText="date" text="{{workConsumables.oldExpirationTime}}" />
+			<qm-detail-item label="到期日期" typeText="date" text="{{workConsumables.expirationTime}}" />
 			<qm-detail-item label="耗材图片" text="{{workConsumables.baseInfo.imgUrls.length>0?'':'无图片'}}" />
 		<qm-detail-images imgUrls="{{workConsumables.baseInfo.imgUrls}}" />
 		</qm-detail-field>

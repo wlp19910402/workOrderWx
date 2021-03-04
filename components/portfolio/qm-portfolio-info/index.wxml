@@ -27,7 +27,7 @@
 	<qm-detail-item label="设备品牌" text="{{portfolio.brandName}}" />
 	<qm-detail-item label="设备型号" text="{{portfolio.modelName}}" />
 	<qm-detail-item label="安装位置" text="{{portfolio.installLocation}}" />
-	<qm-detail-item label="安装日期" text="{{portfolio.installTime}}" />
+	<qm-detail-item label="安装日期" typeText="date" text="{{portfolio.installTime}}" />
 	<qm-detail-item label="保修周期" text="{{portfolio.warrantyPeriod}}个月" />
 	<qm-detail-item label="创建人员" text="{{portfolio.createUsername}}" />
 	<qm-detail-item label="创建时间" text="{{portfolio.createTime}}" />

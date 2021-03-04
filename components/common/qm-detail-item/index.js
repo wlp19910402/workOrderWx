@@ -5,9 +5,10 @@ Component({
    */
   properties: {
     label:{type:String,value:""},
-    text:{type:String,value:""}
+    text:{type:String,value:""},
+    typeText:{type:String,value:""}
   },
-
+  
   /**
    * 组件的初始数据
    */

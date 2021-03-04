@@ -6,7 +6,7 @@
 			<qm-detail-item label="耗材编号" text="{{portfolio.baseInfo.no}}" />
 			<qm-detail-item label="耗材类型" text="{{portfolio.baseInfo.typeName}}" />
 			<qm-detail-item label="耗材型号" text="{{portfolio.baseInfo.modelName}}" />
-			<qm-detail-item label="安装日期" text="{{portfolio.replacementTime}}" />
+			<qm-detail-item label="安装日期" typeText="date" text="{{portfolio.replacementTime}}" />
 			<qm-detail-item label="更换周期" text="{{portfolio.replacementCycle+'天'}}" />
 			<qm-detail-item label="耗材图片" text="{{portfolio.baseInfo.imgUrls.length>0?'':'无图片'}}" />
 			<qm-detail-images imgUrls="{{portfolio.baseInfo.imgUrls}}" />

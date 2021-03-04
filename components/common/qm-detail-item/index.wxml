@@ -2,8 +2,10 @@
 <view class="qm-detail-item">
   <text class="qm-detail-label">{{label}}</text>
   <view>
-  <text wx:if="{{text}}" class="qm-detail-text">{{text}}
-  </text>
+  <text wx:if="{{text&&typeText!=='date'}}" class="qm-detail-text">{{text}}</text>
+  <view class="qm-detail-text">
+    <qm-mode-date  wx:if="{{text&&typeText==='date'}}" date="{{text}}"/>
+  </view>
   <slot></slot>
   </view>
 </view>
