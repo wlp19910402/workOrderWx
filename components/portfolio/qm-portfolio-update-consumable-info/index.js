@@ -22,7 +22,7 @@ Component({
       } else {
         return ""
       }
-    },
+    }
   },
   observers: {
     'workConsumables': function(workConsumables) {
