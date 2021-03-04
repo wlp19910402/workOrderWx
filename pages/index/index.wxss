@@ -24,7 +24,6 @@
   text-align: center;
 }
 .qm-col{
-  /* position: absolute; */
   position: relative;
 }
 .qm-col-content{
