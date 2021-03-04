@@ -8,6 +8,12 @@ Page({
    */
   data: {
     userInfo: {},
+    orderCount:{
+      pdCount:0,
+      jdCount:0,
+      wcCount:0,
+      myCount:0
+    },
     isAdmin:false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     moduleData: [
@@ -109,5 +115,8 @@ Page({
         selected: wx.getStorageSync('isAdmin') ? 3 : 2
       })
     }
+    this.setData({
+      orderCount:app.globalData.orderCount
+    })
   }
 })

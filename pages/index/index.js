@@ -1,6 +1,7 @@
 const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 const wxRequest = require('../../utils/request.js')
 const API=require('../../utils/API.js')
+const app = getApp()
 Page({
   data: {
     background: ['/static/img/home/banner2.jpg', '/static/img/home/banner1.jpg', '/static/img/home/banner3.jpg'],
@@ -49,6 +50,9 @@ Page({
       })
     }
   },
+  onLoad(){
+    this.initData();
+  },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
@@ -57,31 +61,23 @@ Page({
       })
     }
   },
-  onLoad(){
-    this.initData()
-  },
   jumpPdList(){
     wx.switchTab({ url:'/pages/maintain/order/list/list?type=pd&id=12111' })
   },
   initData(){
-    let isAdmin=wx.getStorageSync('isAdmin')
-    this.setData({
-      isAdmin
-    })
-    if(isAdmin){
       wx.showLoading({
         title: '加载中...',
       })
       wxRequest(API.ORDER_COUNT,null,'GET',(res)=>{
-        console.log(res.data.data)
         this.setData({
-          pdCount: res.data.data.pdCount
+          pdCount: res.data.data.pdCount,
+          isAdmin:wx.getStorageSync('isAdmin')
         })
+        app.globalData.orderCount=res.data.data
         wx.hideLoading()
         wx.stopPullDownRefresh();
         wx.hideNavigationBarLoading();
       })
-    }
   },
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法

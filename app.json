@@ -1,6 +1,5 @@
 {
   "pages":[
-    "pages/my/my",
     "pages/index/index",
     "pages/client/order/list/list",
     "pages/client/order/info/info",
@@ -8,7 +7,7 @@
     "pages/client/portfolio/list/list",
     "pages/client/portfolio/scan/scan",
     "pages/client/portfolio/consumable/consumable",
-    
+    "pages/my/my",
     "pages/login/login", 
     "pages/logs/logs",
     "pages/maintain/order/list/list",

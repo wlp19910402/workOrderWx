@@ -10,28 +10,28 @@
 				<text class="user-name" style="opacity:0.6;font-size:28rpx;" wx:if="{{userInfo.nickName}}">{{isAdmin?"管理员用户":"普通用户"}}</text>
 			</view>
 		</view>
-		<view wx:if="{{userInfo.nickName}}" class="qm-my-create-count">我创建的工单有：202个</view>
+		<view wx:if="{{userInfo.nickName}}" class="qm-my-create-count">{{orderCount.myCount?"我创建的工单有："+orderCount.myCount+"个":"还未创建过工单，赶紧去创建一个工单吧"}}</view>
 	</view>
 	<view class="t-space" wx:if="{{isAdmin}}">
 		<qm-detail-field>
-				<view class="qm-card-count-title">我的工作</view>
+				<view class="qm-card-count-title">我的工作记录</view>
 				<view class="qm-card-count-box">
 					<view class="qm-card-count-content">
 						<text class="qm-card-count-text">待接单</text>
-						<text class="qm-card-count-num">20</text>
+						<text class="qm-card-count-num {{orderCount.pdCount>0?'primary-text':''}}">{{orderCount.pdCount}}</text>
 					</view>
 					<view class="qm-card-count-content">
 						<text class="qm-card-count-text">进行中</text>
-						<text class="qm-card-count-num">20</text>
+						<text class="qm-card-count-num {{orderCount.jdCount>0?'primary-text':''}}">{{orderCount.jdCount}}</text>
 					</view> 
 					<view class="qm-card-count-content">
 						<text class="qm-card-count-text">完成</text>
-						<text class="qm-card-count-num">20</text>
+						<text class="qm-card-count-num {{orderCount.wcCount>0?'primary-text':''}}">{{orderCount.wcCount}}</text>
 					</view>
 			</view>
 		</qm-detail-field>
 	</view>
-	<view class="center-list" wx:for="{{moduleData}}" wx:for-item="item" wx:for-key="index" wx:key="index">
+	<view class="center-list t-space" wx:for="{{moduleData}}" wx:for-item="item" wx:for-key="index" wx:key="index">
 		<block wx:for="{{item}}" wx:for-item="ite" wx:for-index="idx" wx:for-key="idx" wx:key="idx">
 			<view class="center-list-item display-flex" bindtap="{{ite.bindTapFunc}}">
 				<block>

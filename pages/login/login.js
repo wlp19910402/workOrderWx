@@ -40,8 +40,8 @@ Page({
             })
         }
     },
-   async getUserInfo(e) {
-        if(e.detail.userInfo){
+    async getUserInfo(e) {
+        if (e.detail.userInfo) {
             app.globalData.userInfo = e.detail.userInfo
             this.setData({
                 userInfo: e.detail.userInfo,
@@ -49,34 +49,36 @@ Page({
             })
             wx.login({
                 success: resLogin => {
-                  // 发送 res.code 到后台换取 openId, sessionKey, unionId
-                  if (resLogin.code) {
-                    wx.setStorageSync('userInfo', e.detail.userInfo)
-                    let dataParams = {
-                      "jsCode": resLogin.code,
-                      "wxUser": {
-                        "avatarUrl": e.detail.userInfo.avatarUrl,
-                        "nickName": e.detail.userInfo.nickName
-                      }
-                    }
-                    //发起网络请求
-                    wxRequest(API.USER_LOGIN,dataParams,"POST",(res)=>{
-                      let resData = res.data
-                      if(resData.code===0){
-                        wx.setStorageSync('token', resData.data.token)
-                        wx.setStorageSync('isAdmin', resData.data.isAdmin)
-                        wx.reLaunch({
-                            url: '/pages/index/index',
+                    // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                    if (resLogin.code) {
+                        wx.setStorageSync('userInfo', e.detail.userInfo)
+                        let dataParams = {
+                            "jsCode": resLogin.code,
+                            "wxUser": {
+                                "avatarUrl": e.detail.userInfo.avatarUrl,
+                                "nickName": e.detail.userInfo.nickName
+                            }
+                        }
+                        //发起网络请求
+                        wxRequest(API.USER_LOGIN, dataParams, "POST", (res) => {
+                            let resData = res.data
+                            if (resData.code === 0) {
+                                wx.setStorageSync('token', resData.data.token)
+                                wx.setStorageSync('isAdmin', resData.data.isAdmin)
+                                wx.reLaunch({
+                                    url: '/pages/index/index',
+                                })
+                                app.globalData.isAdmin = resData.data.isAdmin
+                                wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
+                                    app.globalData.orderCount = res.data.data
+                                })
+                            }
                         })
-                        app.globalData.isAdmin=resData.data.isAdmin
-                      }
-                    })
-                  } else {
-                    console.log('登录失败！' + resLogin.errMsg)
-                  }
+                    } else {
+                        console.log('登录失败！' + resLogin.errMsg)
+                    }
                 }
-              })
-
+            })
         }
     },
     onShow: function () {

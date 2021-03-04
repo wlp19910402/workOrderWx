@@ -51,12 +51,11 @@
 }
 .center-list {
   background-color: #ffffff;
-  margin-top: 20rpx;
   width: 750rpx;
   flex-direction: column;
 }
 .center-list-item {
-  height: 90rpx;
+  height: 100rpx;
   width: 750rpx;
   box-sizing: border-box;
   flex-direction: row;
@@ -64,17 +63,17 @@
   display: flex;
 }
 .list-text {
-  height: 90rpx;
-  line-height: 90rpx;
-  color: #555;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #222222;
   flex: 1;
   text-align: left;
   font-size: 32rpx;
 }
 .iconfont{
   width:60rpx;
-  height:90rpx;
-  line-height: 90rpx;
+  height:100rpx;
+  line-height: 100rpx;
   margin:0 20rpx;
 }
 .qm-card-count-title{
@@ -83,7 +82,7 @@
 .qm-card-count-box{
   display: flex;
   padding-top:20rpx;
-  padding:20rpx 20rpx 0 80rpx;
+  padding:20rpx 70rpx 0 70rpx;
 }
 .qm-card-count-content{
   align-items: center;
@@ -115,6 +114,6 @@
   font-size: 28rpx;
 }
 .qm-card-count-num{
-  color:#666666;
+  color:#aaaaaa;
   font-size:30rpx;
 }

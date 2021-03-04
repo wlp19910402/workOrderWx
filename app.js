@@ -41,6 +41,9 @@ App({
                       wx.setStorageSync('token', resData.data.token)
                       wx.setStorageSync('isAdmin', resData.data.isAdmin)
                       that.globalData.isAdmin=resData.data.isAdmin
+                      wxRequest(API.ORDER_COUNT,null,'GET',(res)=>{
+                        that.globalData.orderCount=res.data.data
+                      })
                     })
                   } else {
                     console.log('登录失败！' + resLogin.errMsg)
@@ -56,6 +59,12 @@ App({
   globalData: {
     userInfo: null,
     isAdmin: false,
-    wxNickname: ""
+    wxNickname: "",
+    orderCount:{
+      pdCount:0,
+      jdCount:0,
+      wcCount:0,
+      myCount:0
+    }
   }
 })
