@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "qm-detail-title":"/components/common/qm-detail-title/index",
+    "qm-detail-field":"/components/common/qm-detail-field/index"
+  },
   "navigationBarBackgroundColor": "#46b989",
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "我的"

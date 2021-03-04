@@ -120,7 +120,7 @@ Page({
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true,
-          isAdmin:res.isAdmin
+          isAdmin:wx.getStorageSync('isAdmin')
         })
       }
     } else {

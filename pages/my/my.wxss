@@ -2,7 +2,7 @@
 
 .userBannerBox{
   width:750rpx;
-  height:240rpx;
+  height:260rpx;
   position: relative;
 }
 .user-bg{
@@ -49,15 +49,12 @@
   flex-direction: column;
   margin-left: 20rpx;
 }
-
-
 .center-list {
   background-color: #ffffff;
   margin-top: 20rpx;
   width: 750rpx;
   flex-direction: column;
 }
-
 .center-list-item {
   height: 90rpx;
   width: 750rpx;
@@ -74,10 +71,50 @@
   text-align: left;
   font-size: 32rpx;
 }
-
 .iconfont{
   width:60rpx;
   height:90rpx;
   line-height: 90rpx;
   margin:0 20rpx;
+}
+.qm-card-count-title{
+  font-size:32rpx;
+}
+.qm-card-count-box{
+  display: flex;
+  padding-top:20rpx;
+  padding:20rpx 20rpx 0 80rpx;
+}
+.qm-card-count-content{
+  align-items: center;
+  flex: 1;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+.qm-my-create-count{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  opacity:0.6;
+  font-size:28rpx;
+  background-color:rgba(0,0,0,0.2);
+  color:#ffffff;
+  padding:4rpx 30rpx;
+}
+.qm-card-count-content .iconfont{
+  font-size: 40rpx;
+  color:#aaaaaa;
+  margin:-20rpx 0;
+  display: none;
+}
+.qm-card-count-text{
+  color:#aaaaaa;
+  font-size: 28rpx;
+}
+.qm-card-count-num{
+  color:#666666;
+  font-size:30rpx;
 }

@@ -31,7 +31,6 @@
 .qm-tabs-swiper{
   display: none;
 }
-
 /* 列表 */
 .qm-list-box{
   width:100%;
@@ -59,7 +58,6 @@
   font-size:32rpx;
   color:#222222;
 }
-
 .qm-list-row{
   display: flex;
   flex-direction: row;
@@ -67,14 +65,12 @@
   color:#999;
   justify-content: space-between;
 }
-
 .warn-text-bg{
   color: #999;
 }
 .primary-text-bg{
   color: #46b989;
 }
-
 .qm-search{
   background: #f1f5f7;
   padding:12rpx 12rpx 12rpx 60rpx;

@@ -32,8 +32,8 @@
 	</view>
 </view>
 <view>
-	<mp-msg wx:if="{{portfolioInfo.no===undefined}}" type="warn" title="抱歉！">
-		<view slot="desc">二维码已失效，请点击<text bindtap="reScanCode" class="weui-msg__link">重新扫码</text>
+	<mp-msg wx:if="{{portfolioInfo.no===undefined}}" type="warn" title="二维码未识别">
+		<view slot="desc">二维码未识别，请重新点击<text bindtap="reScanCode" class="weui-msg__link">扫码</text>
 		</view>
 	</mp-msg>
 </view>
