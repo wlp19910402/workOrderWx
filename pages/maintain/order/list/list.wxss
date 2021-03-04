@@ -45,12 +45,12 @@ page {
 /* 列表 */
 .qm-list-link {
   display: flex;
-  padding: 0 20rpx 20rpx;
+  padding: 20rpx 20rpx;
 }
 
 .qm-list-box {
   width: 100%;
-  padding: 20rpx 0;
+  /* padding: 20rpx 0; */
   box-sizing: border-box;
   background-color: #fff;
   position: relative;

@@ -21,7 +21,7 @@
 				</view>
 				<text class="iconfont default icon-arrow-right"></text>
 			</navigator>
-			<view class="qm-list-btns-box" wx:if="{{(item.status==='pd'||item.status==='jd')&&activeTab!==3}}">
+			<view class="qm-list-btns-box" style="padding-bottom:20rpx;" wx:if="{{(item.status==='pd'||item.status==='jd')&&activeTab!==3}}">
 				<navigator url="/pages/maintain/order/submit/submit?id={{item.id}}">
 					<view class="qm-list-btn primary-bg white-text" wx:if="{{item.status==='jd'}}">结单</view>
 				</navigator>
