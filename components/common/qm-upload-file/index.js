@@ -23,7 +23,7 @@ Component({
   methods: {
     onUploadImageUrls(urls) {
       this.triggerEvent('setUploadImageUrls', urls)
-      console.log("---------------****上传图片组件提交到父级****------------")
+      console.log("--------------- **** 上传图片组件提交到父级 **** ------------")
     },
     selectFile(files) {
       // 返回false可以阻止某次文件上传
