@@ -93,10 +93,10 @@ Component({
       })
     },
     uploadError(e) {
-      console.log('upload error', e.detail)
+      // console.log('upload error', e.detail)
     },
     uploadSuccess(e) {
-      console.log('upload success', e.detail)
+      // console.log('upload success', e.detail)
     }
   },
   previewImage: function (e) {
