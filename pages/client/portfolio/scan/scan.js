@@ -14,17 +14,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    /**TODO  qrcode是测试数据，最终使用 options.qrCode */
-    // console.log(options.qrCode)
-    // const qrcode="codeEDANG^843QNG"
-    wxRequest(API.PORTFOLIO_INFO_BY_QRCODE,{qrCodde:options.qrCode},'GET',(res)=>{
-      console.log(res.data.data)
+    this.fetchPortfolioData(options.qrCode)
+  },
+  fetchPortfolioData(qrCode){
+    wxRequest(API.PORTFOLIO_INFO_BY_QRCODE,{qrCodde:qrCode},'GET',(res)=>{
       this.setData({
         portfolioInfo:res.data.data
       })
     })
   },
-
+  reScanCode(){
+    wx.scanCode({
+      complete: (res) => {
+        if (res.result) {
+          this.fetchPortfolioData(res.result)
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

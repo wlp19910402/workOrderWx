@@ -67,7 +67,7 @@
 		<mp-cells>
 			<mp-cell prop="subRemark" title="结单描述">
 				<textarea class="weui-textarea" style="height: 60rpx;padding:0 30rpx;text-align:right; box-sizing: border-box;" placeholder="请输入描述" bindinput="formInputChange" data-field="subRemark" maxlength="100" />
-				<view class="weui-textarea-counter">{{subRemark.length}}/100</view>
+				<view class="weui-textarea-counter">{{subRemark.length?subRemark.length:0}}/100</view>
 				</mp-cell>
 			</mp-cells>
 		<qm-upload-file bind:setUploadImageUrls="setUploadImageUrls" imgUrls="{{[]}}" />

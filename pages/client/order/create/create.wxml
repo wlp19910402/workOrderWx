@@ -12,7 +12,7 @@
 				</mp-cell>
 				<mp-cell prop="workDescription" title="描述">
 					<textarea class="weui-textarea" style="height: 60rpx" placeholder="请输入描述" bindinput="formInputChange" data-field="workDescription" maxlength="100"/>
-					<view class="weui-textarea-counter">{{formData.workDescription.length}}/100</view>
+					<view class="weui-textarea-counter">{{formData.workDescription.length?formData.workDescription.length:0}}/100</view>
 				</mp-cell>
 			</mp-cells>
 		</mp-form>

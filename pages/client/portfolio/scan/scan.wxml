@@ -1,8 +1,8 @@
 <!--pages/client/portfolio/scan/scan.wxml-->
-<view style="padding:30rpx 0">
+<view wx:if="{{portfolioInfo.no!==undefined}}" style="padding:30rpx 0">
 	<qm-detail-field>
 		<qm-detail-title title="{{'编号:'+portfolioInfo.no}}">
-				<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
+			<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
 				查看耗材 </navigator>
 		</qm-detail-title>
 		<qm-detail-item label="单位名称" text="{{portfolioInfo.companyName}}" />
@@ -12,22 +12,27 @@
 		<qm-detail-item label="二维码编号" text="{{portfolioInfo.qrCodde}}" />
 		<qm-detail-item label="设备名称" text="{{portfolioInfo.deviceName}}" />
 		<qm-detail-item label="设备编号" text="{{portfolioInfo.deviceNo}}" />
-    <qm-detail-item label="设备品牌" text="{{portfolioInfo.brandName}}" />
+		<qm-detail-item label="设备品牌" text="{{portfolioInfo.brandName}}" />
 		<qm-detail-item label="设备类型" text="{{portfolioInfo.typeName}}" />
 		<qm-detail-item label="设备型号" text="{{portfolioInfo.modelName}}" />
 		<qm-detail-item label="安装位置" text="{{portfolioInfo.installLocation}}" />
 		<qm-detail-item label="安装日期" text="{{portfolioInfo.installTime}}" />
-    <qm-detail-item label="保修周期" text="{{portfolioInfo.warrantyPeriod+'月'}}" />
+		<qm-detail-item label="保修周期" text="{{portfolioInfo.warrantyPeriod+'月'}}" />
 		<qm-detail-images imgUrls="{{portfolioInfo.imgUrls}}" />
 	</qm-detail-field>
-  <view class="all-padding">
-    <navigator class="primary-text" url="{{'/pages/client/order/create/create?id='+portfolioInfo.id+'&company='+portfolioInfo.companyName}}">
+	<view class="all-padding">
+		<navigator class="primary-text" url="{{'/pages/client/order/create/create?id='+portfolioInfo.id+'&company='+portfolioInfo.companyName}}">
 			<button class="weui-btn" type="primary" size="default" bindtap="">报修</button>
-			<navigator class="t-space" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
-				<button class="weui-btn" style="position:relative;border-color:#bbbbbb;" type="default" plain="true" size="default">查看耗材
-					<view style="position:absolute;right:6rpx;top:-12rpx;">
-				<mp-badge /></view>
-				</button></navigator>
-    </navigator>
+		</navigator>
+		<navigator class="t-space" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
+			<button class="weui-btn" style="position:relative;border-color:#bbbbbb;" type="default" plain="true" size="default">查看耗材
+				<mp-badge style="position:absolute;right:6rpx;top:-12rpx;" />
+			</button>
+		</navigator>
 	</view>
+</view>
+<view>
+<mp-msg wx:if="{{portfolioInfo.no===undefined}}" type="warn" title="抱歉！">
+    <view slot="desc">二维码已失效，请点击 <text bindtap="reScanCode" class="weui-msg__link">重新扫码</text></view>
+  </mp-msg>
 </view>

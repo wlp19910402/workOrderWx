@@ -5,7 +5,8 @@
     "qm-detail-title":"/components/common/qm-detail-title/index",
     "qm-detail-images":"/components/common/qm-detail-images/index",
     "qm-order-status":"/components/common/qm-order-status/index",
-    "mp-badge": "weui-miniprogram/badge/badge"
+    "mp-badge": "weui-miniprogram/badge/badge",
+    "mp-msg": "weui-miniprogram/msg/msg"
   },
   "navigationBarTitleText": "档案信息"
 }
