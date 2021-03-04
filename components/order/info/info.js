@@ -70,7 +70,6 @@ Component({
         dataList: res.data.data
       })
       wxRequest(API.ORDER_LOGS+'/'+ this.properties.infoId,null,'GET',(res)=>{
-        console.log(res.data.data)
         this.setData({
           logData:res.data.data
         })

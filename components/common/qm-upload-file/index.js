@@ -23,7 +23,6 @@ Component({
   methods: {
     onUploadImageUrls(urls) {
       this.triggerEvent('setUploadImageUrls', urls)
-      console.log(urls)
       console.log("---------------****上传图片组件提交到父级****------------")
     },
     selectFile(files) {
@@ -70,7 +69,7 @@ Component({
                   if (completeRes.statusCode === 200 && JSON.parse(completeRes.data).code === 0) {
                     imgUrls.push(JSON.parse(completeRes.data).data.url)
                   } else {
-                    imgUrls.push(flase)
+                    imgUrls.push(false)
                   }
                   if (files.tempFilePaths.length === index + 1) {
                     resolve({
