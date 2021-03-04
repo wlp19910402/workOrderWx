@@ -2,5 +2,5 @@
 	<view style="padding:30rpx 0 0" wx:if="{{consumableList&&consumableList.length>0}}" wx:for="{{consumableList}}" wx:key="no">
 		<qm-portfolio-consumable-info portfolio="{{item}}"/>
 	</view>
-	<qm-null-data wx:if="{{consumableList&&consumableList.length>0}}"/>
+	<qm-null-data wx:if="{{consumableList&&consumableList.length===0}}"/>
 </view>

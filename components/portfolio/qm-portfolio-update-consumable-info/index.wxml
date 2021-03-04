@@ -1,6 +1,6 @@
 	<qm-detail-field>
-			<qm-detail-title title="{{'到期日期:'+workConsumables.expirationTime}}">
-				<qm-date-isLate date="{{workConsumables.expirationTime}}"/>
+			<qm-detail-title title="{{'到期日期:'+expirationTime}}">
+				<qm-date-isLate date="{{expirationTime}}"/>
 			</qm-detail-title>
 			<qm-detail-item label="耗材名称" text="{{workConsumables.baseInfo.name}}" />
 			<qm-detail-item label="耗材编号" text="{{workConsumables.baseInfo.no}}" />
