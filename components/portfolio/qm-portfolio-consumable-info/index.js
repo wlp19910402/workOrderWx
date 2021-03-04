@@ -8,10 +8,10 @@ Component({
       value: {}
     }
   },
-  data:{
-    expirationTime:""
+  data: {
+    expirationTime: ""
   },
-  methods:{
+  methods: {
     formatDate(data) {
       if (isNaN(data) && !isNaN(Date.parse(data))) {
         let date = new Date(data)
@@ -25,7 +25,7 @@ Component({
     },
   },
   observers: {
-    'portfolio': function(portfolio) {
+    'portfolio': function (portfolio) {
       // 在 numberA 或者 numberB 被设置时，执行这个函数
       this.setData({
         expirationTime: this.formatDate(portfolio.expirationTime)

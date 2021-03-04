@@ -14,20 +14,20 @@
 	</view>
 	<view class="t-space" wx:if="{{isAdmin}}">
 		<qm-detail-field>
-				<view class="qm-card-count-title">我的工作记录</view>
-				<view class="qm-card-count-box">
-					<view class="qm-card-count-content">
-						<text class="qm-card-count-text">待接单</text>
-						<text class="qm-card-count-num {{orderCount.pdCount>0?'primary-text':''}}">{{orderCount.pdCount}}</text>
-					</view>
-					<view class="qm-card-count-content">
-						<text class="qm-card-count-text">进行中</text>
-						<text class="qm-card-count-num {{orderCount.jdCount>0?'primary-text':''}}">{{orderCount.jdCount}}</text>
-					</view> 
-					<view class="qm-card-count-content">
-						<text class="qm-card-count-text">完成</text>
-						<text class="qm-card-count-num {{orderCount.wcCount>0?'primary-text':''}}">{{orderCount.wcCount}}</text>
-					</view>
+			<view class="qm-card-count-title">我的工作记录</view>
+			<view class="qm-card-count-box">
+				<view class="qm-card-count-content">
+					<text class="qm-card-count-text">待接单</text>
+					<text class="qm-card-count-num {{orderCount.pdCount>0?'primary-text':''}}">{{orderCount.pdCount}}</text>
+				</view>
+				<view class="qm-card-count-content">
+					<text class="qm-card-count-text">进行中</text>
+					<text class="qm-card-count-num {{orderCount.jdCount>0?'primary-text':''}}">{{orderCount.jdCount}}</text>
+				</view>
+				<view class="qm-card-count-content">
+					<text class="qm-card-count-text">完成</text>
+					<text class="qm-card-count-num {{orderCount.wcCount>0?'primary-text':''}}">{{orderCount.wcCount}}</text>
+				</view>
 			</view>
 		</qm-detail-field>
 	</view>
