@@ -52,7 +52,7 @@ Component({
                 let resData = res.data
                   wx.setStorageSync('token', resData.data.token)
                   wx.setStorageSync('isAdmin', resData.data.isAdmin)
-                 
+                  app.globalData.isAdmin=resData.data.isAdmin
               })
             } else {
               console.log('登录失败！' + resLogin.errMsg)

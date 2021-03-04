@@ -23,11 +23,10 @@
 }
 .logo-title {
   height: 150rpx;
-  line-height: 150rpx;
   flex: 1;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
+  align-items: left;
+  justify-content: center;
+  flex-direction:column;
   display: flex;
 }
 .logo-img {
@@ -36,8 +35,6 @@
   border-radius: 150rpx;
 }
 .user-name {
-  height: 60rpx;
-  line-height: 60rpx;
   margin-left:20rpx;
   color: #ffffff;
   font-size: 32rpx;

@@ -3,6 +3,7 @@ const wxRequest = require('./utils/request.js')
 const API = require('./utils/API.js')
 App({
   onLaunch() {
+    const that = this;
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -39,6 +40,7 @@ App({
                       let resData = loginRes.data
                       wx.setStorageSync('token', resData.data.token)
                       wx.setStorageSync('isAdmin', resData.data.isAdmin)
+                      that.globalData.isAdmin=resData.data.isAdmin
                     })
                   } else {
                     console.log('登录失败！' + resLogin.errMsg)

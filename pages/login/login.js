@@ -68,6 +68,7 @@ Page({
                         wx.reLaunch({
                             url: '/pages/index/index',
                         })
+                        app.globalData.isAdmin=resData.data.isAdmin
                       }
                     })
                   } else {

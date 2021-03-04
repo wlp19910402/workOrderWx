@@ -8,6 +8,7 @@ Page({
    */
   data: {
     userInfo: {},
+    isAdmin:false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     moduleData: [
       [{
@@ -86,15 +87,16 @@ Page({
             if (resData.code === 0) {
               wx.clearStorage()
               this.setData({
-                userInfo: {}
+                userInfo: {},
+                isAdmin:false
               })
               app.globalData.userInfo = {}
+              app.globalData.isAdmin=false
               setTimeout(() => {
                 wx.reLaunch({
                   url: '/pages/index/index',
                 })
               }, 200);
-              
             }
           })
         }
@@ -108,7 +110,8 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
+        isAdmin:app.globalData.isAdmin
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -116,7 +119,8 @@ Page({
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true
+          hasUserInfo: true,
+          isAdmin:res.isAdmin
         })
       }
     } else {
@@ -124,9 +128,11 @@ Page({
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
+          app.globalData.isAdmin=res.isAdmin
           this.setData({
             userInfo: res.userInfo,
-            hasUserInfo: true
+            hasUserInfo: true,
+            isAdmin:res.isAdmin
           })
         }
       })
