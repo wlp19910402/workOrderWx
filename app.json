@@ -4,7 +4,6 @@
     "pages/client/order/list/list",
     "pages/client/order/info/info",
     "pages/client/order/create/create",
-    "pages/client/portfolio/list/list",
     "pages/client/portfolio/scan/scan",
     "pages/client/portfolio/consumable/consumable",
     "pages/my/my",
