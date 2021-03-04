@@ -23,7 +23,7 @@
 	</view>
 </view>
 <view wx:if="{{!isCreateOrder}}">
-	<mp-msg type="success" title="结单成功">
-    <!-- <view slot="desc">工单详细信息，请点击 <navigator url="/pages/client/order/info/info?id={{id}}" class="weui-msg__link">工单详情</navigator></view> -->
+	<mp-msg type="success" title="创建工单成功">
+    <view wx:if="{{createId!==null}}" slot="desc">如果想查看工单的详细信息，请点击 <navigator url="/pages/client/order/info/info?id={{createId}}" class="weui-msg__link">工单详情</navigator></view>
   </mp-msg>
 </view>

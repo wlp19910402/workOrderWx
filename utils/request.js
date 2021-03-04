@@ -1,4 +1,4 @@
-const wxRequest=(url, data, method,callback)=>{
+const wxRequest=(url, data, method,callback,errCallback)=>{
   return wx.request({
     url:'https://lingyun.labsmart.cn/'+ url,
     data: data,
@@ -32,9 +32,11 @@ const wxRequest=(url, data, method,callback)=>{
           icon: 'none',
           duration: 3000,
         })
+       if(errCallback) errCallback(res)
       }
     },
     fail: function (res) {
+      wx.hideLoading()
       wx.showToast({
       title: "网络连接超时",
       icon: 'none',

@@ -7,6 +7,7 @@ Page({
     data: {
         formData: {},
         imgUrls: [],
+        createId:null,
         isCreateOrder: true,
         rules: [{
                 name: 'customerName',
@@ -65,7 +66,8 @@ Page({
                             (response) => {
                                 wx.hideLoading()
                                 that.setData({
-                                    isCreateOrder: false
+                                    isCreateOrder: false,
+                                    createId:response.data.data
                                 })
                             }
                         )

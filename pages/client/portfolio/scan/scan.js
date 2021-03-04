@@ -7,23 +7,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    portfolioInfo:{}
+    portfolioInfo:{},
+    isNullPortfolio:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中...',
+  })
     this.fetchPortfolioData(options.qrCode)
   },
   fetchPortfolioData(qrCode){
     wxRequest(API.PORTFOLIO_INFO_BY_QRCODE,{qrCodde:qrCode},'GET',(res)=>{
       this.setData({
-        portfolioInfo:res.data.data
+        portfolioInfo:res.data.data,
+        isNullPortfolio:false
+      })
+      wx.hideLoading()
+    },(err)=>{
+      this.setData({
+        portfolioInfo:{},
+        isNullPortfolio:true
       })
     })
   },
   reScanCode(){
+    wx.showLoading({
+      title: '加载中...',
+  })
     wx.scanCode({
       complete: (res) => {
         if (res.result) {

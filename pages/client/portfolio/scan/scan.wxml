@@ -1,5 +1,5 @@
 <!--pages/client/portfolio/scan/scan.wxml-->
-<view wx:if="{{portfolioInfo.no!==undefined}}" style="padding:30rpx 0">
+<view wx:if="{{portfolioInfo.no!==undefined&&!isNullPortfolio}}" style="padding:30rpx 0">
 	<qm-detail-field>
 		<qm-detail-title title="{{'编号:'+portfolioInfo.no}}">
 			<navigator class="qm-list-extra-btn primary-text" url="{{'/pages/client/portfolio/consumable/consumable?id='+portfolioInfo.id}}">
@@ -32,7 +32,7 @@
 	</view>
 </view>
 <view>
-	<mp-msg wx:if="{{portfolioInfo.no===undefined}}" type="warn" title="二维码未识别">
+	<mp-msg wx:if="{{portfolioInfo.no===undefined&&isNullPortfolio}}" type="warn" title="二维码未识别">
 		<view slot="desc">二维码未识别，请重新点击<text bindtap="reScanCode" class="weui-msg__link">扫码</text>
 		</view>
 	</mp-msg>

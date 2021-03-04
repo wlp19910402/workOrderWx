@@ -51,7 +51,6 @@
 	</qm-detail-field>
 	<view class="t-space"></view>
 	<qm-portfolio-info portfolio="{{dataList.portfolio}}" consumables="{{dataList.consumables}}" parts="{{dataList.parts}}"/>
-
 	<view class="qm-footer-btns" wx:if="{{infoType==='maintain'&&(dataList.status==='pd'||dataList.status==='jd')}}">
 			<view class="qm-list-btns-box">
 				<view bindtap="saveSubmit" wx:if="{{dataList.status==='jd'}}" data-id="{{dataList.id}}" class="qm-list-btn primary-bg white-text">结单</view>
