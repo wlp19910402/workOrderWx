@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "qm-portfolio-consumable-info":"/components/portfolio/qm-portfolio-consumable-info/index"
+    "qm-portfolio-consumable-info":"/components/portfolio/qm-portfolio-consumable-info/index",
+    "qm-null-data":"/components/common/qm-null-data/index"
   },
   "navigationBarTitleText": "档案耗材列表"
 }
