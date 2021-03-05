@@ -1,0 +1,32 @@
+<view class="page">
+	<mp-tabs class="qm-tabs-fixed" tabs="{{tabs}}" activeTab="{{activeTab}}" swiperClass="weui-tabs-swiper qm-tabs-swiper" bindtabclick="onTabClick" bindchange="onChange" activeClass="tab-bar-title__selected" swiper-class="qm-tabs-swiper">
+		<block wx:for="{{tabs}}" wx:for-item="it" wx:for-index="idx" wx:key="title">
+			<view class="tab-content" data-set="{{it}}" slot="tab-content-{{idx}}">
+				<scroll-view wx:key="title" scroll-y style="height:calc(100vh - 50px - 74rpx);" scroll-top="{{scrollTops[idx]}}" refresher-enabled="{{true}}" refresher-threshold="{{80}}" refresher-default-style="white" refresher-background="#07c160" refresher-triggered="{{triggerRefresher}}" bindrefresherrefresh="onRefresh" bindscrolltolower="scrollBottom" bindscroll="tiggerScroll" enhanced="{{true}}" scroll-anchoring="{{true}}" scroll-with-animation="{{true}}" fast-deceleration="{{true}}">
+					<view class="lr-space">
+						<navigator class="qm-list-box" wx:for="{{it.consumableList}}" url="/pages/client/order/info/info?id={{item.id}}" wx:for-index="index" wx:key="index">
+							<image class='qm-list-img' src="{{item.orderImgUrls&&item.orderImgUrls.length>0?item.orderImgUrls[0]:imgNull}}"></image>
+							<view class="qm-list-content">
+								<view class="qm-list-row">
+									<text class="qm-list-title">{{item.company}}</text>
+									<view class="qm-tag-text">
+										<qm-order-status wx:if="item.status" orderStatus="{{item.status}}" />
+									</view>
+								</view>
+								<view class="qm-list-row">
+									<view class="qm-list-des">
+										<qm-order-orderType orderType="{{item.orderType}}" />
+									</view>
+									<text class="qm-list-date">{{item.createTime}}</text>
+								</view>
+							</view>
+							<text class="iconfont default icon-arrow-right"></text>
+						</navigator>
+					</view>
+					<view wx:if="{{it.whetherLast&&it.consumableList.length!==0}}" class="qm-list-last-tip">到底了~</view>
+					<qm-null-data wx:if="{{it.whetherLast&&it.consumableList.length===0}}" />
+				</scroll-view>
+			</view>
+		</block>
+	</mp-tabs>
+</view>
