@@ -68,16 +68,20 @@ Page({
       wx.showLoading({
         title: '加载中...',
       })
-      wxRequest(API.ORDER_COUNT,null,'GET',(res)=>{
-        this.setData({
-          pdCount: res.data.data.pdCount,
-          isAdmin:wx.getStorageSync('isAdmin')
+      if(wx.getStorageSync('isAdmin')){
+        wxRequest(API.ORDER_COUNT,null,'GET',(res)=>{
+          this.setData({
+            pdCount: res.data.data.pdCount,
+            isAdmin:wx.getStorageSync('isAdmin')
+          })
+          app.globalData.orderCount=res.data.data
+          wx.hideLoading()
+          wx.stopPullDownRefresh();
+          wx.hideNavigationBarLoading();
         })
-        app.globalData.orderCount=res.data.data
+      }else{
         wx.hideLoading()
-        wx.stopPullDownRefresh();
-        wx.hideNavigationBarLoading();
-      })
+      }
   },
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
