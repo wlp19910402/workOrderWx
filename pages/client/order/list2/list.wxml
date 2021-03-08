@@ -23,7 +23,7 @@
 							<text class="iconfont default icon-arrow-right"></text>
 						</navigator>
 					</view>
-					<view wx:if="{{it.whetherLast&&it.consumableList.length!==0}}" class="qm-list-last-tip">到底了~</view>
+					<view wx:if="{{it.whetherLast&&it.consumableList.length!==0}}" class="qm-list-last-tip">没有更多啦~</view>
 					<qm-null-data wx:if="{{it.whetherLast&&it.consumableList.length===0}}" />
 				</scroll-view>
 			</view>

@@ -40,12 +40,18 @@ Page({
         })
     },
     submitForm() {
+        if(this._bindTabFailure) return;
+        this._bindTabFailure=true;
         const that = this;
         this.selectComponent('#form').validate((valid, errors) => {
             wx.getSetting({
                 success: res => {
-                    if (!res.authSetting['scope.userInfo']) return
+                    if (!res.authSetting['scope.userInfo']) {
+                        this._bindTabFailure=false;
+                        return
+                    }
                     if (!valid) {
+                        this._bindTabFailure=false;
                         const firstError = Object.keys(errors)
                         if (firstError.length) {
                             this.setData({
@@ -69,6 +75,10 @@ Page({
                                     isCreateOrder: false,
                                     createId:response.data.data
                                 })
+                                this._bindTabFailure=false;
+                            },
+                            ()=>{
+                                this._bindTabFailure=false;
                             }
                         )
                     }
