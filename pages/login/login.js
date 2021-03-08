@@ -82,7 +82,6 @@ Page({
         }
     },
     setSubscribeMessage: function () {
-        const that = this;
         wx.requestSubscribeMessage({
           tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
           complete: function (rdes) {

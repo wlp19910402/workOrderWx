@@ -6,6 +6,7 @@ Component({
     selected: 0,
     color: "#7a7e83",
     selectedColor: "#303135",
+    isAdmin:false,
     allList: [{
       list1: [{
         "pagePath": "/pages/index/index",
@@ -52,16 +53,6 @@ Component({
       userInfo: wx.getStorageSync("userInfo"),
       isAdmin:wx.getStorageSync('isAdmin')
     })
-    // const isAdmin = wx.getStorageSync('isAdmin')
-    // if (isAdmin) {
-    //   this.setData({
-    //     list: this.data.allList[0].list2
-    //   })
-    // } else {
-    //   this.setData({
-    //     list: this.data.allList[0].list1
-    //   })
-    // }
   },
   methods: {
     switchTab(e) {
