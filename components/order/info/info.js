@@ -59,22 +59,48 @@ Component({
         showWorkConsumables:false,
         showOrderLog:true
        })
+    },
+    jdOrder(e){
+      const id = e.currentTarget.dataset.id;
+      const that =this
+      wx.showLoading({
+        title: '接单中...',
+      })
+      wxRequest(API.ORDER_MAINTAIN_JD+'/'+this.data.dataList.id,null,'POST',(res)=>{
+        wx.hideLoading()
+        wx.showToast({
+          title: '接单成功',
+          icon: 'success',
+          duration: 3000,
+        })
+        that.setData({
+          dataList:{},
+          logData:[]
+        })
+        wx.showLoading({
+          title: '加载中...',
+        })
+        this.initData()
+      })
+    },
+    initData(){
+      wxRequest(API.ORDER_INFO+'/' + this.properties.infoId, null, 'GET', (res) => {
+        this.setData({
+          dataList: res.data.data
+        })
+        wxRequest(API.ORDER_LOGS+'/'+ this.properties.infoId,null,'GET',(response)=>{
+          this.setData({
+            logData:response.data.data
+          })
+          wx.hideLoading()
+        })
+      })
     }
   },
   ready() {
     wx.showLoading({
       title: '加载中...',
-  })
-    wxRequest(API.ORDER_INFO+'/' + this.properties.infoId, null, 'GET', (res) => {
-      this.setData({
-        dataList: res.data.data
-      })
-      wxRequest(API.ORDER_LOGS+'/'+ this.properties.infoId,null,'GET',(res)=>{
-        this.setData({
-          logData:res.data.data
-        })
-        wx.hideLoading()
-      })
     })
+    this.initData()
   }
 })

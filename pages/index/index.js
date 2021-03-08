@@ -86,8 +86,7 @@ Page({
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
     this.initData();
-  },
-  
+  }
 })
 
 

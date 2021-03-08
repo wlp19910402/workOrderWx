@@ -53,8 +53,10 @@
 	<qm-portfolio-info portfolio="{{dataList.portfolio}}" consumables="{{dataList.consumables}}" parts="{{dataList.parts}}"/>
 	<view class="qm-footer-btns" wx:if="{{infoType==='maintain'&&(dataList.status==='pd'||dataList.status==='jd')}}">
 			<view class="qm-list-btns-box">
-				<view bindtap="saveSubmit" wx:if="{{dataList.status==='jd'}}" data-id="{{dataList.id}}" class="qm-list-btn primary-bg white-text">结单</view>
-				<view bindtap="saveSubmit" wx:if="{{dataList.status==='pd'}}" data-id="{{dataList.id}}" class="qm-list-btn primary-text">接单</view>
+					<navigator  wx:if="{{dataList.status==='jd'}}" url="/pages/maintain/order/submit/submit?id={{dataList.id}}">
+				<view  data-id="{{dataList.id}}" class="qm-list-btn primary-bg white-text">结单</view>
+				</navigator>
+				<view bindtap="jdOrder" wx:if="{{dataList.status==='pd'}}" data-id="{{dataList.id}}" class="qm-list-btn primary-text">接单</view>
 			</view>
 		</view>
 </view>
