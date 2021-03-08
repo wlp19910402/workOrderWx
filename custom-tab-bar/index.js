@@ -49,18 +49,19 @@ Component({
   },
   attached() {
     this.setData({
-      userInfo: wx.getStorageSync("userInfo")
+      userInfo: wx.getStorageSync("userInfo"),
+      isAdmin:wx.getStorageSync('isAdmin')
     })
-    const isAdmin = wx.getStorageSync('isAdmin')
-    if (isAdmin) {
-      this.setData({
-        list: this.data.allList[0].list2
-      })
-    } else {
-      this.setData({
-        list: this.data.allList[0].list1
-      })
-    }
+    // const isAdmin = wx.getStorageSync('isAdmin')
+    // if (isAdmin) {
+    //   this.setData({
+    //     list: this.data.allList[0].list2
+    //   })
+    // } else {
+    //   this.setData({
+    //     list: this.data.allList[0].list1
+    //   })
+    // }
   },
   methods: {
     switchTab(e) {
@@ -90,5 +91,19 @@ Component({
     this.setData({
       userInfo: wx.getStorageSync("userInfo")
     })
+  },
+  observers: {
+    'isAdmin': function (isAdmin) {
+      // 在 numberA 或者 numberB 被设置时，执行这个函数
+      if (isAdmin) {
+        this.setData({
+          list: this.data.allList[0].list2
+        })
+      } else {
+        this.setData({
+          list: this.data.allList[0].list1
+        })
+      }
+    }
   }
 })

@@ -9,6 +9,7 @@
               open-type="getUserInfo" 
               bindgetuserinfo="getUserInfo" 
               type="primary" 
+							 bindtap="setSubscribeMessage"
               >获取用户信息授权</button>
 		
 		</view>

@@ -1,4 +1,15 @@
 const wxRequest=(url, data, method,callback,errCallback)=>{
+  // wx.getSetting({
+  //   withSubscriptions: true,
+  //   success: res => {
+  //     if (!res.authSetting['scope.userInfo']) {
+  //       wx.reLaunch({
+  //           url: '/pages/login/login',
+  //       })
+  //       return
+  //     }}
+  // })
+
   return wx.request({
     url:'https://lingyun.labsmart.cn/'+ url,
     data: data,
@@ -13,11 +24,11 @@ const wxRequest=(url, data, method,callback,errCallback)=>{
         if(callback) callback(res)
       }else if(res.data.code===301){
           wx.showModal({
-            title: "登录超时",
-            content: "请重新登录后在访问！",
+            title: "需要登录",
+            content: "请登录后在访问！",
             showCancel: false,
             confirmColor: "#46b989",
-            confirmText: "去登陆",
+            confirmText: "去登录",
             success: (res) => {
               if (res.confirm) {
                 wx.reLaunch({

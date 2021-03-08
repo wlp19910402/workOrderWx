@@ -65,9 +65,9 @@ Page({
                             if (resData.code === 0) {
                                 wx.setStorageSync('token', resData.data.token)
                                 wx.setStorageSync('isAdmin', resData.data.isAdmin)
-                                wx.reLaunch({
-                                    url: '/pages/index/index',
-                                })
+                                // wx.reLaunch({
+                                //     url: '/pages/index/index',
+                                // })
                                 app.globalData.isAdmin = resData.data.isAdmin
                                 wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
                                     app.globalData.orderCount = res.data.data
@@ -81,6 +81,17 @@ Page({
             })
         }
     },
+    setSubscribeMessage: function () {
+        const that = this;
+        wx.requestSubscribeMessage({
+          tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
+          complete: function (rdes) {
+            wx.reLaunch({
+                url: '/pages/index/index',
+            })
+          }
+        })
+      },
     onShow: function () {
         wx.hideHomeButton()
     }
