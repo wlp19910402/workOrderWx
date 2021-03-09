@@ -17,6 +17,9 @@ const subscriptSetting = function (next) {
           // 继续下一步
           next();
         }
+      }else{
+         // 继续下一步
+         next();
       }
     }
   })

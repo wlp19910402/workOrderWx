@@ -23,7 +23,7 @@ const wxRequest = (url, data, method, callback, errCallback) => {
         wx.hideLoading()
         if (callback) callback(res)
       } else if (res.data.code === 301) {
-        // wx.hideLoading()
+        wx.hideLoading()
         wx.showModal({
           title: "需要登录",
           content: "请登录后在访问！",
