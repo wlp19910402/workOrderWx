@@ -51,7 +51,9 @@ Page({
     }
   },
   onLoad() {
-    this.initData();
+    if (wx.getStorageSync('isAdmin') && app.globalData.userInfo) {
+      this.initData();
+    }
   },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -67,7 +69,6 @@ Page({
     })
   },
   initData() {
-    if (wx.getStorageSync('isAdmin') && app.globalData.userInfo) {
       wx.showLoading({
         title: '加载中...',
       })
@@ -80,7 +81,6 @@ Page({
         wx.stopPullDownRefresh();
         wx.hideNavigationBarLoading();
       })
-    }
   },
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法

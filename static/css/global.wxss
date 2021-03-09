@@ -123,6 +123,7 @@ button[type='primary'] {
     margin-left: 30rpx;
     color: #222222;
 }
+
 .qm-list-btn-null {
     float: right;
     border: 1px solid #ededed;
@@ -132,8 +133,9 @@ button[type='primary'] {
     line-height: 56rpx;
     margin-left: 30rpx;
     color: #666666;
-    background:#ededed;
+    background: #ededed;
 }
+
 .qm-footer-btns {
     position: fixed;
     bottom: 0;
@@ -141,4 +143,10 @@ button[type='primary'] {
     width: 100%;
     padding-bottom: 20rpx;
     background: #ffffff;
+}
+
+.weui-msg__link {
+    color: #576b95;
+    display: inline-block;
+    vertical-align: baseline;
 }
