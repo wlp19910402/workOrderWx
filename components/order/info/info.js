@@ -67,7 +67,6 @@ Component({
         title: '接单中...',
       })
       wxRequest(API.ORDER_MAINTAIN_JD+'/'+this.data.dataList.id,null,'POST',(res)=>{
-        wx.hideLoading()
         wx.showToast({
           title: '接单成功',
           icon: 'success',
@@ -92,7 +91,6 @@ Component({
           this.setData({
             logData:response.data.data
           })
-          wx.hideLoading()
         })
       })
     }

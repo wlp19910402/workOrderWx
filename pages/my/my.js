@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
+    userInfo: null,
     orderCount:{
       pdCount:0,
       jdCount:0,
@@ -54,10 +54,10 @@ Page({
             if (resData.code === 0) {
               wx.clearStorage()
               this.setData({
-                userInfo: {},
+                userInfo: null,
                 isAdmin:false
               })
-              app.globalData.userInfo = {}
+              app.globalData.userInfo = null
               app.globalData.isAdmin=false
               setTimeout(() => {
                 wx.reLaunch({

@@ -107,7 +107,6 @@ Page({
           }
         })
       })
-      wx.hideLoading()
       wx.stopPullDownRefresh();
       wx.hideNavigationBarLoading();
       if (callback) callback();

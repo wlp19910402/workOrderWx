@@ -46,7 +46,6 @@ Page({
           isPdOrder:true,
         })
       }
-      wx.hideLoading()
     })
   },
   showWorkConsumablesList() {
@@ -188,7 +187,6 @@ Page({
       title: '正在提交',
     })
     wxRequest(API.ORDER_MAINTAIN_SUBMIT, params, 'POST', (res) => {
-      wx.hideLoading()
       this.setData({
         dataList:{...this.data.dataList,status:'wc'}
       })

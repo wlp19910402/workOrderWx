@@ -83,7 +83,6 @@ Page({
         totalData: res.data.data.total,
         currentPage: res.data.data.current
       })
-      wx.hideLoading()
       wx.stopPullDownRefresh();
       wx.hideNavigationBarLoading();
     })

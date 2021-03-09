@@ -70,7 +70,6 @@ Page({
                             },
                             'POST',
                             (response) => {
-                                wx.hideLoading()
                                 that.setData({
                                     isCreateOrder: false,
                                     createId:response.data.data

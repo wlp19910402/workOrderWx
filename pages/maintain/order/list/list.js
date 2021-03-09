@@ -81,7 +81,6 @@ Page({
         totalData: res.data.data.total,
         currentPage: res.data.data.current
       })
-      wx.hideLoading()
       wx.stopPullDownRefresh();
       wx.hideNavigationBarLoading();
     })
@@ -116,7 +115,6 @@ Page({
       title: '接单中...',
     })
     wxRequest(API.ORDER_MAINTAIN_JD+'/'+e.currentTarget.dataset.id,null,'POST',(res)=>{
-      wx.hideLoading()
       wx.showToast({
         title: '接单成功',
         icon: 'success',

@@ -26,7 +26,6 @@ Page({
         portfolioInfo:res.data.data,
         isNullPortfolio:false
       })
-      wx.hideLoading()
     },(err)=>{
       this.setData({
         portfolioInfo:{},

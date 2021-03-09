@@ -75,12 +75,9 @@ Page({
             isAdmin:wx.getStorageSync('isAdmin')
           })
           app.globalData.orderCount=res.data.data
-          wx.hideLoading()
           wx.stopPullDownRefresh();
           wx.hideNavigationBarLoading();
         })
-      }else{
-        wx.hideLoading()
       }
   },
   onPullDownRefresh: function () {
