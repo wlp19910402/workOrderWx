@@ -7,8 +7,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    userInfo:null,
-    toLinkIndex:false
+    userInfo: null,
+    toLinkIndex: false
   },
   ready() {
     if (wx.getStorageSync('userInfo')) {
@@ -16,7 +16,7 @@ Component({
         userInfo: wx.getStorageSync('userInfo'),
         hasUserInfo: true
       })
-    } else{
+    } else {
       this.setData({
         userInfo: null,
         hasUserInfo: false
@@ -28,7 +28,7 @@ Component({
    */
   methods: {
     async getUserInfo(e) {
-      const that=this
+      const that = this
       if (e.detail.userInfo) {
         app.globalData.userInfo = e.detail.userInfo
         this.setData({
@@ -50,12 +50,12 @@ Component({
               //发起网络请求
               wxRequest(API.USER_LOGIN, dataParams, "POST", (res) => {
                 let resData = res.data
-                  wx.setStorageSync('token', resData.data.token)
-                  wx.setStorageSync('isAdmin', resData.data.isAdmin)
-                  app.globalData.isAdmin=resData.data.isAdmin
-                  wxRequest(API.ORDER_COUNT,null,'GET',(res)=>{
-                    app.globalData.orderCount=res.data.data
-                  })
+                wx.setStorageSync('token', resData.data.token)
+                wx.setStorageSync('isAdmin', resData.data.isAdmin)
+                app.globalData.isAdmin = resData.data.isAdmin
+                wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
+                  app.globalData.orderCount = res.data.data
+                })
               })
             } else {
               console.log('登录失败！' + resLogin.errMsg)
@@ -65,16 +65,14 @@ Component({
       }
     },
     setSubscribeMessage: function () {
-      const that = this;
-      wx.requestSubscribeMessage({
-        tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
-        complete: function (rdes) {
-          // wx.switchTab({
-          //   url: '/pages/index/index'
-          // })
-         
-        }
-      })
+      if (!app.globalData.setSubscriptSetting) {
+        wx.requestSubscribeMessage({
+          tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
+          complete: function (rdes) {
+            app.globalData.setSubscriptSetting = true
+          }
+        })
+      }
     },
   }
 })

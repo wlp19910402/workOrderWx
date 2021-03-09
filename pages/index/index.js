@@ -1,6 +1,6 @@
 const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 const wxRequest = require('../../utils/request.js')
-const API=require('../../utils/API.js')
+const API = require('../../utils/API.js')
 const app = getApp()
 Page({
   data: {
@@ -12,30 +12,30 @@ Page({
     autoplay: false,
     interval: 2000,
     duration: 500,
-    homeMenuModule:[{
-      id: 0,
-      name: "扫码",
-      icon: "icon-saoma qm-menu-color1",
-      link: "/pages/client/portfolio/scan/scan",
-    },
-    {
-      id: 2,
-      name: "联系客服",
-      icon: "icon-telephone qm-menu-color2",
-      link: "/pages/common/contactTel/contactTel",
-    }
-  ],
-    pdCount:0,
-    isAdmin:false
+    homeMenuModule: [{
+        id: 0,
+        name: "扫码",
+        icon: "icon-saoma qm-menu-color1",
+        link: "/pages/client/portfolio/scan/scan",
+      },
+      {
+        id: 2,
+        name: "联系客服",
+        icon: "icon-telephone qm-menu-color2",
+        link: "/pages/common/contactTel/contactTel",
+      }
+    ],
+    pdCount: 0,
+    isAdmin: false
   },
   clickHomeMenu(e) {
     const that = this
     var $id = e.currentTarget.dataset.id;
     if ($id === 0) {
-      subscriptionsSetting(()=>{
+      subscriptionsSetting(() => {
         wx.scanCode({
           complete: (res) => {
-           /** TODO 根据扫码结果判断是否符合要求再进行调整到档案页面 */
+            /** TODO 根据扫码结果判断是否符合要求再进行调整到档案页面 */
             if (res.result) {
               wx.navigateTo({
                 url: '/pages/client/portfolio/scan/scan?qrCode=' + res.result,
@@ -50,7 +50,7 @@ Page({
       })
     }
   },
-  onLoad(){
+  onLoad() {
     this.initData();
   },
   onShow() {
@@ -61,29 +61,29 @@ Page({
       })
     }
   },
-  jumpPdList(){
-    wx.switchTab({ url:'/pages/maintain/order/list/list?type=pd&id=12111' })
+  jumpPdList() {
+    wx.switchTab({
+      url: '/pages/maintain/order/list/list?type=pd&id=12111'
+    })
   },
-  initData(){
+  initData() {
+    if (wx.getStorageSync('isAdmin') && app.globalData.userInfo) {
       wx.showLoading({
         title: '加载中...',
       })
-      if(wx.getStorageSync('isAdmin')){
-        wxRequest(API.ORDER_COUNT,null,'GET',(res)=>{
-          this.setData({
-            pdCount: res.data.data.pdCount,
-            isAdmin:wx.getStorageSync('isAdmin')
-          })
-          app.globalData.orderCount=res.data.data
-          wx.stopPullDownRefresh();
-          wx.hideNavigationBarLoading();
+      wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
+        this.setData({
+          pdCount: res.data.data.pdCount,
+          isAdmin: wx.getStorageSync('isAdmin')
         })
-      }
+        app.globalData.orderCount = res.data.data
+        wx.stopPullDownRefresh();
+        wx.hideNavigationBarLoading();
+      })
+    }
   },
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
     this.initData();
   }
 })
-
-

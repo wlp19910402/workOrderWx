@@ -4,7 +4,7 @@
 		<image class="user-bg" src="/static/img/user-bg1.png"></image>
 		<view class="userBannerContainer display-flex">
 			<image class='logo-img' wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}"></image>
-			<image class='logo-img' wx:if="{{!userInfo.avatarUrl}}" src="/static/img/userAvatar.png"></image>
+			<navigator url="/pages/login/login" wx:if="{{!userInfo.avatarUrl}}" ><image class='logo-img' src="/static/img/userAvatar.png"></image></navigator>
 			<view class="logo-title">
 				<text class="user-name">{{userInfo.nickName?userInfo.nickName:"未登录"}}</text>
 				<text class="user-name" style="opacity:0.6;font-size:28rpx;" wx:if="{{userInfo.nickName}}">{{isAdmin?"管理员用户":"普通用户"}}</text>
@@ -31,7 +31,7 @@
 			</view>
 		</qm-detail-field>
 	</view>
-	<view class="center-list t-space" wx:for="{{moduleData}}" wx:for-item="item" wx:for-key="index" wx:key="index">
+	<view wx:if="{{userInfo.avatarUrl}}" class="center-list t-space" wx:for="{{moduleData}}" wx:for-item="item" wx:for-key="index" wx:key="index">
 		<block wx:for="{{item}}" wx:for-item="ite" wx:for-index="idx" wx:for-key="idx" wx:key="idx">
 			<view class="center-list-item display-flex" bindtap="{{ite.bindTapFunc}}">
 				<block>

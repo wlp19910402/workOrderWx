@@ -165,7 +165,7 @@ Component({
     methods: {
         updateCol: function updateCol() {
             var classList = ['weui-col'];
-            var paddingLeft = void 0,
+            var paddingLeft = 0,
                 paddingRight = 0;
             classList.push('weui-col-' + this.data.span);
             classList.push('weui-col-offset-' + this.data.offset);
@@ -189,7 +189,7 @@ Component({
             });
         },
         updateGutter: function updateGutter() {
-            var paddingLeft = void 0,
+            var paddingLeft = 0,
                 paddingRight = 0;
             if (this.data.gutter) {
                 paddingLeft = this.data.gutter / 2 + 'px';

@@ -40,9 +40,9 @@ App({
                       let resData = loginRes.data
                       wx.setStorageSync('token', resData.data.token)
                       wx.setStorageSync('isAdmin', resData.data.isAdmin)
-                      that.globalData.isAdmin=resData.data.isAdmin
-                      wxRequest(API.ORDER_COUNT,null,'GET',(res)=>{
-                        that.globalData.orderCount=res.data.data
+                      that.globalData.isAdmin = resData.data.isAdmin
+                      wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
+                        that.globalData.orderCount = res.data.data
                       })
                     })
                   } else {
@@ -60,11 +60,12 @@ App({
     userInfo: null,
     isAdmin: false,
     wxNickname: "",
-    orderCount:{
-      pdCount:0,
-      jdCount:0,
-      wcCount:0,
-      myCount:0
-    }
+    orderCount: {
+      pdCount: 0,
+      jdCount: 0,
+      wcCount: 0,
+      myCount: 0
+    },
+    setSubscriptSetting: false
   }
 })

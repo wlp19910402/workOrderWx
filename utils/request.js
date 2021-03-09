@@ -1,4 +1,4 @@
-const wxRequest=(url, data, method,callback,errCallback)=>{
+const wxRequest = (url, data, method, callback, errCallback) => {
   // wx.getSetting({
   //   withSubscriptions: true,
   //   success: res => {
@@ -11,47 +11,47 @@ const wxRequest=(url, data, method,callback,errCallback)=>{
   // })
 
   return wx.request({
-    url:'https://lingyun.labsmart.cn/'+ url,
+    url: 'https://lingyun.labsmart.cn/' + url,
     data: data,
     header: {
       'content-type': 'application/json',
-      "token":wx.getStorageSync('token')
+      "token": wx.getStorageSync('token')
     },
-    method:method,
+    method: method,
     success: function (res) {
-      wx.hideLoading()
-      if(res.data.code===0){
-        if(callback) callback(res)
-      }else if(res.data.code===301){
-          wx.showModal({
-            title: "需要登录",
-            content: "请登录后在访问！",
-            showCancel: false,
-            confirmColor: "#46b989",
-            confirmText: "去登录",
-            success: (res) => {
-              if (res.confirm) {
-                wx.reLaunch({
-                  url: '/pages/login/login',
-                })
-              }
+      if (res.data.code === 0) {
+        wx.hideLoading()
+        if (callback) callback(res)
+      } else if (res.data.code === 301) {
+        // wx.hideLoading()
+        wx.showModal({
+          title: "需要登录",
+          content: "请登录后在访问！",
+          showCancel: false,
+          confirmColor: "#46b989",
+          confirmText: "去登录",
+          success: (res) => {
+            if (res.confirm) {
+              wx.reLaunch({
+                url: '/pages/login/login',
+              })
             }
-          })
-      }else{
+          }
+        })
+      } else {
         wx.showToast({
           title: res.data.message,
           icon: 'none',
           duration: 3000,
         })
-       if(errCallback) errCallback(res)
+        if (errCallback) errCallback(res)
       }
     },
-    fail: function (res) {
-      wx.hideLoading()
+    fail: function () {
       wx.showToast({
-      title: "网络连接超时",
-      icon: 'none',
-      duration: 3000,
+        title: "网络连接超时",
+        icon: 'none',
+        duration: 3000
       })
     }
   })

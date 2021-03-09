@@ -65,13 +65,17 @@ Page({
                             if (resData.code === 0) {
                                 wx.setStorageSync('token', resData.data.token)
                                 wx.setStorageSync('isAdmin', resData.data.isAdmin)
-                                // wx.reLaunch({
-                                //     url: '/pages/index/index',
-                                // })
                                 app.globalData.isAdmin = resData.data.isAdmin
                                 wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
                                     app.globalData.orderCount = res.data.data
                                 })
+                                if (app.globalData.setSubscriptSetting) {
+                                    setTimeout(() => {
+                                        wx.reLaunch({
+                                            url: '/pages/index/index',
+                                        })
+                                    }, 200);
+                                }
                             }
                         })
                     } else {
@@ -82,15 +86,20 @@ Page({
         }
     },
     setSubscribeMessage: function () {
-        wx.requestSubscribeMessage({
-          tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
-          complete: function (rdes) {
-            wx.reLaunch({
-                url: '/pages/index/index',
+        if (!app.globalData.setSubscriptSetting) {
+            wx.requestSubscribeMessage({
+                tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
+                complete: function (rdes) {
+                    app.globalData.setSubscriptSetting = true
+                    setTimeout(() => {
+                        wx.reLaunch({
+                            url: '/pages/index/index',
+                        })
+                    }, 200);
+                }
             })
-          }
-        })
-      },
+        }
+    },
     onShow: function () {
         wx.hideHomeButton()
     }

@@ -58,6 +58,15 @@ Component({
     switchTab(e) {
       const data = e.currentTarget.dataset
       const url = data.path
+      // this.initCustom()
+      wx.switchTab({
+        url
+      })
+      this.setData({
+        selected: data.index
+      })
+    },
+    initCustom(){
       subscriptionsSetting(() => {
         const isAdmin = wx.getStorageSync('isAdmin')
         if (isAdmin) {
@@ -70,18 +79,13 @@ Component({
           })
         }
       })
-      wx.switchTab({
-        url
-      })
-      this.setData({
-        selected: data.index
-      })
     }
   },
   ready() {
     this.setData({
       userInfo: wx.getStorageSync("userInfo")
     })
+    this.initCustom()
   },
   observers: {
     'isAdmin': function (isAdmin) {
