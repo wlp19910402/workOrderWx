@@ -56,6 +56,7 @@ page {
   position: relative;
   margin: 20rpx 0;
   border-radius: 10rpx;
+  overflow: hidden;
 }
 
 .qm-list-img {
@@ -84,9 +85,20 @@ page {
   color: #999;
   justify-content: space-between;
 }
-
+.qm-supporter-tag{
+  width:180rpx;
+  text-align: center;
+  line-height: 40rpx;
+  font-size:24rpx;
+  background-color:rgba(234,183,26,0.9) ;
+  color:#fff;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: -52rpx;
+  top: 10rpx;
+}
 .qm-tag-text {
-  font-size: 24rpx;
+  font-size: 32rpx;
   line-height: 56rpx;
   height:56rpx;
   color: #fff;

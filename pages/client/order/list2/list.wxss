@@ -75,7 +75,7 @@ swiper.qm-tabs-swiper{
   justify-content: space-between;
 }
 .qm-tag-text{
-  font-size:24rpx;
+  font-size:32rpx;
   line-height: 56rpx;
   height:56rpx;
   color:#fff;

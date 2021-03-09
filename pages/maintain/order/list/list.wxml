@@ -3,7 +3,7 @@
 	</mp-tabs>
 	<view class="lr-space">
 		<view class="qm-list-box" wx:for="{{consumableList}}" wx:for-index="index" wx:key="index">
-		<view class="qm-supporter-Id" wx:if="{{item.supporterIds&&item.supporterIds!==userId}}">我是支持人员</view>
+		<view class="qm-supporter-tag" wx:if="{{item.engineerId&&item.engineerId!==userId}}">支持</view>
 			<navigator class="qm-list-link" url="/pages/maintain/order/info/info?id={{item.id}}">
 				<image class='qm-list-img' src="{{item.orderImgUrls&&item.orderImgUrls.length>0?item.orderImgUrls[0]:imgNull}}"></image>
 				<view class="qm-list-content">
@@ -22,7 +22,7 @@
 				</view>
 				<text class="iconfont default icon-arrow-right"></text>
 			</navigator>
-			<view class="qm-list-btns-box" style="padding-bottom:20rpx;" wx:if="{{(item.status==='pd'||item.status==='jd')&&activeTab!==3&&item.supporterIds===userId}}">
+			<view class="qm-list-btns-box" style="padding-bottom:20rpx;" wx:if="{{(item.status==='pd'||item.status==='jd')&&activeTab!==3&&item.engineerId===userId}}">
 				<navigator url="/pages/maintain/order/submit/submit?id={{item.id}}">
 					<view class="qm-list-btn primary-bg white-text" wx:if="{{item.status==='jd'}}">结单</view>
 				</navigator>
