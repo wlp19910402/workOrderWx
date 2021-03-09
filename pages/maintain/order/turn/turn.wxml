@@ -40,7 +40,7 @@
 </view>
 <view wx:if="{{isZdOrder}}">
 	<mp-msg type="success" title="转单成功">
-		<view slot="desc">恭喜转单成功，返回上一页，请点击跳转 <text bindtap="jumpPdList" class="weui-msg__link">返回</text>
+		<view slot="desc">恭喜转单成功，返回首页，请点击跳转 <text bindtap="jumpPdList" class="weui-msg__link">首页</text>
 		</view>
 	</mp-msg>
 </view>

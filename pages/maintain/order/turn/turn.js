@@ -61,8 +61,8 @@ Page({
     })
   },
   jumpPdList() {
-    wx.switchTab({
-      url: '/pages/maintain/order/list/list'
+    wx.reLaunch({
+      url: '/pages/index/index',
     })
   },
 })
