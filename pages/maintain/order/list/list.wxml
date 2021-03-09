@@ -8,8 +8,8 @@
 				<view class="qm-list-content">
 					<view class="qm-list-row">
 						<text class="qm-list-title">{{item.company}}</text>
-						<view class="'qm-tag-text">
-							<qm-order-status wx:if="item.status" orderStatus="{{item.status}}" />
+						<view class="qm-tag-text">
+							<qm-order-status wx:if="{{item.status}}" orderStatus="{{item.status}}" />
 						</view>
 					</view>
 					<view class="qm-list-row">

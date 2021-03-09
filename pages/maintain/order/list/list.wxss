@@ -89,10 +89,11 @@ page {
   font-size: 24rpx;
   line-height: 56rpx;
   height:56rpx;
-  padding: 0 10rpx;
   color: #fff;
 }
-
+.qm-list-des{
+  font-size: 24rpx;
+}
 .warn-text-bg {
   color: #999;
 }
