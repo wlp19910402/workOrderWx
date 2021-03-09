@@ -63,7 +63,7 @@ Page({
   },
   jumpPdList() {
     wx.switchTab({
-      url: '/pages/maintain/order/list/list?type=pd&id=12111'
+      url: '/pages/maintain/order/list/list'
     })
   },
   initData() {

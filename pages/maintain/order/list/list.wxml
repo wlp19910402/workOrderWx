@@ -26,6 +26,9 @@
 					<view class="qm-list-btn primary-bg white-text" wx:if="{{item.status==='jd'}}">结单</view>
 				</navigator>
 				<view bindtap="jdOrder" data-id="{{item.id}}" class="qm-list-btn" wx:if="{{item.status==='pd'}}">接单</view>
+					<navigator url="/pages/maintain/order/turn/turn?id={{item.id}}">
+					<view class="qm-list-btn" wx:if="{{item.status==='jd'||item.status==='pd'}}">转单</view>
+				</navigator>
 			</view>
 		</view>
 	</view>

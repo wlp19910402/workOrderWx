@@ -11,5 +11,7 @@ module.exports = {
   ORDER_MAINTAIN_LIST: "wx-api/work-order/my-maintain-list", //我的工作列表
   ORDER_MAINTAIN_JD: "wx-api/work-order/jd",//提交接单
   ORDER_MAINTAIN_SUBMIT:"wx-api/work-order/submit",//提交结单
-  ORDER_COUNT:"wx-api/work-order/order-count"//订单数量
+  ORDER_COUNT:"wx-api/work-order/order-count",//订单数量
+  ORDER_SEND:"wx-api/work-order/send-orders",//派单
+  ENGINEER_LIST:"wx-api/wx/engineers"//工程师列表
 }

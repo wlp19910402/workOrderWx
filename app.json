@@ -11,6 +11,7 @@
     "pages/logs/logs",
     "pages/maintain/order/list/list",
     "pages/maintain/order/submit/submit",
+    "pages/maintain/order/turn/turn",
     "pages/maintain/order/info/info",
     "pages/common/contactTel/contactTel"
   ],

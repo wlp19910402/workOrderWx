@@ -123,7 +123,17 @@ button[type='primary'] {
     margin-left: 30rpx;
     color: #222222;
 }
-
+.qm-list-btn-null {
+    float: right;
+    border: 1px solid #ededed;
+    font-size: 30rpx;
+    border-radius: 30rpx;
+    padding: 0rpx 30rpx;
+    line-height: 56rpx;
+    margin-left: 30rpx;
+    color: #666666;
+    background:#ededed;
+}
 .qm-footer-btns {
     position: fixed;
     bottom: 0;

@@ -52,6 +52,9 @@
 				<view data-id="{{dataList.id}}" class="qm-list-btn primary-bg white-text">结单</view>
 			</navigator>
 			<view bindtap="jdOrder" wx:if="{{dataList.status==='pd'}}" data-id="{{dataList.id}}" class="qm-list-btn primary-text">接单</view>
+				<navigator url="/pages/maintain/order/turn/turn?id={{dataList.id}}">
+					<view class="qm-list-btn">转单</view>
+				</navigator>
 		</view>
 	</view>
 </view>

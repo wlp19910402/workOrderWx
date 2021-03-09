@@ -1,0 +1,46 @@
+<view class="t-space" wx:if="{{!isZdOrder}}">
+	<view class="tb-space">
+		<view class="page-section">
+		<view class="page-section-title">工程师(必填)</view>
+			<view class="weui-cells weui-cells_after-title">
+				<radio-group bindchange="radioChange" wx:if="{{engineerList&&engineerList.length>0}}">
+					<label class="weui-cell weui-check__label" wx:for="{{engineerList}}" wx:key="{{item.value}}">
+						<view class="weui-cell__hd">
+							<radio value="{{item.value}}"/>
+						</view>
+						<view class="weui-cell__bd">{{item.name}}</view>
+					</label>
+				</radio-group>
+				<qm-null-data wx:if="{{engineerList&&engineerList.length===0}}" />
+			</view>
+		</view>
+		<view class="tb-space">
+			<view class="page-section">
+				<view class="page-section-title">支持人员(选填)</view>
+				<view class="weui-cells weui-cells_after-title">
+					<checkbox-group bindchange="checkboxChange" wx:if="{{engineerList&&engineerList.length>0}}">
+						<label class="weui-cell weui-check__label" wx:for="{{engineerList}}" wx:key="{{item.value}}">
+							<view class="weui-cell__hd">
+								<checkbox value="{{item.value}}"/>
+							</view>
+							<view class="weui-cell__bd">{{item.name}}</view>
+						</label>
+					</checkbox-group>
+					<qm-null-data wx:if="{{engineerList&&engineerList.length===0}}" />
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="qm-footer-btns">
+		<view class="qm-list-btns-box">
+			<view wx:if="{{engineerId!==null}}" bindtap="saveSubmit" data-id="{{item.id}}" class="qm-list-btn primary-bg white-text">确认转单</view>
+			<view  wx:if="{{engineerId===null}}" class="qm-list-btn-null">确认转单</view>
+		</view>
+	</view>
+</view>
+<view wx:if="{{isZdOrder}}">
+	<mp-msg type="success" title="转单成功">
+		<view slot="desc">恭喜转单成功，返回上一页，请点击跳转 <text bindtap="jumpPdList" class="weui-msg__link">返回</text>
+		</view>
+	</mp-msg>
+</view>
