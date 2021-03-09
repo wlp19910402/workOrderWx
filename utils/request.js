@@ -1,15 +1,4 @@
 const wxRequest = (url, data, method, callback, errCallback) => {
-  // wx.getSetting({
-  //   withSubscriptions: true,
-  //   success: res => {
-  //     if (!res.authSetting['scope.userInfo']) {
-  //       wx.reLaunch({
-  //           url: '/pages/login/login',
-  //       })
-  //       return
-  //     }}
-  // })
-
   return wx.request({
     url: 'https://lingyun.labsmart.cn/' + url,
     data: data,

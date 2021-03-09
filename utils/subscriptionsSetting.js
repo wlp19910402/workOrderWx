@@ -13,6 +13,7 @@ const subscriptSetting = function (next) {
               next();
             }
           })
+          
         } else {
           // 继续下一步
           next();

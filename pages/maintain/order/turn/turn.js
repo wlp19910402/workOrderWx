@@ -1,8 +1,10 @@
 const wxRequest = require('../../../../utils/request.js')
 const API = require('../../../../utils/API.js')
+const app = getApp()
 Page({
   data: {
     id: null,
+    userId:null,
     dataList: {},
     engineerList:[],
     isZdOrder:false,
@@ -20,7 +22,8 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      id: options.id
+      id: options.id,
+      userId:app.globalData.userId
     })
     wx.showLoading({
       title: '加载中...'
@@ -31,7 +34,7 @@ Page({
       },'GET',(response)=>{
         let resData = response.data.data.records
         this.setData({
-          engineerList:resData.map(item=>{return {value:item.id,name:item.realName+"("+item.mobile+")"}})
+          engineerList:resData.map(item=>{return {value:item.id,name:item.realname+"("+item.mobile+")"}})
         })
       })
   },

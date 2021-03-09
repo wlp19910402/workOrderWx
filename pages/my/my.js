@@ -37,6 +37,7 @@ Page({
     wx.requestSubscribeMessage({
       tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
       complete: function (rdes) {
+        console.log(rdes)
         app.globalData.setSubscriptSetting=true
       }
     })

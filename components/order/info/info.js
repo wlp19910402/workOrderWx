@@ -1,5 +1,6 @@
 const wxRequest = require('../../../utils/request.js')
 const API = require('../../../utils/API.js')
+const app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -27,6 +28,7 @@ Component({
           
       }
   ],
+  userId:null,
   showDialog:false,
   dialogTitle:"",
   showWorkConsumables:false,
@@ -98,6 +100,9 @@ Component({
   ready() {
     wx.showLoading({
       title: '加载中...',
+    })
+    this.setData({
+      userId:app.globalData.userId
     })
     this.initData()
   }

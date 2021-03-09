@@ -1,5 +1,6 @@
 const wxRequest = require('../../../../utils/request.js')
 const API = require("../../../../utils/API.js")
+const app = getApp()
 Page({
   onShareAppMessage() {
     return {
@@ -10,6 +11,7 @@ Page({
   data: {
     inputShowed: false,
     whetherLast: false,
+    userId:null,
     inputVal: "",
     imgNull: "/static/img/images-null.png",
     tabs: [{
@@ -41,7 +43,8 @@ Page({
   },
   onLoad(options) {
     this.setData({
-      type:options.type
+      type:options.type,
+      userId:app.globalData.userId
     })
     wx.showLoading({
       title: '加载中...',
@@ -56,12 +59,6 @@ Page({
    */
   fetchList: function (params, isRefresh = false) {
     let that = this
-    if (isRefresh) {
-      this.setData({
-        consumableList: [],
-        whetherLast: false
-      })
-    }
     wxRequest(API.ORDER_MAINTAIN_LIST+'/'+that.data.tabs[that.data.activeTab].value, {
       pageSize: that.data.pageSize,
       pageNo: that.data.currentPage,
@@ -77,7 +74,7 @@ Page({
         })
       }
       this.setData({
-        consumableList: [...that.data.consumableList, ...res.data.data.records],
+        consumableList: isRefresh?[...res.data.data.records]:[...that.data.consumableList, ...res.data.data.records],
         totalData: res.data.data.total,
         currentPage: res.data.data.current
       })

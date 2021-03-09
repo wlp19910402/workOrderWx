@@ -66,6 +66,7 @@ Page({
                                 wx.setStorageSync('token', resData.data.token)
                                 wx.setStorageSync('isAdmin', resData.data.isAdmin)
                                 app.globalData.isAdmin = resData.data.isAdmin
+                                app.globalData.userId=resData.data.id
                                 wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
                                     app.globalData.orderCount = res.data.data
                                 })

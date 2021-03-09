@@ -6,7 +6,7 @@
 				<radio-group bindchange="radioChange" wx:if="{{engineerList&&engineerList.length>0}}">
 					<label class="weui-cell weui-check__label" wx:for="{{engineerList}}" wx:key="{{item.value}}">
 						<view class="weui-cell__hd">
-							<radio value="{{item.value}}"/>
+							<radio value="{{item.value}}" disabled="{{item.value===userId}}"/>
 						</view>
 						<view class="weui-cell__bd">{{item.name}}</view>
 					</label>

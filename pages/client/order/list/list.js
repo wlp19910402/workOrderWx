@@ -57,12 +57,6 @@ Page({
    */
   fetchList: function (params, isRefresh = false) {
     let that = this
-    if (isRefresh) {
-      this.setData({
-        consumableList: [],
-        whetherLast: false
-      })
-    }
     wxRequest(API.ORDER_MY_LIST, {
       pageSize: that.data.pageSize,
       pageNo: that.data.currentPage,
@@ -79,7 +73,7 @@ Page({
         })
       }
       this.setData({
-        consumableList: [...that.data.consumableList, ...res.data.data.records],
+        consumableList: isRefresh?[...res.data.data.records]:[...that.data.consumableList, ...res.data.data.records],
         totalData: res.data.data.total,
         currentPage: res.data.data.current
       })
