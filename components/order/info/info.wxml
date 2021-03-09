@@ -1,31 +1,26 @@
-<mp-dialog
-	bindbuttontap="buttontap"
-  show="{{showDialog}}"
-	title="{{dialogTitle}}"
-  maskClosable="{{false}}"
-	ext-class="qm-list-dialog-content"
-	buttons="{{buttons}}"
->
-	<view style="padding:30rpx 0 0" wx:if="{{showWorkConsumables&&dataList.workConsumables.length>0}}"  wx:for="{{dataList.workConsumables}}" wx:key="id">
-		<qm-portfolio-update-consumable-info workConsumables="{{item}}"/>
+<mp-dialog bindbuttontap="buttontap" show="{{showDialog}}" title="{{dialogTitle}}" maskClosable="{{false}}" ext-class="qm-list-dialog-content" buttons="{{buttons}}">
+	<view style="padding:30rpx 0 0" wx:if="{{showWorkConsumables&&dataList.workConsumables.length>0}}" wx:for="{{dataList.workConsumables}}" wx:key="id">
+		<qm-portfolio-update-consumable-info workConsumables="{{item}}" />
 	</view>
-	<qm-null-data wx:if="{{(showWorkConsumables&&dataList.workConsumables.length===0)||(showOrderLog&&logData.length===0)}}"/>
-	<qm-log wx:if="{{showOrderLog&&logData.length>0}}" logData="{{logData}}"/>
+	<qm-null-data wx:if="{{(showWorkConsumables&&dataList.workConsumables.length===0)||(showOrderLog&&logData.length===0)}}" />
+	<qm-log wx:if="{{showOrderLog&&logData.length>0}}" logData="{{logData}}" />
 </mp-dialog>
 <view style="padding-top:30rpx;padding-bottom: {{infoType==='maintain'&&(dataList.status==='pd'||dataList.status==='jd')?'120rpx':'30rpx'}}">
 	<qm-detail-field>
 		<qm-detail-title title="工单详情">
 			<view class="qm-list-extra-btn primary-text" bindtap="showOrderLogs">
-			查看日志</view>
+				查看日志</view>
 		</qm-detail-title>
 		<qm-detail-item label="编号" text="{{dataList.orderNo}}" />
 		<qm-detail-item label="单位名称" text="{{dataList.company}}" />
+		<qm-detail-item label="客户姓名" text="{{dataList.customerName}}" />
+		<qm-detail-item label="客户电话" text="{{dataList.customerMobile}}" />
 		<qm-detail-item wx:if="{{dataList.status!=='wpd'&&dataList.engineerName}}" label="工程师名称" text="{{dataList.engineerName}}" />
 		<qm-detail-item wx:if="{{dataList.status!=='wpd'&&dataList.engineerName}}" label="支持人员" text="{{dataList.supporterNames}}" />
 		<qm-detail-item wx:if="{{dataList.receivingTime}}" label="接单时间" text="{{dataList.receivingTime}}" />
 		<qm-detail-item label="工单来源" text="{{dataList.sourceType}}" />
-		<qm-detail-item label="工单类型" >
-		<qm-order-orderType wx:if="{{dataList.orderType}}" orderType="{{dataList.orderType}}"/>
+		<qm-detail-item label="工单类型">
+			<qm-order-orderType wx:if="{{dataList.orderType}}" orderType="{{dataList.orderType}}" />
 		</qm-detail-item>
 		<qm-detail-item label="工单状态">
 			<qm-order-status wx:if="{{dataList.status}}" orderStatus="{{dataList.status}}" />
@@ -39,8 +34,8 @@
 		<block wx:if="{{dataList.status==='wc'}}">
 			<view class="line"></view>
 			<qm-detail-title title="结单信息">
-			<view class="qm-list-extra-btn primary-text" bindtap="showWorkConsumablesList">
-			查看更换耗材</view>
+				<view class="qm-list-extra-btn primary-text" bindtap="showWorkConsumablesList">
+					查看更换耗材</view>
 			</qm-detail-title>
 			<qm-detail-item label="结单人员" text="{{dataList.subUsername}}" />
 			<qm-detail-item label="结单时间" text="{{dataList.subTime}}" />
@@ -50,13 +45,13 @@
 		</block>
 	</qm-detail-field>
 	<view class="t-space"></view>
-	<qm-portfolio-info portfolio="{{dataList.portfolio}}" consumables="{{dataList.consumables}}" parts="{{dataList.parts}}"/>
+	<qm-portfolio-info portfolio="{{dataList.portfolio}}" consumables="{{dataList.consumables}}" parts="{{dataList.parts}}" />
 	<view class="qm-footer-btns" wx:if="{{infoType==='maintain'&&(dataList.status==='pd'||dataList.status==='jd')}}">
-			<view class="qm-list-btns-box">
-					<navigator  wx:if="{{dataList.status==='jd'}}" url="/pages/maintain/order/submit/submit?id={{dataList.id}}">
-				<view  data-id="{{dataList.id}}" class="qm-list-btn primary-bg white-text">结单</view>
-				</navigator>
-				<view bindtap="jdOrder" wx:if="{{dataList.status==='pd'}}" data-id="{{dataList.id}}" class="qm-list-btn primary-text">接单</view>
-			</view>
+		<view class="qm-list-btns-box">
+			<navigator wx:if="{{dataList.status==='jd'}}" url="/pages/maintain/order/submit/submit?id={{dataList.id}}">
+				<view data-id="{{dataList.id}}" class="qm-list-btn primary-bg white-text">结单</view>
+			</navigator>
+			<view bindtap="jdOrder" wx:if="{{dataList.status==='pd'}}" data-id="{{dataList.id}}" class="qm-list-btn primary-text">接单</view>
 		</view>
+	</view>
 </view>

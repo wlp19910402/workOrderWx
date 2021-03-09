@@ -25,6 +25,8 @@
 			</qm-detail-title>
 			<qm-detail-item label="编号" text="{{dataList.orderNo}}" />
 			<qm-detail-item label="单位名称" text="{{dataList.company}}" />
+			<qm-detail-item label="客户姓名" text="{{dataList.customerName}}" />
+			<qm-detail-item label="客户电话" text="{{dataList.customerMobile}}" />
 			<qm-detail-item wx:if="{{dataList.status!=='wpd'&&dataList.engineerName}}" label="工程师名称" text="{{dataList.engineerName}}" />
 			<qm-detail-item wx:if="{{dataList.status!=='wpd'&&dataList.engineerName}}" label="支持人员" text="{{dataList.supporterNames}}" />
 			<qm-detail-item wx:if="{{dataList.receivingTime}}" label="接单时间" text="{{dataList.receivingTime}}" />
