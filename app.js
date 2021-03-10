@@ -57,6 +57,9 @@ App({
       }
     })
   },
+  onHide(){
+    this.globalData.setSubscriptSetting=false
+  },
   globalData: {
     userInfo: null,
     userId:null,

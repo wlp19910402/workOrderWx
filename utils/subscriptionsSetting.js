@@ -1,10 +1,13 @@
 const app = getApp()
 const subscriptSetting = function (next) {
-  wx.getSetting({
-    withSubscriptions: true,
-    success: res => {
-      if (!app.globalData.setSubscriptSetting && res.subscriptionsSetting && res.subscriptionsSetting.mainSwitch) {
+  console.log("---------subscriptSetting-------")
+  if (!app.globalData.setSubscriptSetting && app.globalData.userInfo) {
+    wx.getSetting({
+      withSubscriptions: true,
+      success: res => {
+        console.log(res)
         if (!res.subscriptionsSetting.itemSettings || !res.subscriptionsSetting.itemSettings['Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4']) {
+          console.log("---------res-------")
           // ---没有订阅
           wx.requestSubscribeMessage({
             tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
@@ -13,16 +16,16 @@ const subscriptSetting = function (next) {
               next();
             }
           })
-          
         } else {
           // 继续下一步
+          app.globalData.setSubscriptSetting=true
           next();
         }
-      }else{
-         // 继续下一步
-         next();
       }
-    }
-  })
+    })
+  } else {
+    // 继续下一步
+    next();
+  }
 }
 module.exports = subscriptSetting

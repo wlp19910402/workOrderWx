@@ -94,11 +94,11 @@ page {
   color:#fff;
   position: absolute;
   transform: rotate(-45deg);
-  left: -52rpx;
+  left: -60rpx;
   top: 10rpx;
 }
 .qm-tag-text {
-  font-size: 32rpx;
+  font-size: 30rpx;
   line-height: 56rpx;
   height:56rpx;
   color: #fff;
