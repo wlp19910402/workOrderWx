@@ -132,8 +132,7 @@ Page({
     this.initData(()=>{
       wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
         this.setData({
-          pdCount: res.data.data.pdCount,
-          isAdmin: wx.getStorageSync('isAdmin')
+          orderCount: res.data.data
         })
         app.globalData.orderCount = res.data.data
         wx.stopPullDownRefresh();
