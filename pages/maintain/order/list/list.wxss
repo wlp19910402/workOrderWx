@@ -88,13 +88,13 @@ page {
 .qm-supporter-tag{
   width:180rpx;
   text-align: center;
-  line-height: 40rpx;
-  font-size:24rpx;
+  line-height: 32rpx;
+  font-size:22rpx;
   background-color:rgba(234,183,26,0.9) ;
   color:#fff;
   position: absolute;
   transform: rotate(-45deg);
-  left: -60rpx;
+  left: -68rpx;
   top: 10rpx;
 }
 .qm-tag-text {
