@@ -72,14 +72,20 @@ Page({
   onLoad: function () {
     this.initData()
   },
-  initData(){
+  initData(next){
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: wx.getStorageSync('isAdmin') ? 3 : 2
+      })
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
         isAdmin:app.globalData.isAdmin
       })
-      wx.stopPullDownRefresh();
+     if(next) next();
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -89,7 +95,7 @@ Page({
           hasUserInfo: true,
           isAdmin:wx.getStorageSync('isAdmin')
         })
-        wx.stopPullDownRefresh();
+        if(next) next();
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -102,19 +108,10 @@ Page({
             hasUserInfo: true,
             isAdmin:res.isAdmin
           })
-          wx.stopPullDownRefresh();
+          if(next) next();
         }
       })
     }
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: wx.getStorageSync('isAdmin') ? 3 : 2
-      })
-    }
-    this.setData({
-      orderCount:app.globalData.orderCount
-    })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -132,6 +129,16 @@ Page({
   },
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
-    this.initData()
+    this.initData(()=>{
+      wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
+        this.setData({
+          pdCount: res.data.data.pdCount,
+          isAdmin: wx.getStorageSync('isAdmin')
+        })
+        app.globalData.orderCount = res.data.data
+        wx.stopPullDownRefresh();
+        wx.hideNavigationBarLoading();
+      })
+    })
   },
 })
