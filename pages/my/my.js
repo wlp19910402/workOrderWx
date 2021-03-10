@@ -2,6 +2,7 @@
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
 const API = require("../../utils/API.js")
+const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 Page({
   /**
    * 页面的初始数据
@@ -34,13 +35,7 @@ Page({
     ]
   },
   setSubscribeMessage:function(){
-    wx.requestSubscribeMessage({
-      tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
-      complete: function (rdes) {
-        // console.log(rdes)
-        app.globalData.setSubscriptSetting=true
-      }
-    })
+    subscriptionsSetting()
   },
   logout: function () {
     wx.showModal({
@@ -74,13 +69,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
+    this.initData()
+  },
+  initData(){
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
         isAdmin:app.globalData.isAdmin
       })
+      wx.stopPullDownRefresh();
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -90,6 +89,7 @@ Page({
           hasUserInfo: true,
           isAdmin:wx.getStorageSync('isAdmin')
         })
+        wx.stopPullDownRefresh();
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -102,9 +102,19 @@ Page({
             hasUserInfo: true,
             isAdmin:res.isAdmin
           })
+          wx.stopPullDownRefresh();
         }
       })
     }
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: wx.getStorageSync('isAdmin') ? 3 : 2
+      })
+    }
+    this.setData({
+      orderCount:app.globalData.orderCount
+    })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -119,5 +129,9 @@ Page({
     this.setData({
       orderCount:app.globalData.orderCount
     })
-  }
+  },
+  onPullDownRefresh: function () {
+    //调用刷新时将执行的方法
+    this.initData()
+  },
 })

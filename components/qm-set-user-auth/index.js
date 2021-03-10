@@ -2,6 +2,7 @@
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
 const API = require('../../utils/API.js')
+const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 Component({
   /**
    * 组件的初始数据
@@ -66,14 +67,7 @@ Component({
       }
     },
     setSubscribeMessage: function () {
-      if (!app.globalData.setSubscriptSetting) {
-        wx.requestSubscribeMessage({
-          tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
-          complete: function (rdes) {
-            app.globalData.setSubscriptSetting = true
-          }
-        })
-      }
+      subscriptionsSetting()
     },
   }
 })

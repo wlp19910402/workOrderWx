@@ -1,6 +1,7 @@
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
 const API = require('../../utils/API.js')
+// const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 Page({
     /**
      * 页面的初始数据
@@ -87,16 +88,19 @@ Page({
         }
     },
     setSubscribeMessage: function () {
+        // subscriptionsSetting(()=>{
+        //     setTimeout(() => {
+        //         wx.reLaunch({
+        //             url: '/pages/index/index',
+        //         })
+        //     }, 200);
+        // })
         if (!app.globalData.setSubscriptSetting) {
             wx.requestSubscribeMessage({
                 tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
                 complete: function (rdes) {
                     app.globalData.setSubscriptSetting = true
-                    setTimeout(() => {
-                        wx.reLaunch({
-                            url: '/pages/index/index',
-                        })
-                    }, 200);
+                    
                 }
             })
         }

@@ -43,7 +43,6 @@ Page({
   },
   onLoad(options) {
     this.setData({
-      type:options.type,
       userId:app.globalData.userId
     })
     wx.showLoading({
@@ -59,6 +58,9 @@ Page({
    */
   fetchList: function (params, isRefresh = false) {
     let that = this
+    if(isRefresh){
+      consumableList:[]
+    }
     wxRequest(API.ORDER_MAINTAIN_LIST+'/'+that.data.tabs[that.data.activeTab].value, {
       pageSize: that.data.pageSize,
       pageNo: that.data.currentPage,
@@ -137,7 +139,6 @@ Page({
         consumableList:newList
       })
     })
-   
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
@@ -149,13 +150,10 @@ Page({
   },
   //刷新
   onRefresh() {
-    //在当前页面显示导航条加载动画
     wx.showNavigationBarLoading();
-    //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
     this.fetchList({
       pageNo: 1
     }, true)
-    // this.getData();
   },
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
