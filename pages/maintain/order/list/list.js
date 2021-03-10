@@ -11,7 +11,7 @@ Page({
   data: {
     inputShowed: false,
     whetherLast: false,
-    userId:null,
+    userId: null,
     inputVal: "",
     imgNull: "/static/img/images-null.png",
     tabs: [{
@@ -43,7 +43,7 @@ Page({
   },
   onLoad(options) {
     this.setData({
-      userId:app.globalData.userId
+      userId: app.globalData.userId
     })
     wx.showLoading({
       title: '加载中...',
@@ -58,10 +58,12 @@ Page({
    */
   fetchList: function (params, isRefresh = false) {
     let that = this
-    if(isRefresh){
-      consumableList:[]
+    if (isRefresh) {
+      this.setData({
+        consumableList: []
+      })
     }
-    wxRequest(API.ORDER_MAINTAIN_LIST+'/'+that.data.tabs[that.data.activeTab].value, {
+    wxRequest(API.ORDER_MAINTAIN_LIST + '/' + that.data.tabs[that.data.activeTab].value, {
       pageSize: that.data.pageSize,
       pageNo: that.data.currentPage,
       ...params
@@ -76,7 +78,7 @@ Page({
         })
       }
       this.setData({
-        consumableList: isRefresh?[...res.data.data.records]:[...that.data.consumableList, ...res.data.data.records],
+        consumableList: isRefresh ? [...res.data.data.records] : [...that.data.consumableList, ...res.data.data.records],
         totalData: res.data.data.total,
         currentPage: res.data.data.current
       })
@@ -107,36 +109,39 @@ Page({
       url: './webview',
     })
   },
-  jdOrder(e){
+  jdOrder(e) {
     const id = e.currentTarget.dataset.id;
-    const that =this
+    const that = this
     wx.showLoading({
       title: '接单中...',
     })
-    wxRequest(API.ORDER_MAINTAIN_JD+'/'+e.currentTarget.dataset.id,null,'POST',(res)=>{
+    wxRequest(API.ORDER_MAINTAIN_JD + '/' + e.currentTarget.dataset.id, null, 'POST', (res) => {
       wx.showToast({
         title: '接单成功',
         icon: 'success',
         duration: 3000,
       })
-      const newList = that.data.consumableList.map(item=>{
-        if(item.id===id){
-          return {...item,status:'jd'}
+      const newList = that.data.consumableList.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            status: 'jd'
+          }
         }
         return item
-      }).filter(item=>{
-        if(that.data.tabs[that.data.activeTab].value==='all'){
+      }).filter(item => {
+        if (that.data.tabs[that.data.activeTab].value === 'all') {
           return item
         }
-        if(item.status===that.data.tabs[that.data.activeTab].value){
+        if (item.status === that.data.tabs[that.data.activeTab].value) {
           return item
         }
       })
       that.setData({
-        consumableList:[]
+        consumableList: []
       })
       that.setData({
-        consumableList:newList
+        consumableList: newList
       })
     })
   },

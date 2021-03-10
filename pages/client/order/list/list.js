@@ -57,6 +57,11 @@ Page({
    */
   fetchList: function (params, isRefresh = false) {
     let that = this
+    if (isRefresh) {
+      this.setData({
+        consumableList: []
+      })
+    }
     wxRequest(API.ORDER_MY_LIST, {
       pageSize: that.data.pageSize,
       pageNo: that.data.currentPage,
