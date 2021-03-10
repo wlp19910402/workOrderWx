@@ -97,7 +97,7 @@ Page({
         // })
         if (!app.globalData.setSubscriptSetting) {
             wx.requestSubscribeMessage({
-                tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
+                tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR9a3cU-V_yqfIxNGP6MJCDk","Oc5JLnSTjEsFvyAbJKMg-jehYz0xq3J8JphRsylUo9E"],
                 complete: function (rdes) {
                     app.globalData.setSubscriptSetting = true
                     

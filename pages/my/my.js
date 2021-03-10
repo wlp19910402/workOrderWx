@@ -9,13 +9,13 @@ Page({
    */
   data: {
     userInfo: null,
-    orderCount:{
-      pdCount:0,
-      jdCount:0,
-      wcCount:0,
-      myCount:0
+    orderCount: {
+      pdCount: 0,
+      jdCount: 0,
+      wcCount: 0,
+      myCount: 0
     },
-    isAdmin:false,
+    isAdmin: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     moduleData: [
       // [{
@@ -25,16 +25,16 @@ Page({
       //   isLogin: false,
       //   bindTapFunc:"setSubscribeMessage"
       // }],
-      [{
-        name: "退出登录",
-        icon: "icon-sign-out",
-        link: "/",
-        isLogin: true,
-        bindTapFunc:"logout"
-      }]
+      // [{
+      //   name: "退出登录",
+      //   icon: "icon-sign-out",
+      //   link: "/",
+      //   isLogin: true,
+      //   bindTapFunc: "logout"
+      // }]
     ]
   },
-  setSubscribeMessage:function(){
+  setSubscribeMessage: function () {
     subscriptionsSetting()
   },
   logout: function () {
@@ -44,17 +44,17 @@ Page({
       confirmColor: "#46b989",
       confirmText: "确认退出",
       success: (res) => {
-        if(res.confirm){
+        if (res.confirm) {
           wxRequest(API.USER_LOGOUT, null, "POST", (logoutRes) => {
             let resData = logoutRes.data
             if (resData.code === 0) {
               wx.clearStorage()
               this.setData({
                 userInfo: null,
-                isAdmin:false
+                isAdmin: false
               })
               app.globalData.userInfo = null
-              app.globalData.isAdmin=false
+              app.globalData.isAdmin = false
               setTimeout(() => {
                 wx.reLaunch({
                   url: '/pages/index/index',
@@ -72,7 +72,7 @@ Page({
   onLoad: function () {
     this.initData()
   },
-  initData(next){
+  initData(next) {
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -83,9 +83,9 @@ Page({
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
-        isAdmin:app.globalData.isAdmin
+        isAdmin: app.globalData.isAdmin
       })
-     if(next) next();
+      if (next) next();
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -93,22 +93,22 @@ Page({
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true,
-          isAdmin:wx.getStorageSync('isAdmin')
+          isAdmin: wx.getStorageSync('isAdmin')
         })
-        if(next) next();
+        if (next) next();
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
-          app.globalData.isAdmin=res.isAdmin
+          app.globalData.isAdmin = res.isAdmin
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true,
-            isAdmin:res.isAdmin
+            isAdmin: res.isAdmin
           })
-          if(next) next();
+          if (next) next();
         }
       })
     }
@@ -124,12 +124,12 @@ Page({
       })
     }
     this.setData({
-      orderCount:app.globalData.orderCount
+      orderCount: app.globalData.orderCount
     })
   },
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
-    this.initData(()=>{
+    this.initData(() => {
       wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
         this.setData({
           orderCount: res.data.data

@@ -4,10 +4,10 @@ const subscriptSetting = function (next,params=false) {
     wx.getSetting({
       withSubscriptions: true,
       success: res => {
-        if (!res.subscriptionsSetting.itemSettings || !res.subscriptionsSetting.itemSettings['Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4']) {
+        if (!res.subscriptionsSetting.itemSettings || !res.subscriptionsSetting.itemSettings['Xr_SZnAXvxbR8xs0SDLfR9a3cU-V_yqfIxNGP6MJCDk']) {
           // ---没有订阅
           wx.requestSubscribeMessage({
-            tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR1lzkR61oZQdM9vkK_5s6x4"],
+            tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR9a3cU-V_yqfIxNGP6MJCDk","Oc5JLnSTjEsFvyAbJKMg-jehYz0xq3J8JphRsylUo9E"],
             complete: function (rdes) {
               app.globalData.setSubscriptSetting = true
              if(next) next();
