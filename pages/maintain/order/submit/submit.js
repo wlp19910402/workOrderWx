@@ -1,5 +1,6 @@
 const wxRequest = require('../../../../utils/request.js')
 const API = require('../../../../utils/API.js')
+const subscriptionsSetting = require('../../../../utils/subscriptionsSetting.js')
 Page({
   data: {
     id: null,
@@ -7,7 +8,7 @@ Page({
     open: false,
     subImgUrls: [],
     subRemark: "",
-    isPdOrder:true,
+    isPdOrder: true,
     buttons: [{
         extClass: '',
         text: '关闭'
@@ -32,18 +33,18 @@ Page({
     wx.showLoading({
       title: '加载中...'
     })
-    wxRequest(API.ORDER_INFO+'/' + options.id, null, 'GET', (res) => {
+    wxRequest(API.ORDER_INFO + '/' + options.id, null, 'GET', (res) => {
       this.setData({
         dataList: res.data.data,
         oldConsumableDatas: res.data.data.consumables
       })
-      if(res.data.data.status&&res.data.data.status==='wc'){
+      if (res.data.data.status && res.data.data.status === 'wc') {
         this.setData({
-          isPdOrder:false,
+          isPdOrder: false,
         })
-      }else{
+      } else {
         this.setData({
-          isPdOrder:true,
+          isPdOrder: true,
         })
       }
     })
@@ -75,8 +76,8 @@ Page({
   },
   confirmDialog() {
     let tmpDataList = this.data.dataList
-    let oldExpTime = tmpDataList.consumables.find(item=>item.id === this.data.editConsumableData.id).expirationTime
-    if(this.formatDate(oldExpTime)===this.data.editExpirDate){
+    let oldExpTime = tmpDataList.consumables.find(item => item.id === this.data.editConsumableData.id).expirationTime
+    if (this.formatDate(oldExpTime) === this.data.editExpirDate) {
       wx.showToast({
         title: '新到期日期和原到期日期一样哦~',
         icon: 'error',
@@ -143,7 +144,7 @@ Page({
           if (item.id === id) {
             return {
               ...item,
-              newExpirationTime:"",
+              newExpirationTime: "",
               isEdit: false
             }
           } else {
@@ -183,33 +184,39 @@ Page({
       subImgUrls: this.data.subImgUrls,
       subRemark: this.data.subRemark
     }
-    wx.showLoading({
-      title: '正在提交',
-    })
-    wxRequest(API.ORDER_MAINTAIN_SUBMIT, params, 'POST', (res) => {
-      this.setData({
-        dataList:{...this.data.dataList,status:'wc'}
+    subscriptionsSetting(() => {
+      wx.showLoading({
+        title: '正在提交',
       })
-      wx.showToast({
-        title: '提交成功',
-        icon: 'success',
-        duration: 6000,
-      })
-      setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/maintain/order/info/info?id=' + that.data.id
+      wxRequest(API.ORDER_MAINTAIN_SUBMIT, params, 'POST', (res) => {
+        that.setData({
+          dataList: {
+            ...that.data.dataList,
+            status: 'wc'
+          }
         })
-      }, 1000);
-    })
-  },
-  onShow(){
-    if(this.data.dataList.status&&this.data.dataList.status==='wc'){
-      this.setData({
-        isPdOrder:false,
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          duration: 6000,
+        })
+        setTimeout(() => {
+          wx.navigateTo({
+            url: '/pages/maintain/order/info/info?id=' + that.data.id
+          })
+        }, 1000);
       })
-    }else{
+    })
+
+  },
+  onShow() {
+    if (this.data.dataList.status && this.data.dataList.status === 'wc') {
       this.setData({
-        isPdOrder:true,
+        isPdOrder: false,
+      })
+    } else {
+      this.setData({
+        isPdOrder: true,
       })
     }
   }

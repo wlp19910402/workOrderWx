@@ -41,7 +41,7 @@ App({
                       wx.setStorageSync('token', resData.data.token)
                       wx.setStorageSync('isAdmin', resData.data.isAdmin)
                       that.globalData.isAdmin = resData.data.isAdmin
-                      that.globalData.userId=resData.data.id
+                      that.globalData.userId = resData.data.id
                       wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
                         that.globalData.orderCount = res.data.data
                       })
@@ -57,12 +57,12 @@ App({
       }
     })
   },
-  onHide(){
-    // this.globalData.setSubscriptSetting=false
+  onHide() {
+    this.globalData.setSubscriptSetting = false
   },
   globalData: {
     userInfo: null,
-    userId:null,
+    userId: null,
     isAdmin: false,
     wxNickname: "",
     orderCount: {

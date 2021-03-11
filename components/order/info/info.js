@@ -1,6 +1,7 @@
 const wxRequest = require('../../../utils/request.js')
 const API = require('../../../utils/API.js')
 const app = getApp()
+const subscriptionsSetting = require('../../../utils/subscriptionsSetting.js')
 Component({
   /**
    * 组件的属性列表
@@ -62,35 +63,39 @@ Component({
     },
     jdOrder(e) {
       const that = this
-      wx.showModal({
-        title: "提示",
-        content: "请确认是否接单？",
-        confirmColor: "#46b989",
-        confirmText: "确认",
-        success: (res) => {
-          if (res.confirm) {
-            wx.showLoading({
-              title: '接单中...',
-            })
-            wxRequest(API.ORDER_MAINTAIN_JD + '/' + that.data.dataList.id, null, 'POST', (res) => {
-              wx.showToast({
-                title: '接单成功',
-                icon: 'success',
-                duration: 3000,
+      subscriptionsSetting(() => {
+        wx.showModal({
+          title: "提示",
+          content: "请确认是否接单？",
+          confirmColor: "#46b989",
+          confirmText: "确认",
+          success: (res) => {
+            if (res.confirm) {
+              wx.showLoading({
+                title: '接单中...',
               })
-              that.setData({
-                dataList: {},
-                logData: []
+              wxRequest(API.ORDER_MAINTAIN_JD + '/' + that.data.dataList.id, null, 'POST', (res) => {
+                wx.showLoading({
+                  title: '接单中...',
+                })
+                that.setData({
+                  dataList: {},
+                  logData: []
+                })
+                that.initData(() => {
+                  wx.showToast({
+                    title: '接单成功',
+                    icon: 'success',
+                    duration: 3000,
+                  })
+                })
               })
-              setTimeout(() => {
-                this.initData()
-              }, 1000);
-            })
+            }
           }
-        }
+        })
       })
     },
-    initData() {
+    initData(next) {
       wxRequest(API.ORDER_INFO + '/' + this.properties.infoId, null, 'GET', (res) => {
         this.setData({
           dataList: res.data.data
@@ -99,6 +104,7 @@ Component({
           this.setData({
             logData: response.data.data
           })
+          if (next) next()
         })
       })
     }

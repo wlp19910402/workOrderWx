@@ -1,6 +1,7 @@
 const wxRequest = require('../../../../utils/request.js')
 const API = require("../../../../utils/API.js")
 const app = getApp()
+const subscriptionsSetting = require('../../../../utils/subscriptionsSetting.js')
 Page({
   onShareAppMessage() {
     return {
@@ -113,49 +114,50 @@ Page({
 
     const id = e.currentTarget.dataset.id;
     const that = this
-    wx.showModal({
-      title: "提示",
-      content: "请确认是否接单？",
-      confirmColor: "#46b989",
-      confirmText: "确认",
-      success: (res) => {
-        if (res.confirm) {
-          wx.showLoading({
-            title: '接单中...',
-          })
-          wxRequest(API.ORDER_MAINTAIN_JD + '/' + e.currentTarget.dataset.id, null, 'POST', (res) => {
-            wx.showToast({
-              title: '接单成功',
-              icon: 'success',
-              duration: 3000,
+    subscriptionsSetting(() => {
+      wx.showModal({
+        title: "提示",
+        content: "请确认是否接单？",
+        confirmColor: "#46b989",
+        confirmText: "确认",
+        success: (res) => {
+          if (res.confirm) {
+            wx.showLoading({
+              title: '接单中...',
             })
-            const newList = that.data.consumableList.map(item => {
-              if (item.id === id) {
-                return {
-                  ...item,
-                  status: 'jd'
+            wxRequest(API.ORDER_MAINTAIN_JD + '/' + e.currentTarget.dataset.id, null, 'POST', (res) => {
+              wx.showToast({
+                title: '接单成功',
+                icon: 'success',
+                duration: 3000,
+              })
+              const newList = that.data.consumableList.map(item => {
+                if (item.id === id) {
+                  return {
+                    ...item,
+                    status: 'jd'
+                  }
                 }
-              }
-              return item
-            }).filter(item => {
-              if (that.data.tabs[that.data.activeTab].value === 'all') {
                 return item
-              }
-              if (item.status === that.data.tabs[that.data.activeTab].value) {
-                return item
-              }
+              }).filter(item => {
+                if (that.data.tabs[that.data.activeTab].value === 'all') {
+                  return item
+                }
+                if (item.status === that.data.tabs[that.data.activeTab].value) {
+                  return item
+                }
+              })
+              that.setData({
+                consumableList: []
+              })
+              that.setData({
+                consumableList: newList
+              })
             })
-            that.setData({
-              consumableList: []
-            })
-            that.setData({
-              consumableList: newList
-            })
-          })
+          }
         }
-      }
+      })
     })
-
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
