@@ -34,7 +34,7 @@
 		<block wx:if="{{dataList.status==='wc'}}">
 			<view class="line"></view>
 			<qm-detail-title title="结单信息">
-				<view class="qm-list-extra-btn primary-text" bindtap="showWorkConsumablesList">
+				<view wx:if="{{dataList.orderType!=='xj'}}" class="qm-list-extra-btn primary-text" bindtap="showWorkConsumablesList">
 					查看更换耗材</view>
 			</qm-detail-title>
 			<qm-detail-item label="结单人员" text="{{dataList.subUsername}}" />
@@ -45,7 +45,7 @@
 		</block>
 	</qm-detail-field>
 	<view class="t-space"></view>
-	<qm-portfolio-info portfolio="{{dataList.portfolio}}" consumables="{{dataList.consumables}}" parts="{{dataList.parts}}" />
+	<qm-portfolio-info wx:if="{{dataList.orderType!=='xj'}}" portfolio="{{dataList.portfolio}}" consumables="{{dataList.consumables}}" parts="{{dataList.parts}}" />
 	<view class="qm-footer-btns" wx:if="{{infoType==='maintain'&&(dataList.status==='pd'||dataList.status==='jd')&&dataList.engineerId===userId}}">
 		<view class="qm-list-btns-box">
 			<navigator wx:if="{{dataList.status==='jd'}}" url="/pages/maintain/order/submit/submit?id={{dataList.id}}">

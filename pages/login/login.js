@@ -100,7 +100,6 @@ Page({
                 tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR9a3cU-V_yqfIxNGP6MJCDk","Oc5JLnSTjEsFvyAbJKMg-jehYz0xq3J8JphRsylUo9E"],
                 complete: function (rdes) {
                     app.globalData.setSubscriptSetting = true
-                    
                 }
             })
         }
