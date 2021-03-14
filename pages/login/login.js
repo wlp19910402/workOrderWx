@@ -1,6 +1,12 @@
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
 const API = require('../../utils/API.js')
+const tabbarPath = [
+    'pages/index/index',
+    'pages/client/order/list/list',
+    'pages/maintain/order/list/list',
+    'pages/my/my'
+]
 Page({
     /**
      * 页面的初始数据
@@ -71,9 +77,15 @@ Page({
                                     app.globalData.orderCount = res.data.data
                                 })
                                 setTimeout(() => {
-                                    wx.reLaunch({
-                                        url: '/pages/index/index',
-                                    })
+                                    if(!app.globalData.redirectPath||tabbarPath.find(item=>item===app.globalData.redirectPath)){
+                                        wx.reLaunch({
+                                            url: '/pages/index/index'
+                                          })
+                                    }else{
+                                        wx.redirectTo({
+                                         url:'/'+app.globalData.redirectPath,
+                                        })
+                                    }
                                 }, 200);
                             }
                         })

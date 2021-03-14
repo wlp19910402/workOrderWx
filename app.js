@@ -67,6 +67,7 @@ App({
       jdCount: 0,
       wcCount: 0,
       myCount: 0
-    }
+    },
+    redirectPath:null
   }
 })

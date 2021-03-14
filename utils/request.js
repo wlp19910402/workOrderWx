@@ -1,3 +1,4 @@
+
 const wxRequest = (url, data, method, callback, errCallback) => {
   return wx.request({
     url: 'https://lingyun.labsmart.cn/' + url,
@@ -12,6 +13,8 @@ const wxRequest = (url, data, method, callback, errCallback) => {
         wx.hideLoading()
         if (callback) callback(res)
       } else if (res.data.code === 301) {
+        const app = getApp()
+        app.globalData.redirectPath=getCurrentPages()[0].route
         wx.hideLoading()
         wx.showModal({
           title: "需要登录",
