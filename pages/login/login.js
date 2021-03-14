@@ -1,7 +1,6 @@
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
 const API = require('../../utils/API.js')
-// const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 Page({
     /**
      * 页面的初始数据
@@ -67,39 +66,20 @@ Page({
                                 wx.setStorageSync('token', resData.data.token)
                                 wx.setStorageSync('isAdmin', resData.data.isAdmin)
                                 app.globalData.isAdmin = resData.data.isAdmin
-                                app.globalData.userId=resData.data.id
+                                app.globalData.userId = resData.data.id
                                 wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
                                     app.globalData.orderCount = res.data.data
                                 })
-                                if (app.globalData.setSubscriptSetting) {
-                                    setTimeout(() => {
-                                        wx.reLaunch({
-                                            url: '/pages/index/index',
-                                        })
-                                    }, 200);
-                                }
+                                setTimeout(() => {
+                                    wx.reLaunch({
+                                        url: '/pages/index/index',
+                                    })
+                                }, 200);
                             }
                         })
                     } else {
                         console.log('登录失败！' + resLogin.errMsg)
                     }
-                }
-            })
-        }
-    },
-    setSubscribeMessage: function () {
-        // subscriptionsSetting(()=>{
-        //     setTimeout(() => {
-        //         wx.reLaunch({
-        //             url: '/pages/index/index',
-        //         })
-        //     }, 200);
-        // })
-        if (!app.globalData.setSubscriptSetting) {
-            wx.requestSubscribeMessage({
-                tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR9a3cU-V_yqfIxNGP6MJCDk","Oc5JLnSTjEsFvyAbJKMg-jehYz0xq3J8JphRsylUo9E"],
-                complete: function (rdes) {
-                    app.globalData.setSubscriptSetting = true
                 }
             })
         }

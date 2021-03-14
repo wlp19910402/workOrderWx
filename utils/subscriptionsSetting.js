@@ -1,6 +1,6 @@
 const app = getApp()
 const subscriptSetting = function (next,params=false) {
-  if (!app.globalData.setSubscriptSetting && (app.globalData.userInfo||params)) {
+  if ((app.globalData.userInfo||params)) {
     wx.getSetting({
       withSubscriptions: true,
       success: res => {
@@ -9,13 +9,13 @@ const subscriptSetting = function (next,params=false) {
           wx.requestSubscribeMessage({
             tmplIds: ["Xr_SZnAXvxbR8xs0SDLfR9a3cU-V_yqfIxNGP6MJCDk","Oc5JLnSTjEsFvyAbJKMg-jehYz0xq3J8JphRsylUo9E"],
             complete: function (rdes) {
-              app.globalData.setSubscriptSetting = true
+              // app.globalData.setSubscriptSetting = true
              if(next) next();
             }
           })
         } else {
           // 继续下一步
-          app.globalData.setSubscriptSetting = true
+          // app.globalData.setSubscriptSetting = true
           if(next) next();
         }
       }

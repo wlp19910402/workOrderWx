@@ -2,7 +2,6 @@
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
 const API = require("../../utils/API.js")
-const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 Page({
   /**
    * 页面的初始数据
@@ -23,7 +22,7 @@ Page({
       //   icon: "icon-comment",
       //   link: "/",
       //   isLogin: false,
-      //   bindTapFunc:"setSubscribeMessage"
+      //   bindTapFunc: "onSettingOpen"
       // }],
       // [{
       //   name: "退出登录",
@@ -33,9 +32,6 @@ Page({
       //   bindTapFunc: "logout"
       // }]
     ]
-  },
-  setSubscribeMessage: function () {
-    subscriptionsSetting()
   },
   logout: function () {
     wx.showModal({
@@ -139,5 +135,5 @@ Page({
         wx.hideNavigationBarLoading();
       })
     })
-  },
+  }
 })

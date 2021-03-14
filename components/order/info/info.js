@@ -1,7 +1,6 @@
 const wxRequest = require('../../../utils/request.js')
 const API = require('../../../utils/API.js')
 const app = getApp()
-const subscriptionsSetting = require('../../../utils/subscriptionsSetting.js')
 Component({
   /**
    * 组件的属性列表
@@ -63,7 +62,6 @@ Component({
     },
     jdOrder(e) {
       const that = this
-      subscriptionsSetting(() => {
         wx.showModal({
           title: "提示",
           content: "请确认是否接单？",
@@ -93,7 +91,6 @@ Component({
             }
           }
         })
-      })
     },
     initData(next) {
       wxRequest(API.ORDER_INFO + '/' + this.properties.infoId, null, 'GET', (res) => {

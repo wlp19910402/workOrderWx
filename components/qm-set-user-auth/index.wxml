@@ -4,7 +4,7 @@
 		<view class="userinfo">
 			<open-data class="userinfo-avatar" lang="zh_CN" type="userAvatarUrl"></open-data>
 			<open-data class="userinfo-nickname" lang="zh_CN" type="userNickName"></open-data>
-			<button wx:if="{{!hasUserInfo}}" class="weui-btn" size="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="primary" bindtap="setSubscribeMessage" >授权登录</button>
+			<button wx:if="{{!hasUserInfo}}" class="weui-btn" size="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="primary">授权登录</button>
 		</view>
 	</view>
 </view>

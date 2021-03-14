@@ -1,4 +1,3 @@
-const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 const wxRequest = require('../../utils/request.js')
 const API = require('../../utils/API.js')
 const app = getApp()
@@ -32,17 +31,15 @@ Page({
     const that = this
     var $id = e.currentTarget.dataset.id;
     if ($id === 0) {
-      subscriptionsSetting(() => {
-        wx.scanCode({
-          complete: (res) => {
-            /** TODO 根据扫码结果判断是否符合要求再进行调整到档案页面 */
-            if (res.result) {
-              wx.navigateTo({
-                url: '/pages/client/portfolio/scan/scan?qrCode=' + res.result,
-              })
-            }
+      wx.scanCode({
+        complete: (res) => {
+          /** TODO 根据扫码结果判断是否符合要求再进行调整到档案页面 */
+          if (res.result) {
+            wx.navigateTo({
+              url: '/pages/client/portfolio/scan/scan?qrCode=' + res.result,
+            })
           }
-        })
+        }
       })
     } else {
       wx.navigateTo({
@@ -69,18 +66,18 @@ Page({
     })
   },
   initData() {
-      wx.showLoading({
-        title: '加载中...',
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
+      this.setData({
+        pdCount: res.data.data.pdCount,
+        isAdmin: wx.getStorageSync('isAdmin')
       })
-      wxRequest(API.ORDER_COUNT, null, 'GET', (res) => {
-        this.setData({
-          pdCount: res.data.data.pdCount,
-          isAdmin: wx.getStorageSync('isAdmin')
-        })
-        app.globalData.orderCount = res.data.data
-        wx.stopPullDownRefresh();
-        wx.hideNavigationBarLoading();
-      })
+      app.globalData.orderCount = res.data.data
+      wx.stopPullDownRefresh();
+      wx.hideNavigationBarLoading();
+    })
   },
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法

@@ -1,6 +1,5 @@
 const wxRequest = require('../../../../utils/request.js')
 const API = require('../../../../utils/API.js')
-const subscriptionsSetting = require('../../../../utils/subscriptionsSetting.js')
 Page({
   data: {
     id: null,
@@ -184,30 +183,27 @@ Page({
       subImgUrls: this.data.subImgUrls,
       subRemark: this.data.subRemark
     }
-    subscriptionsSetting(() => {
-      wx.showLoading({
-        title: '正在提交',
-      })
-      wxRequest(API.ORDER_MAINTAIN_SUBMIT, params, 'POST', (res) => {
-        that.setData({
-          dataList: {
-            ...that.data.dataList,
-            status: 'wc'
-          }
-        })
-        wx.showToast({
-          title: '提交成功',
-          icon: 'success',
-          duration: 6000,
-        })
-        setTimeout(() => {
-          wx.navigateTo({
-            url: '/pages/maintain/order/info/info?id=' + that.data.id
-          })
-        }, 1000);
-      })
+    wx.showLoading({
+      title: '正在提交',
     })
-
+    wxRequest(API.ORDER_MAINTAIN_SUBMIT, params, 'POST', (res) => {
+      that.setData({
+        dataList: {
+          ...that.data.dataList,
+          status: 'wc'
+        }
+      })
+      wx.showToast({
+        title: '提交成功',
+        icon: 'success',
+        duration: 6000,
+      })
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/maintain/order/info/info?id=' + that.data.id
+        })
+      }, 1000);
+    })
   },
   onShow() {
     if (this.data.dataList.status && this.data.dataList.status === 'wc') {

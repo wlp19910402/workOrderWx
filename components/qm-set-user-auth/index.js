@@ -2,7 +2,6 @@
 const app = getApp()
 const wxRequest = require('../../utils/request.js')
 const API = require('../../utils/API.js')
-const subscriptionsSetting = require('../../utils/subscriptionsSetting.js')
 Component({
   /**
    * 组件的初始数据
@@ -65,9 +64,6 @@ Component({
           }
         })
       }
-    },
-    setSubscribeMessage: function () {
-      subscriptionsSetting()
-    },
+    }
   }
 })

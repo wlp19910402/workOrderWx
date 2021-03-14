@@ -1,12 +1,11 @@
 const app = getApp()
-const subscriptionsSetting = require('../utils/subscriptionsSetting.js')
 Component({
   data: {
     userInfo: null,
     selected: 0,
     color: "#7a7e83",
     selectedColor: "#303135",
-    isAdmin:false,
+    isAdmin: false,
     allList: [{
       list1: [{
         "pagePath": "/pages/index/index",
@@ -51,7 +50,7 @@ Component({
   attached() {
     this.setData({
       userInfo: wx.getStorageSync("userInfo"),
-      isAdmin:wx.getStorageSync('isAdmin')
+      isAdmin: wx.getStorageSync('isAdmin')
     })
   },
   methods: {
@@ -66,19 +65,17 @@ Component({
         selected: data.index
       })
     },
-    initCustom(){
-      subscriptionsSetting(() => {
-        const isAdmin = wx.getStorageSync('isAdmin')
-        if (isAdmin) {
-          this.setData({
-            list: this.data.allList[0].list2
-          })
-        } else {
-          this.setData({
-            list: this.data.allList[0].list1
-          })
-        }
-      })
+    initCustom() {
+      const isAdmin = wx.getStorageSync('isAdmin')
+      if (isAdmin) {
+        this.setData({
+          list: this.data.allList[0].list2
+        })
+      } else {
+        this.setData({
+          list: this.data.allList[0].list1
+        })
+      }
     }
   },
   ready() {

@@ -3,7 +3,7 @@
 		<view class="weui-btn-area ">
 			<open-data class="userinfo-avatar" lang="zh_CN" type="userAvatarUrl"></open-data>
 			<open-data class="userinfo-nickname" lang="zh_CN" type="userNickName"></open-data>
-			<button class="weui-btn" size="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="primary" bindtap="setSubscribeMessage">获取用户信息授权</button>
+			<button class="weui-btn" size="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="primary">获取用户信息授权</button>
 		</view>
 	</view>
 </view>

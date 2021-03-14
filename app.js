@@ -57,9 +57,6 @@ App({
       }
     })
   },
-  onHide() {
-    this.globalData.setSubscriptSetting = false
-  },
   globalData: {
     userInfo: null,
     userId: null,
@@ -70,7 +67,6 @@ App({
       jdCount: 0,
       wcCount: 0,
       myCount: 0
-    },
-    setSubscriptSetting: false
+    }
   }
 })

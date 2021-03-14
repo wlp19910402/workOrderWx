@@ -1,7 +1,6 @@
 const wxRequest = require('../../../../utils/request.js')
 const API = require('../../../../utils/API.js')
 const app = getApp()
-const subscriptionsSetting = require('../../../../utils/subscriptionsSetting.js')
 Page({
   data: {
     id: null,
@@ -79,14 +78,12 @@ Page({
       id: this.data.id,
       supporterIds: this.data.supporterIds
     }
-    subscriptionsSetting(() => {
-      wx.showLoading({
-        title: '正在提交',
-      })
-      wxRequest(API.ORDER_SEND, params, 'POST', (res) => {
-        that.setData({
-          isZdOrder: true
-        })
+    wx.showLoading({
+      title: '正在提交',
+    })
+    wxRequest(API.ORDER_SEND, params, 'POST', (res) => {
+      that.setData({
+        isZdOrder: true
       })
     })
   },
